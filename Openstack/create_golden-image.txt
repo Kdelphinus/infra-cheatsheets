@@ -1,0 +1,62 @@
+# 1. Root 권한 획득 (이후 모든 명령은 Root 상태에서 실행)
+sudo -i
+
+# ---------------------------------------------------------
+# 2. 네트워크 설정 고정 (Cloud-init 제거 대비)
+# 주의: 인터페이스 명(ens3)은 환경에 따라 다를 수 있으므로 자동 감지하여 설정합니다.
+# ---------------------------------------------------------
+IFACE=$(ip -o link show | awk -F': ' '{print $2}' | grep -v lo | head -n 1)
+cat <<EOF > /etc/netplan/01-netcfg.yaml
+network:
+  version: 2
+  ethernets:
+    $IFACE:
+      dhcp4: true
+      optional: true
+EOF
+netplan apply
+
+# ---------------------------------------------------------
+# 3. SSH Root 접속 허용 및 키 복사
+# ---------------------------------------------------------
+# sshd_config 수정: Root 로그인 허용, 패스워드 인증 허용
+sed -i 's/^#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -i 's/^PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config
+sed -i 's/^PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+# ubuntu 계정의 SSH 키를 root로 복사
+mkdir -p /root/.ssh
+cp /home/ubuntu/.ssh/authorized_keys /root/.ssh/
+chmod 700 /root/.ssh
+chmod 600 /root/.ssh/authorized_keys
+chown -R root:root /root/.ssh
+
+# Root 비밀번호 설정 (프롬프트가 뜨면 원하는 비밀번호 입력)
+echo "Root 계정의 비밀번호를 설정합니다:"
+passwd root
+
+# ---------------------------------------------------------
+# 4. Cloud-init 삭제 및 잔여 데이터 제거
+# ---------------------------------------------------------
+apt-get purge cloud-init -y
+rm -rf /etc/cloud /var/lib/cloud
+rm -rf /var/log/cloud-init*
+
+# ---------------------------------------------------------
+# 5. Machine-ID 초기화 (이미지 복제 시 IP 충돌 방지 필수)
+# ---------------------------------------------------------
+truncate -s 0 /etc/machine-id
+if [ -f /var/lib/dbus/machine-id ]; then
+    rm /var/lib/dbus/machine-id
+    ln -s /etc/machine-id /var/lib/dbus/machine-id
+fi
+
+# ---------------------------------------------------------
+# 6. 시스템 정리 및 종료
+# ---------------------------------------------------------
+apt-get clean
+cat /dev/null > ~/.bash_history
+history -c
+
+# 시스템 종료 (종료 후 스냅샷 생성하세요)
+poweroff

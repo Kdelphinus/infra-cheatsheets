@@ -1,0 +1,70 @@
+# 한국 시간 변경
+sudo timedatectl set-timezone Asia/Seoul
+
+# 1. 패키지 최신 업데이트 및 net-tools 설치
+sudo dnf update -y
+sudo dnf install net-tools -y
+
+# 2. 개발 도구 및 라이브러리 설치 (패키지 이름에 -devel 사용)
+sudo dnf install git python3.11 python3.11-devel libffi-devel gcc openssl-devel python3-libselinux net-tools -y
+
+# 3. 파이썬 가상환경 관리도구 설치 (pip 설치)
+sudo dnf install python3-pip -y
+
+# 4. 가상 환경 생성 및 활성화
+python3.11 -m venv $HOME/venv
+source $HOME/venv/bin/activate
+
+# 5. pip 패키지를 최신버전으로 업그레이드
+pip install -U pip
+
+# 6. ansible 다운로드
+pip install 'ansible-core>=2.16,<2.17'
+
+# 7. kolla-ansible 다운로드 (최신 안정 버전인 stable/zed로 변경)
+pip install git+https://opendev.org/openstack/kolla-ansible@stable/2024.2
+
+# 8. /etc/kolla 디렉토리 생성 및 소유자 변경
+sudo mkdir -p /etc/kolla
+sudo chown $USER:$USER /etc/kolla
+
+# 9. globals.yml, password.yaml 파일 복사
+cp -r $HOME/venv/share/kolla-ansible/etc_examples/kolla/* /etc/kolla
+
+# 10. all-in-one 및 multinode 인벤토리 파일 복사
+cp $HOME/venv/share/kolla-ansible/ansible/inventory/* .
+
+# 11. Kolla-Ansible 프로젝트를 위해 필요한 의존성 설치
+kolla-ansible install-deps
+
+# 12. 패스워드 파일 생성
+kolla-genpwd
+
+# 13. Ansible 설정 파일을 저장할 디렉토리 생성 및 소유자 변경
+sudo mkdir -p /etc/ansible
+sudo chown $USER:$USER /etc/ansible
+
+
+
+================================================
+
+
+# 1. 생성한 SSH 공개 키 파일을 모든 서버에 추가 (예시: 10.10.10.61에 복사)
+# 실제 환경에 맞게 반복적으로 실행해야 합니다.
+ssh-copy-id -i ~/.ssh/id_rsa.pub strato@10.10.10.61
+# ... 10.10.10.62, 10.10.10.63 등 모든 서버에 대해 반복
+
+# 2. 접속 테스트 (암호 없이 로그인 되면 성공)
+ssh strato@10.10.10.61
+
+# 3. 인벤토리 수정 (compute 노드 정보 추가)
+sudo vi multinode
+# [compute] 섹션에 compute 서버 IP와 사용자 정보 추가:
+# 10.10.10.62 ansible_user=strato ansible_become=true
+# (다른 compute 서버들도 추가)
+
+# 4. Ansible을 사용하여 원격 서버 그룹에 대해 "ping" 테스트
+ansible -i multinode all -m ping
+
+# 5. 재배포 (설정 변경 반영, 다운타임 없이 적용 가능)
+kolla-ansible -i ./multinode reconfigure
