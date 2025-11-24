@@ -19,7 +19,6 @@ cd ~/golden-image-work
 **1. Ubuntu 24.04 LTS (Noble):**
 
 ```bash
-# 1. Ubuntu 24.04 LTS (Noble)
 wget https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img -O ubuntu-24.04-base.qcow2
 ```
 
