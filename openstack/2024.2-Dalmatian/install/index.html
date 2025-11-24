@@ -1398,14 +1398,10 @@
   
 
 
-<p>안녕하세요, ⚙️ <strong>DevOps 엔지니어</strong>입니다.</p>
-<p>요청하신 대로 두 운영체제(<strong>Ubuntu 22.04</strong>, <strong>Rocky Linux</strong>) 모두 <strong>OpenStack 2024.2 (Stable)</strong> 버전을 기준으로 설치할 수 있도록 가이드를 통합 및 재구성했습니다.</p>
-<p>환경에 따라 변경되는 값(IP, 계정명 등)은 <code>&lt; &gt;</code> 형태의 변수로 치환하여, 어떤 환경에서도 헷갈리지 않고 적용할 수 있도록 작성했습니다.</p>
-<hr />
 <h1 id="openstack-ver-20242">🏛️ 통합 OpenStack 설치 가이드 (Ver. 2024.2)</h1>
 <p>이 가이드는 <strong>Kolla-Ansible</strong>을 사용하여 <strong>OpenStack 2024.2</strong> 버전을 설치하는 표준 절차입니다.
 아래의 <strong>변수 정의</strong>를 먼저 확인하고 본인의 환경에 맞춰 대입하여 진행해 주세요.</p>
-<h3 id="_1">📝 변수 정의 (치환 필요)</h3>
+<h2 id="_1">📝 변수 정의 (치환 필요)</h2>
 <ul>
 <li><code>&lt;USER_ID&gt;</code> : 서버 접속 계정 (예: strato)</li>
 <li><code>&lt;PASSWORD&gt;</code> : 접속 비밀번호 (예: strt0103!)</li>
@@ -1414,7 +1410,7 @@
 </ul>
 <hr />
 <h2 id="1">1단계: 기본 시스템 설정 (공통)</h2>
-<p>[cite_start]한국 표준시(KST) 설정은 모든 노드(Master, Compute 등)에서 수행합니다. [cite: 2, 4]</p>
+<p>한국 표준시(KST) 설정은 모든 노드(Master, Compute 등)에서 수행합니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 한국 시간으로 변경</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>timedatectl<span class="w"> </span>set-timezone<span class="w"> </span>Asia/Seoul
 </code></pre></div>
@@ -1424,25 +1420,25 @@
 <h3 id="ubuntu-2204">🅰️ Ubuntu 22.04 사용자</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. 패키지 최신 업데이트 및 필수 도구 설치</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="o">[</span>cite_start<span class="o">]</span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>net-tools<span class="w"> </span>-y<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">1</span><span class="o">]</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>net-tools<span class="w"> </span>-y
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 2. 개발 도구 및 라이브러리 설치</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># OpenStack 2024.2 구동을 위한 필수 라이브러리 포함</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="o">[</span>cite_start<span class="o">]</span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>python3-dev<span class="w"> </span>libffi-dev<span class="w"> </span>gcc<span class="w"> </span>libssl-dev<span class="w"> </span>-y<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">2</span><span class="o">]</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>python3-dev<span class="w"> </span>libffi-dev<span class="w"> </span>gcc<span class="w"> </span>libssl-dev<span class="w"> </span>-y
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 3. 파이썬 가상환경 관리도구 설치</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="o">[</span>cite_start<span class="o">]</span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-venv<span class="w"> </span>-y<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">2</span><span class="o">]</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-venv<span class="w"> </span>-y
 </code></pre></div>
 <h3 id="rocky-linux">🅱️ Rocky Linux 사용자</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. 패키지 최신 업데이트 및 필수 도구 설치</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>update<span class="w"> </span>-y
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="o">[</span>cite_start<span class="o">]</span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>net-tools<span class="w"> </span>-y<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>net-tools<span class="w"> </span>-y
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># 2. 개발 도구 및 라이브러리 설치 (Python 3.11 사용)</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="o">[</span>cite_start<span class="o">]</span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>python3.11<span class="w"> </span>python3.11-devel<span class="w"> </span>libffi-devel<span class="w"> </span>gcc<span class="w"> </span>openssl-devel<span class="w"> </span>python3-libselinux<span class="w"> </span>net-tools<span class="w"> </span>-y<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>git<span class="w"> </span>python3.11<span class="w"> </span>python3.11-devel<span class="w"> </span>libffi-devel<span class="w"> </span>gcc<span class="w"> </span>openssl-devel<span class="w"> </span>python3-libselinux<span class="w"> </span>net-tools<span class="w"> </span>-y
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># 3. 파이썬 가상환경 관리도구 설치 (pip)</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="o">[</span>cite_start<span class="o">]</span>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>python3-pip<span class="w"> </span>-y<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>python3-pip<span class="w"> </span>-y
 </code></pre></div>
 <hr />
 <h2 id="3-venv-ansible">3단계: 가상환경(Venv) 구성 및 Ansible 설치 (통합)</h2>
@@ -1450,60 +1446,60 @@
 <h3 id="1_1">1. 가상환경 생성 및 활성화</h3>
 <p><strong>Ubuntu:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span><span class="nv">$HOME</span>/venv
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="o">[</span>cite_start<span class="o">]</span><span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/venv/bin/activate<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">2</span><span class="o">]</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/venv/bin/activate
 </code></pre></div>
 <p><strong>Rocky Linux:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>python3.11<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span><span class="nv">$HOME</span>/venv
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">[</span>cite_start<span class="o">]</span><span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/venv/bin/activate<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">source</span><span class="w"> </span><span class="nv">$HOME</span>/venv/bin/activate
 </code></pre></div>
 <h3 id="2-pip-ansible-kolla-ansible">2. Pip, Ansible, Kolla-Ansible 설치 (공통)</h3>
 <p><em>가상환경이 활성화된 상태(<code>(venv)</code> 표시 확인)에서 진행해야 합니다.</em></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. pip 패키지를 최신버전으로 업그레이드</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="o">[</span>cite_start<span class="o">]</span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>pip<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>pip
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. ansible-core 설치 (2024.2 버전 호환성 고려)</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># 2.16 이상 2.17 미만 버전 권장</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="o">[</span>cite_start<span class="o">]</span>pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;ansible-core&gt;=2.16,&lt;2.17&#39;</span><span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;ansible-core&gt;=2.16,&lt;2.17&#39;</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># 3. kolla-ansible 다운로드 (2024.2 Stable 버전)</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="o">[</span>cite_start<span class="o">]</span>pip<span class="w"> </span>install<span class="w"> </span>git+https://opendev.org/openstack/kolla-ansible@stable/2024.2<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>pip<span class="w"> </span>install<span class="w"> </span>git+https://opendev.org/openstack/kolla-ansible@stable/2024.2
 </code></pre></div>
 <hr />
 <h2 id="4">4단계: 설정 파일 구성 (공통)</h2>
 <p>Kolla-Ansible 구동에 필요한 설정 파일들을 복사하고 디렉토리 권한을 수정합니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 1. /etc/kolla 디렉토리 생성 및 소유자 변경</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/kolla
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="o">[</span>cite_start<span class="o">]</span>sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/etc/kolla<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">4</span><span class="o">]</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/etc/kolla
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># 2. 기본 설정 파일(globals.yml, password.yaml) 복사</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="o">[</span>cite_start<span class="o">]</span>cp<span class="w"> </span>-r<span class="w"> </span><span class="nv">$HOME</span>/venv/share/kolla-ansible/etc_examples/kolla/*<span class="w"> </span>/etc/kolla<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>cp<span class="w"> </span>-r<span class="w"> </span><span class="nv">$HOME</span>/venv/share/kolla-ansible/etc_examples/kolla/*<span class="w"> </span>/etc/kolla
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># 3. 인벤토리 파일(all-in-one, multinode) 복사</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="o">[</span>cite_start<span class="o">]</span>cp<span class="w"> </span><span class="nv">$HOME</span>/venv/share/kolla-ansible/ansible/inventory/*<span class="w"> </span>.<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">2</span>,<span class="w"> </span><span class="m">5</span><span class="o">]</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>cp<span class="w"> </span><span class="nv">$HOME</span>/venv/share/kolla-ansible/ansible/inventory/*<span class="w"> </span>.
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
 <a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># 4. Kolla-Ansible 프로젝트 의존성(Galaxy Role 등) 설치</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="o">[</span>cite_start<span class="o">]</span>kolla-ansible<span class="w"> </span>install-deps<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">6</span><span class="o">]</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>kolla-ansible<span class="w"> </span>install-deps
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
 <a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1"># 5. 패스워드 파일 생성</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="o">[</span>cite_start<span class="o">]</span>kolla-genpwd<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">6</span><span class="o">]</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>kolla-genpwd
 <a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a>
 <a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="c1"># 6. Ansible 설정 저장 디렉토리 생성</span>
 <a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/ansible
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="o">[</span>cite_start<span class="o">]</span>sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/etc/ansible<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">6</span><span class="o">]</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a>sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/etc/ansible
 </code></pre></div>
 <hr />
 <h2 id="5-master">5단계: 멀티노드 통신 설정 (Master 노드 전용)</h2>
 <p>Master 노드에서 Compute 노드 등으로 비밀번호 없이 SSH 접속이 가능하도록 설정합니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># 1. SSH 공개 키를 배포 대상 서버에 복사 (각 노드 IP별로 반복 수행)</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="o">[</span>cite_start<span class="o">]</span>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span>&lt;USER_ID&gt;@&lt;TARGET_NODE_IP&gt;<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">7</span><span class="o">]</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>ssh-copy-id<span class="w"> </span>-i<span class="w"> </span>~/.ssh/id_rsa.pub<span class="w"> </span>&lt;USER_ID&gt;@&lt;TARGET_NODE_IP&gt;
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
 <a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># 2. 접속 테스트 (암호 없이 로그인 되면 성공)</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="o">[</span>cite_start<span class="o">]</span>ssh<span class="w"> </span>&lt;USER_ID&gt;@&lt;TARGET_NODE_IP&gt;<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">7</span><span class="o">]</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>ssh<span class="w"> </span>&lt;USER_ID&gt;@&lt;TARGET_NODE_IP&gt;
 </code></pre></div>
 <h3 id="_2">인벤토리 파일 수정</h3>
 <p><code>multinode</code> 파일을 열어 배포 대상 서버 정보를 입력합니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 3. 인벤토리 수정</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="o">[</span>cite_start<span class="o">]</span>sudo<span class="w"> </span>vi<span class="w"> </span>multinode<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">7</span><span class="o">]</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>sudo<span class="w"> </span>vi<span class="w"> </span>multinode
 </code></pre></div>
 <p><strong>파일 내용 수정 예시:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">[control]</span>
@@ -1514,26 +1510,26 @@
 <a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
 <a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="k">[compute]</span>
 <a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># Compute 노드 IP와 계정 정보를 기입</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="k">[cite_start]&lt;TARGET_NODE_IP&gt; ansible_user=&lt;USER_ID&gt; ansible_become=true [cite: 3, 7]</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="na">&lt;TARGET_NODE_IP&gt; ansible_user</span><span class="o">=</span><span class="s">&lt;USER_ID&gt; ansible_become=true</span>
 </code></pre></div>
 <h3 id="_3">통신 확인</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># 4. Ansible Ping 테스트</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="o">[</span>cite_start<span class="o">]</span>ansible<span class="w"> </span>-i<span class="w"> </span>multinode<span class="w"> </span>all<span class="w"> </span>-m<span class="w"> </span>ping<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">3</span>,<span class="w"> </span><span class="m">7</span><span class="o">]</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>ansible<span class="w"> </span>-i<span class="w"> </span>multinode<span class="w"> </span>all<span class="w"> </span>-m<span class="w"> </span>ping
 </code></pre></div>
 <hr />
 <h2 id="6-openstack-master">6단계: OpenStack 배포 (Master 노드 전용)</h2>
 <p>설정이 완료되면 실제 배포를 진행합니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 1. 서버 부트스트랩 (Docker 설치 및 기본 설정)</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="o">[</span>cite_start<span class="o">]</span>kolla-ansible<span class="w"> </span>bootstrap-servers<span class="w"> </span>-i<span class="w"> </span>./multinode<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>kolla-ansible<span class="w"> </span>bootstrap-servers<span class="w"> </span>-i<span class="w"> </span>./multinode
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>
 <a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="c1"># 2. 사전 점검 (Prechecks)</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a><span class="o">[</span>cite_start<span class="o">]</span>kolla-ansible<span class="w"> </span>prechecks<span class="w"> </span>-i<span class="w"> </span>./multinode<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>kolla-ansible<span class="w"> </span>prechecks<span class="w"> </span>-i<span class="w"> </span>./multinode
 <a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>
 <a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a><span class="c1"># 3. 배포 (Deploy)</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a><span class="o">[</span>cite_start<span class="o">]</span>kolla-ansible<span class="w"> </span>deploy<span class="w"> </span>-i<span class="w"> </span>./multinode<span class="w"> </span><span class="o">[</span>cite:<span class="w"> </span><span class="m">3</span><span class="o">]</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>kolla-ansible<span class="w"> </span>deploy<span class="w"> </span>-i<span class="w"> </span>./multinode
 <a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>
 <a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a><span class="c1"># (참고) 설정 변경 시 재배포 (Reconfigure)</span>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="c1"># [cite_start]kolla-ansible reconfigure -i ./multinode [cite: 3, 7]</span>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="c1"># kolla-ansible reconfigure -i ./multinode</span>
 </code></pre></div>
 <hr />
 <h3 id="devops">💡 DevOps 엔지니어의 팁</h3>
@@ -1541,7 +1537,6 @@
 <li><strong>IP 설정 주의</strong>: <code>globals.yml</code> 파일 수정 시 <code>network_interface</code>와 <code>neutron_external_interface</code>가 실제 서버의 인터페이스 명(예: <code>eth0</code>, <code>ens3</code> 등)과 일치하는지 반드시 확인해야 합니다.</li>
 <li><strong>가상환경 필수</strong>: 모든 <code>kolla-ansible</code> 및 <code>ansible</code> 명령어는 <code>source $HOME/venv/bin/activate</code> 명령어로 가상환경이 활성화된 상태에서 실행해야 오류가 발생하지 않습니다.</li>
 </ul>
-<p>추가적으로 <code>globals.yml</code> 내부 네트워크 설정에 대해 상세한 가이드가 필요하시면 말씀해 주세요.</p>
 
 
 
