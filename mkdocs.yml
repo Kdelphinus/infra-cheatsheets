@@ -35,6 +35,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - tables                   # 마크다운 테이블 지원
+  - attr_list            # HTML 속성 적용
+  - md_in_html           # HTML 태그 안에 마크다운 사용
 
 # 메뉴 구조 (나중에 파일 만들면서 수정하면 됨)
 nav:
