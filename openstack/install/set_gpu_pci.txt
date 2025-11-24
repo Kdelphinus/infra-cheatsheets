@@ -1,0 +1,83 @@
+* COMPUTE 노드
+
+1. IOMMU 활성화
+# /etc/default/grub 수정 (예시)
+# Intel CPU인 경우
+GRUB_CMDLINE_LINUX="intel_iommu=on iommu=pt modprobe.blacklist=nouveau,nvidia,nvidia_drm"
+
+update-grub
+reboot
+
+1-1.재부팅 후, 반영 확인
+cat /proc/cmdline
+
+2. 장치 id 확인
+lspci -nn | grep -i vga
+lspci -nn | grep -i NVIDIA
+
+3. 장치 바인딩
+modprobe vfio
+modprobe vfio_iommu_type1
+modprobe vfio-pci
+
+4. /etc/modules 파일 열기
+sudo vi /etc/modules 
+
+# 파일 하단에 다음 세 줄 추가
+vfio
+vfio_iommu_type1
+vfio_pci
+
+5. /etc/modprobe.d/vfio.conf 생성
+options vfio-pci ids=10de:20b7
+
+6. RAMDISK 업데이트
+update-initramfs -u
+reboot
+
+7. 확인
+lspci -nnk -d 10de:20b7
+
+7-1. 안되면
+echo "10de 20b7" | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
+echo "10de 20b7" | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
+lspci -nnk -d 10de:20b7 <- 바로 확인
+
+
+8.  /etc/kolla/config/nova/nova-compute.conf 설정 추가
+[pci]
+passthrough_whitelist = { "vendor_id": "10de", "product_id": 20b7", "tags": "gpu" }
+
+=======================================================================
+
+* CONTROLL 노드 
+
+1.  /etc/kolla/config/nova/nova-scheduler.conf 설정 추가
+[filter_scheduler]
+enabled_filters = PciPassthroughFilter
+
+2. /etc/kolla/config/nova/nova-api.conf 설정 추가
+[pci]
+alias = { "vendor_id":"10de", "product_id":"20b7", "device_type":"type-PF", "name":"gpu" }
+
+3. 재배포
+kolla-ansible reconfigure -i multinode
+
+4. placement 설치
+pip install python-openstackclient
+
+5. 존 할당
+openstack compute service set --host <HOST_NAME> --zone gpu-zone nova-compute
+
+6. flavor 생성
+openstack flavor create --vcpus 8 --ram 16 --disk 60 --property "pci_passthrough:alias"="gpu:1" gpu-flavor
+
+7. pci에 placement 적용하기
+# controll 노드에 아래 추가
+# /etc/kolla/config/nova/nova.conf 
+
+[filter_scheduler]
+pci_in_placement = True
+
+[pci]
+report_in_placement = True

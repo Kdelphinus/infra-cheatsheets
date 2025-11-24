@@ -1,0 +1,79 @@
+우분투 22.04 설치 / 계정 strato / 비밀번호 strt0103!
+
+컨트롤노드(master) 접속 10.10.10.60 / strato / strt0103!
+
+
+한국시간으로 변경
+sudo timedatectl set-timezone Asia/Seoul
+
+1. 패키지 최신 업데이트
+sudo apt update
+sudo apt-get install net-tools -y
+
+2.개발도구 및 라이브러리 설치
+sudo apt install git python3-dev libffi-dev gcc libssl-dev -y
+
+3. 파이썬 가상환경 관리도구 설치
+sudo apt install python3-venv -y
+
+4. 가상 환경 생성 및 활성화:
+python3 -m venv $HOME/venv
+source $HOME/venv/bin/activate
+
+5. pip 패키지를 최신버전으로 업그레이드
+pip install -U pip
+
+6. ansible 다운로드
+pip install 'ansible>=4,<6'
+
+7. kolla-ansible 다운로드
+pip install git+https://opendev.org/openstack/kolla-ansible@stable/yoga
+
+8. //etc/kolla 디렉토리 생성 및 소유자 변경
+sudo mkdir -p /etc/kolla
+sudo chown $USER:$USER /etc/kolla
+
+9. globals.yml,password.yaml 파일 복사
+cp -r $HOME/venv/share/kolla-ansible/etc_examples/kolla/* /etc/kolla
+
+10. all-in-one 및 multinode 인벤토리 파일 복사
+cp $HOME/venv/share/kolla-ansible/ansible/inventory/* .
+
+11. Kolla-Ansible 프로젝트를 위해 필요한 의존성 설치
+kolla-ansible install-deps
+
+12. 패스워드 파일 생성
+kolla-genpwd
+
+13. Ansible 설정 파일을 저장할 디렉토리 생성 / 파일 또는 디렉토리의 소유자(owner)를 변경하는 명령어
+sudo mkdir -p /etc/ansible 
+sudo chown $USER:$USER /etc/ansible
+
+
+====(master만 진행)=====
+
+1. 생성한 SSH 공개 키 파일을 모든 서버에 추가
+ssh-copy-id -i ~/.ssh/id_rsa.pub strato@10.10.10.60~68
+
+2. 접속테스트, 암호없이 로그인 되면 성공
+ssh strato@10.10.10.61
+
+3. 인벤토리 수정
+sudo vi multinode
+
+[compute]
+10.10.10.62 ansible_user=strato ansible_become=true
+서버 추가
+
+4. Ansible을 사용하여 원격 서버 그룹에 대해 "ping" 테스트
+ansible -i multinode all -m ping
+
+5. 재배포 (설정 변경 반영, 다운타임 없이 적용 가능)
+kolla-ansible bootstrap-servers -i ./multinode
+
+kolla-ansible prechecks -i ./multinode
+
+kolla-ansible deploy -i ./multinode
+
+kolla-ansible reconfigure -i ./multinode 
+

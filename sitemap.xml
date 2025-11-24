@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://사용자명.github.io/infra-cheatsheets/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://사용자명.github.io/infra-cheatsheets/k8s/token-check/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://사용자명.github.io/infra-cheatsheets/openstack/openstack-golden-image/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://사용자명.github.io/infra-cheatsheets/openstack/openstack2024.2_pci_placement/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://사용자명.github.io/infra-cheatsheets/openstack/install/openstack2025.1-install/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://사용자명.github.io/infra-cheatsheets/ubuntu/init-ubuntu-env/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+</urlset>
