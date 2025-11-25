@@ -678,13 +678,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-nvidia-gpu" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 옵션: NVIDIA GPU 드라이버 설치
+        5. 옵션 소프트웨어 설치
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="5. 옵션 소프트웨어 설치">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 옵션: Docker 설치
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-nvidia-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 옵션: NVIDIA GPU 드라이버 설치
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -735,6 +763,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 옵션: GPU 드라이버 설치
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1318,13 +1357,41 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-nvidia-gpu" class="md-nav__link">
+  <a href="#5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. 옵션: NVIDIA GPU 드라이버 설치
+        5. 옵션 소프트웨어 설치
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="5. 옵션 소프트웨어 설치">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 옵션: Docker 설치
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-nvidia-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 옵션: NVIDIA GPU 드라이버 설치
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1375,6 +1442,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 옵션: GPU 드라이버 설치
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1501,10 +1579,19 @@
 </code></pre></div>
 <p><strong>RHEL/Rocky/CentOS:</strong></p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># /etc/default/grub 파일 수정</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/GRUB_CMDLINE_LINUX=&quot;.*&quot;/GRUB_CMDLINE_LINUX=&quot;crashkernel=auto console=tty1 console=ttyS0,115200n8&quot;/&#39;</span><span class="w"> </span>/etc/default/grub
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># 수정 내용 적용</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>grub2-mkconfig<span class="w"> </span>-o<span class="w"> </span>/boot/grub2/grub.cfg
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/etc/default/grub<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="s">GRUB_TIMEOUT=1</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="s">GRUB_DISTRIBUTOR=&quot;$(sed &#39;s, release .*$,,g&#39; /etc/system-release)&quot;</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="s">GRUB_DEFAULT=saved</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="s">GRUB_DISABLE_SUBMENU=true</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="s">GRUB_TERMINAL_OUTPUT=&quot;console&quot;</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="s">GRUB_CMDLINE_LINUX=&quot;crashkernel=auto console=tty1 console=ttyS0,115200n8&quot;</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="s">GRUB_DISABLE_RECOVERY=&quot;true&quot;</span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a><span class="s">GRUB_ENABLE_BLSCFG=true</span>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="s">EOF</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="c1"># 수정 내용 적용</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>grub2-mkconfig<span class="w"> </span>-o<span class="w"> </span>/boot/grub2/grub.cfg
 </code></pre></div>
 <h3 id="42">4.2 기본 패키지 설치</h3>
 <p>VMware Tools 대신 <strong>QEMU Guest Agent</strong>를 사용합니다.</p>
@@ -1523,170 +1610,248 @@
 <a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>qemu-guest-agent<span class="w"> </span>cloud-init
 </code></pre></div>
 <hr />
-<h2 id="5-nvidia-gpu">5. 옵션: NVIDIA GPU 드라이버 설치</h2>
+<h2 id="5">5. 옵션 소프트웨어 설치</h2>
+<h3 id="51-docker">5.1 옵션: Docker 설치</h3>
+<p>Docker를 포함하는 경우에만 이 단계를 수행하세요.</p>
+<p><strong>Ubuntu/Debian:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># 1. 필수 패키지 및 GPG Key 설정</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>apt-get<span class="w"> </span>update
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>ca-certificates<span class="w"> </span>curl
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>install<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>-d<span class="w"> </span>/etc/apt/keyrings
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://download.docker.com/linux/ubuntu/gpg<span class="w"> </span>-o<span class="w"> </span>/etc/apt/keyrings/docker.asc
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>chmod<span class="w"> </span>a+r<span class="w"> </span>/etc/apt/keyrings/docker.asc
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="c1"># 2. 저장소 추가</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a><span class="nb">echo</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="w">  </span><span class="s2">&quot;deb [arch=</span><span class="k">$(</span>dpkg<span class="w"> </span>--print-architecture<span class="k">)</span><span class="s2"> signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \</span>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="s2">  </span><span class="k">$(</span>.<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VERSION_CODENAME</span><span class="s2">&quot;</span><span class="k">)</span><span class="s2"> stable&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a><span class="w">  </span>tee<span class="w"> </span>/etc/apt/sources.list.d/docker.list<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>apt-get<span class="w"> </span>update
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="c1"># 3. Docker 설치</span>
+<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
+<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>
+<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a><span class="c1"># 4. 활성화</span>
+<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
+<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a>
+<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="c1"># -------------------------------------------------------</span>
+<a id="__codelineno-21-22" name="__codelineno-21-22" href="#__codelineno-21-22"></a><span class="c1"># [GPU 이미지인 경우만] NVIDIA Container Toolkit 설치</span>
+<a id="__codelineno-21-23" name="__codelineno-21-23" href="#__codelineno-21-23"></a><span class="c1"># -------------------------------------------------------</span>
+<a id="__codelineno-21-24" name="__codelineno-21-24" href="#__codelineno-21-24"></a>
+<a id="__codelineno-21-25" name="__codelineno-21-25" href="#__codelineno-21-25"></a><span class="c1"># 5. 저장소 추가 및 설치</span>
+<a id="__codelineno-21-26" name="__codelineno-21-26" href="#__codelineno-21-26"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://nvidia.github.io/libnvidia-container/gpgkey<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span>-o<span class="w"> </span>/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-27" name="__codelineno-21-27" href="#__codelineno-21-27"></a><span class="w">  </span><span class="o">&amp;&amp;</span><span class="w"> </span>curl<span class="w"> </span>-s<span class="w"> </span>-L<span class="w"> </span>https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-28" name="__codelineno-21-28" href="#__codelineno-21-28"></a><span class="w">    </span>sed<span class="w"> </span><span class="s1">&#39;s#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#g&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-21-29" name="__codelineno-21-29" href="#__codelineno-21-29"></a><span class="w">    </span>tee<span class="w"> </span>/etc/apt/sources.list.d/nvidia-container-toolkit.list
+<a id="__codelineno-21-30" name="__codelineno-21-30" href="#__codelineno-21-30"></a>
+<a id="__codelineno-21-31" name="__codelineno-21-31" href="#__codelineno-21-31"></a>apt-get<span class="w"> </span>update
+<a id="__codelineno-21-32" name="__codelineno-21-32" href="#__codelineno-21-32"></a>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nvidia-container-toolkit
+<a id="__codelineno-21-33" name="__codelineno-21-33" href="#__codelineno-21-33"></a>
+<a id="__codelineno-21-34" name="__codelineno-21-34" href="#__codelineno-21-34"></a><span class="c1"># 6. Docker 설정 및 재시작</span>
+<a id="__codelineno-21-35" name="__codelineno-21-35" href="#__codelineno-21-35"></a>nvidia-ctk<span class="w"> </span>runtime<span class="w"> </span>configure<span class="w"> </span>--runtime<span class="o">=</span>docker
+<a id="__codelineno-21-36" name="__codelineno-21-36" href="#__codelineno-21-36"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+</code></pre></div>
+<p><strong>Rocky/RHEL:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># 1. Docker 저장소 추가</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>dnf<span class="w"> </span>config-manager<span class="w"> </span>--add-repo<span class="w"> </span>https://download.docker.com/linux/centos/docker-ce.repo
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># 2. Docker 엔진 설치</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>docker-ce<span class="w"> </span>docker-ce-cli<span class="w"> </span>containerd.io<span class="w"> </span>docker-buildx-plugin<span class="w"> </span>docker-compose-plugin
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="c1"># 3. Docker 실행 및 자동 시작 설정</span>
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>docker
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="c1"># -------------------------------------------------------</span>
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="c1"># [GPU 이미지인 경우만] NVIDIA Container Toolkit 설치</span>
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a><span class="c1"># (Docker가 GPU를 쓰게 해주는 필수 도구입니다)</span>
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a><span class="c1"># -------------------------------------------------------</span>
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a><span class="c1"># 4. NVIDIA Toolkit 저장소 추가</span>
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>curl<span class="w"> </span>-s<span class="w"> </span>-L<span class="w"> </span>https://nvidia.github.io/libnvidia-container/stable/rpm/nvidia-container-toolkit.repo<span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="w">  </span>tee<span class="w"> </span>/etc/yum.repos.d/nvidia-container-toolkit.repo
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a><span class="c1"># 5. Toolkit 설치</span>
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>nvidia-container-toolkit
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a>
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a><span class="c1"># 6. Docker가 NVIDIA Runtime을 쓰도록 설정 (중요!)</span>
+<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a><span class="c1"># 이 명령어가 /etc/docker/daemon.json 파일을 자동으로 수정해줍니다.</span>
+<a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a>nvidia-ctk<span class="w"> </span>runtime<span class="w"> </span>configure<span class="w"> </span>--runtime<span class="o">=</span>docker
+<a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a>
+<a id="__codelineno-22-26" name="__codelineno-22-26" href="#__codelineno-22-26"></a><span class="c1"># 7. 적용을 위해 Docker 재시작</span>
+<a id="__codelineno-22-27" name="__codelineno-22-27" href="#__codelineno-22-27"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>docker
+</code></pre></div>
+<h3 id="52-nvidia-gpu">5.2 옵션: NVIDIA GPU 드라이버 설치</h3>
 <p><strong>GPU 버전 이미지</strong>를 생성할 때만 이 단계를 수행하세요. CPU 전용 이미지는 이 단계를 건너뜁니다.</p>
 <blockquote>
 <p><strong>전제</strong>: 인스턴스에 이미 NVIDIA GPU가 Passthrough 되어 있거나, 로컬에서 드라이버 빌드 환경이 갖춰져야 합니다.</p>
 </blockquote>
 <p><strong>Ubuntu/Debian:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># 1. Nouveau 블랙리스트 처리</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; /etc/modprobe.d/blacklist-nouveau.conf</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="s">blacklist nouveau</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="s">options nouveau modeset=0</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="s">EOF</span>
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a><span class="c1"># 2. 변경 사항 커널에 적용</span>
-<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a>update-initramfs<span class="w"> </span>-u
-<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>
-<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a><span class="c1"># 3. 빌드 의존성 패키지 설치</span>
-<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a>apt-get<span class="w"> </span>update
-<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>linux-headers-<span class="k">$(</span>uname<span class="w"> </span>-r<span class="k">)</span><span class="w"> </span>pkg-config<span class="w"> </span>libglvnd-dev
-<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>
-<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="c1"># 4. NVIDIA 드라이버 다운로드</span>
-<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a><span class="nb">cd</span><span class="w"> </span>/root
-<a id="__codelineno-21-16" name="__codelineno-21-16" href="#__codelineno-21-16"></a>wget<span class="w"> </span>https://us.download.nvidia.com/XFree86/Linux-x86_64/550.127.05/NVIDIA-Linux-x86_64-550.127.05.run
-<a id="__codelineno-21-17" name="__codelineno-21-17" href="#__codelineno-21-17"></a>chmod<span class="w"> </span>+x<span class="w"> </span>NVIDIA-Linux-x86_64-*.run
-<a id="__codelineno-21-18" name="__codelineno-21-18" href="#__codelineno-21-18"></a>
-<a id="__codelineno-21-19" name="__codelineno-21-19" href="#__codelineno-21-19"></a><span class="c1"># 5. 드라이버 설치 (하드웨어 없이 설치)</span>
-<a id="__codelineno-21-20" name="__codelineno-21-20" href="#__codelineno-21-20"></a><span class="c1"># 나중에 로그인해서 &#39;install-gpu&#39;만 치면 설치되도록 설정</span>
-<a id="__codelineno-21-21" name="__codelineno-21-21" href="#__codelineno-21-21"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alias install-gpu=&#39;/root/NVIDIA-Linux-x86_64-*.run --silent --dkms &amp;&amp; echo \&quot;설치 완료! nvidia-smi를 입력해보세요.\&quot;&#39; &quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/root/.bashrc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># 1. Nouveau 블랙리스트 처리</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; /etc/modprobe.d/blacklist-nouveau.conf</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="s">blacklist nouveau</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="s">options nouveau modeset=0</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="s">EOF</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># 2. 변경 사항 커널에 적용</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>update-initramfs<span class="w"> </span>-u
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="c1"># 3. 빌드 의존성 패키지 설치</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>apt-get<span class="w"> </span>update
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>build-essential<span class="w"> </span>linux-headers-<span class="k">$(</span>uname<span class="w"> </span>-r<span class="k">)</span><span class="w"> </span>pkg-config<span class="w"> </span>libglvnd-dev
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="c1"># 4. NVIDIA 드라이버 다운로드</span>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="nb">cd</span><span class="w"> </span>/root
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>wget<span class="w"> </span>https://us.download.nvidia.com/XFree86/Linux-x86_64/550.127.05/NVIDIA-Linux-x86_64-550.127.05.run
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>chmod<span class="w"> </span>+x<span class="w"> </span>NVIDIA-Linux-x86_64-*.run
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="c1"># 5. 드라이버 설치 (하드웨어 없이 설치)</span>
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="c1"># 나중에 로그인해서 &#39;install-gpu&#39;만 치면 설치되도록 설정</span>
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alias install-gpu=&#39;/root/NVIDIA-Linux-x86_64-*.run --silent --dkms &amp;&amp; echo \&quot;설치 완료! nvidia-smi를 입력해보세요.\&quot;&#39; &quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/root/.bashrc
 </code></pre></div>
 <p><strong>Rocky/RHEL:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># 1. Nouveau(오픈소스 드라이버) 블랙리스트 처리</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; /etc/modprobe.d/blacklist-nouveau.conf</span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="s">blacklist nouveau</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="s">options nouveau modeset=0</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="s">EOF</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="c1"># 2. 변경 사항 커널에 적용 (initramfs 갱신)</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>dracut<span class="w"> </span>--force
-<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
-<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="c1"># 3. 빌드 의존성 패키지 설치</span>
-<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a><span class="c1"># (드라이버 컴파일을 위해 gcc, make, kernel source 등이 필요함)</span>
-<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>yum<span class="w"> </span>groupinstall<span class="w"> </span>-y<span class="w"> </span><span class="s2">&quot;Development Tools&quot;</span>
-<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release
-<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>yum<span class="w"> </span>update<span class="w"> </span>-y<span class="w">  </span><span class="c1"># 커널 최신화 (중요)</span>
-<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>kernel-devel<span class="w"> </span>kernel-headers<span class="w"> </span>dkms<span class="w"> </span>gcc<span class="w"> </span>make<span class="w"> </span>wget<span class="w"> </span>pciutils
-<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>
-<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a><span class="c1"># 드라이버 다운로드</span>
-<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a><span class="nb">cd</span><span class="w"> </span>/root
-<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a>wget<span class="w"> </span>https://us.download.nvidia.com/XFree86/Linux-x86_64/550.127.05/NVIDIA-Linux-x86_64-550.127.05.run
-<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>chmod<span class="w"> </span>+x<span class="w"> </span>NVIDIA-Linux-x86_64-*.run
-<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a>
-<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a><span class="c1"># 5. 드라이버 설치 (하드웨어 없이 설치)</span>
-<a id="__codelineno-22-23" name="__codelineno-22-23" href="#__codelineno-22-23"></a><span class="c1"># --silent: 무인 설치</span>
-<a id="__codelineno-22-24" name="__codelineno-22-24" href="#__codelineno-22-24"></a><span class="c1"># 나중에 로그인해서 &#39;install-gpu&#39;만 치면 설치되도록 설정</span>
-<a id="__codelineno-22-25" name="__codelineno-22-25" href="#__codelineno-22-25"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alias install-gpu=&#39;/root/NVIDIA-Linux-x86_64-*.run --silent --dkms &amp;&amp; echo \&quot;설치 완료! nvidia-smi를 입력해보세요.\&quot;&#39; &quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/root/.bashrc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># 1. Nouveau(오픈소스 드라이버) 블랙리스트 처리</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOF &gt; /etc/modprobe.d/blacklist-nouveau.conf</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="s">blacklist nouveau</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="s">options nouveau modeset=0</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="s">EOF</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c1"># 2. 변경 사항 커널에 적용 (initramfs 갱신)</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>dracut<span class="w"> </span>--force
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="c1"># 3. 빌드 의존성 패키지 설치</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="c1"># (드라이버 컴파일을 위해 gcc, make, kernel source 등이 필요함)</span>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a>yum<span class="w"> </span>groupinstall<span class="w"> </span>-y<span class="w"> </span><span class="s2">&quot;Development Tools&quot;</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>epel-release
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>yum<span class="w"> </span>update<span class="w"> </span>-y<span class="w">  </span><span class="c1"># 커널 최신화 (중요)</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>kernel-devel<span class="w"> </span>kernel-headers<span class="w"> </span>dkms<span class="w"> </span>gcc<span class="w"> </span>make<span class="w"> </span>wget<span class="w"> </span>pciutils
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="c1"># 드라이버 다운로드</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="nb">cd</span><span class="w"> </span>/root
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>wget<span class="w"> </span>https://us.download.nvidia.com/XFree86/Linux-x86_64/550.127.05/NVIDIA-Linux-x86_64-550.127.05.run
+<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>chmod<span class="w"> </span>+x<span class="w"> </span>NVIDIA-Linux-x86_64-*.run
+<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>
+<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a><span class="c1"># 5. 드라이버 설치 (하드웨어 없이 설치)</span>
+<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a><span class="c1"># --silent: 무인 설치</span>
+<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a><span class="c1"># 나중에 로그인해서 &#39;install-gpu&#39;만 치면 설치되도록 설정</span>
+<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alias install-gpu=&#39;/root/NVIDIA-Linux-x86_64-*.run --silent --dkms &amp;&amp; echo \&quot;설치 완료! nvidia-smi를 입력해보세요.\&quot;&#39; &quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/root/.bashrc
 </code></pre></div>
 <hr />
 <h2 id="6-vm">6. VM 정리 작업</h2>
 <p><code>Cloud-init</code> 이 정상적으로 작동하도록 설정들을 초기화 합니다.</p>
 <p><strong>Ubuntu/Debian:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># 1. DataSource 설정</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/etc/cloud/cloud.cfg.d/90_datasource.cfg<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="s">datasource_list: [ OpenStack, ConfigDrive, None ]</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="s">EOF</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="c1"># 2. SSH 보안 설정</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># (Ubuntu는 서비스명이 &#39;ssh&#39; 입니다)</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#*PermitRootLogin.*/PermitRootLogin prohibit-password/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#*PasswordAuthentication.*/PasswordAuthentication no/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>ssh
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="c1"># 3. 네트워크 설정 초기화</span>
-<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="c1"># Netplan 설정 삭제</span>
-<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/netplan/*.yaml
-<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="c1"># 구버전 인터페이스 설정 삭제</span>
-<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/network/interfaces.d/*
-<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>
-<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="c1"># 4. 고유 식별자 및 Cloud-init 초기화</span>
-<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/udev/rules.d/70-persistent-net.rules
-<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/ssh/ssh_host_*key*
-<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>truncate<span class="w"> </span>-s<span class="w"> </span><span class="m">0</span><span class="w"> </span>/etc/machine-id
-<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>rm<span class="w"> </span>-f<span class="w"> </span>/var/lib/dbus/machine-id
-<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a>
-<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="c1"># Cloud-init 데이터 삭제</span>
-<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/cloud/*
-<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/log/cloud-init*
-<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a>
-<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a><span class="c1"># 5. 패키지 캐시 정리</span>
-<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a>apt-get<span class="w"> </span>clean
-<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># 1. DataSource 설정</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/etc/cloud/cloud.cfg.d/90_datasource.cfg<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="s">datasource_list: [ OpenStack, ConfigDrive, None ]</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="s">EOF</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="c1"># 2. SSH 보안 설정</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="c1"># (Ubuntu는 서비스명이 &#39;ssh&#39; 입니다)</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#*PermitRootLogin.*/PermitRootLogin prohibit-password/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#*PasswordAuthentication.*/PasswordAuthentication no/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>ssh
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="c1"># 3. 네트워크 설정 초기화</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="c1"># Netplan 설정 삭제</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/netplan/*.yaml
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a><span class="c1"># 구버전 인터페이스 설정 삭제</span>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/network/interfaces.d/*
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="c1"># 4. 고유 식별자 및 Cloud-init 초기화</span>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/udev/rules.d/70-persistent-net.rules
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/ssh/ssh_host_*key*
+<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a>truncate<span class="w"> </span>-s<span class="w"> </span><span class="m">0</span><span class="w"> </span>/etc/machine-id
+<a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a>rm<span class="w"> </span>-f<span class="w"> </span>/var/lib/dbus/machine-id
+<a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a>
+<a id="__codelineno-25-24" name="__codelineno-25-24" href="#__codelineno-25-24"></a><span class="c1"># Cloud-init 데이터 삭제</span>
+<a id="__codelineno-25-25" name="__codelineno-25-25" href="#__codelineno-25-25"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/cloud/*
+<a id="__codelineno-25-26" name="__codelineno-25-26" href="#__codelineno-25-26"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/log/cloud-init*
+<a id="__codelineno-25-27" name="__codelineno-25-27" href="#__codelineno-25-27"></a>
+<a id="__codelineno-25-28" name="__codelineno-25-28" href="#__codelineno-25-28"></a><span class="c1"># 5. 패키지 캐시 정리</span>
+<a id="__codelineno-25-29" name="__codelineno-25-29" href="#__codelineno-25-29"></a>apt-get<span class="w"> </span>clean
+<a id="__codelineno-25-30" name="__codelineno-25-30" href="#__codelineno-25-30"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
 </code></pre></div>
 <p><strong>Rocky/RHEL:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># 1. DataSource 설정 (OpenStack 최우선)</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/etc/cloud/cloud.cfg.d/90_datasource.cfg<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="s">datasource_list: [ OpenStack, ConfigDrive, None ]</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="s">EOF</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="c1"># 2. SSH 보안 설정 (클라우드 표준: 패스워드 인증 비활성화)</span>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="c1"># (Root 로그인은 보안 정책에 따라 &#39;prohibit-password&#39; 또는 &#39;yes&#39;로 설정)</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#*PermitRootLogin.*/PermitRootLogin prohibit-password/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#*PasswordAuthentication.*/PasswordAuthentication no/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
-<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>sshd
-<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>
-<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="c1"># 3. 네트워크 설정 초기화 (기존 IP 정보 삭제)</span>
-<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="c1"># NetworkManager 연결 정보 삭제</span>
-<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/NetworkManager/system-connections/*.nmconnection
-<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="c1"># 구버전 스크립트가 있다면 삭제 (ifcfg-lo 제외)</span>
-<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/sysconfig/network-scripts/ifcfg-e*
-<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a>
-<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="c1"># 4. 고유 식별자 및 Cloud-init 초기화</span>
-<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/udev/rules.d/70-persistent-net.rules
-<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/ssh/ssh_host_*key*
-<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a>truncate<span class="w"> </span>-s<span class="w"> </span><span class="m">0</span><span class="w"> </span>/etc/machine-id
-<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a>rm<span class="w"> </span>-f<span class="w"> </span>/var/lib/dbus/machine-id
-<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a>
-<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a><span class="c1"># Cloud-init 데이터 삭제 (재부팅 시 새로 받기 위함)</span>
-<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/cloud/*
-<a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/log/cloud-init*
-<a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a>
-<a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a><span class="c1"># 5. 패키지 캐시 정리</span>
-<a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a>yum<span class="w"> </span>clean<span class="w"> </span>all
-<a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/cache/yum
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># 1. DataSource 설정 (OpenStack 최우선)</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/etc/cloud/cloud.cfg.d/90_datasource.cfg<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="s">datasource_list: [ OpenStack, ConfigDrive, None ]</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="s">EOF</span>
+<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
+<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="c1"># 2. SSH 보안 설정 (클라우드 표준: 패스워드 인증 비활성화)</span>
+<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a><span class="c1"># (Root 로그인은 보안 정책에 따라 &#39;prohibit-password&#39; 또는 &#39;yes&#39;로 설정)</span>
+<a id="__codelineno-26-8" name="__codelineno-26-8" href="#__codelineno-26-8"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#*PermitRootLogin.*/PermitRootLogin prohibit-password/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
+<a id="__codelineno-26-9" name="__codelineno-26-9" href="#__codelineno-26-9"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^#*PasswordAuthentication.*/PasswordAuthentication no/&#39;</span><span class="w"> </span>/etc/ssh/sshd_config
+<a id="__codelineno-26-10" name="__codelineno-26-10" href="#__codelineno-26-10"></a>systemctl<span class="w"> </span>restart<span class="w"> </span>sshd
+<a id="__codelineno-26-11" name="__codelineno-26-11" href="#__codelineno-26-11"></a>
+<a id="__codelineno-26-12" name="__codelineno-26-12" href="#__codelineno-26-12"></a><span class="c1"># 3. 네트워크 설정 초기화 (기존 IP 정보 삭제)</span>
+<a id="__codelineno-26-13" name="__codelineno-26-13" href="#__codelineno-26-13"></a><span class="c1"># NetworkManager 연결 정보 삭제</span>
+<a id="__codelineno-26-14" name="__codelineno-26-14" href="#__codelineno-26-14"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/NetworkManager/system-connections/*.nmconnection
+<a id="__codelineno-26-15" name="__codelineno-26-15" href="#__codelineno-26-15"></a><span class="c1"># 구버전 스크립트가 있다면 삭제 (ifcfg-lo 제외)</span>
+<a id="__codelineno-26-16" name="__codelineno-26-16" href="#__codelineno-26-16"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/sysconfig/network-scripts/ifcfg-e*
+<a id="__codelineno-26-17" name="__codelineno-26-17" href="#__codelineno-26-17"></a>
+<a id="__codelineno-26-18" name="__codelineno-26-18" href="#__codelineno-26-18"></a><span class="c1"># 4. 고유 식별자 및 Cloud-init 초기화</span>
+<a id="__codelineno-26-19" name="__codelineno-26-19" href="#__codelineno-26-19"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/udev/rules.d/70-persistent-net.rules
+<a id="__codelineno-26-20" name="__codelineno-26-20" href="#__codelineno-26-20"></a>rm<span class="w"> </span>-f<span class="w"> </span>/etc/ssh/ssh_host_*key*
+<a id="__codelineno-26-21" name="__codelineno-26-21" href="#__codelineno-26-21"></a>truncate<span class="w"> </span>-s<span class="w"> </span><span class="m">0</span><span class="w"> </span>/etc/machine-id
+<a id="__codelineno-26-22" name="__codelineno-26-22" href="#__codelineno-26-22"></a>rm<span class="w"> </span>-f<span class="w"> </span>/var/lib/dbus/machine-id
+<a id="__codelineno-26-23" name="__codelineno-26-23" href="#__codelineno-26-23"></a>
+<a id="__codelineno-26-24" name="__codelineno-26-24" href="#__codelineno-26-24"></a><span class="c1"># Cloud-init 데이터 삭제 (재부팅 시 새로 받기 위함)</span>
+<a id="__codelineno-26-25" name="__codelineno-26-25" href="#__codelineno-26-25"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/cloud/*
+<a id="__codelineno-26-26" name="__codelineno-26-26" href="#__codelineno-26-26"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/log/cloud-init*
+<a id="__codelineno-26-27" name="__codelineno-26-27" href="#__codelineno-26-27"></a>
+<a id="__codelineno-26-28" name="__codelineno-26-28" href="#__codelineno-26-28"></a><span class="c1"># 5. 패키지 캐시 정리</span>
+<a id="__codelineno-26-29" name="__codelineno-26-29" href="#__codelineno-26-29"></a>yum<span class="w"> </span>clean<span class="w"> </span>all
+<a id="__codelineno-26-30" name="__codelineno-26-30" href="#__codelineno-26-30"></a>rm<span class="w"> </span>-rf<span class="w"> </span>/var/cache/yum
 </code></pre></div>
 <hr />
 <h2 id="7">7. 최종 정리 및 이미지 변환</h2>
 <p>모든 설정이 끝났으면 마지막으로 cloud-init을 초기화하고 VM을 종료합니다.</p>
 <h3 id="71">7.1 최종 명령어</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># 로그 파일 비우기</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>find<span class="w"> </span>/var/log<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>truncate<span class="w"> </span>-s<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
-<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a>
-<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="c1"># cloud-init 정리 (가장 중요)</span>
-<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a>cloud-init<span class="w"> </span>clean<span class="w"> </span>--logs
-<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a>
-<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="c1"># history 삭제</span>
-<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="nb">history</span><span class="w"> </span>-c
-<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a>
-<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="c1"># 시스템 종료 (재부팅 하지 마세요!)</span>
-<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a>shutdown<span class="w"> </span>-h<span class="w"> </span>now
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="c1"># 로그 파일 비우기</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>find<span class="w"> </span>/var/log<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-exec<span class="w"> </span>truncate<span class="w"> </span>-s<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="c1"># cloud-init 정리 (가장 중요)</span>
+<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a>cloud-init<span class="w"> </span>clean<span class="w"> </span>--logs
+<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a>
+<a id="__codelineno-27-7" name="__codelineno-27-7" href="#__codelineno-27-7"></a><span class="c1"># history 삭제</span>
+<a id="__codelineno-27-8" name="__codelineno-27-8" href="#__codelineno-27-8"></a><span class="nb">history</span><span class="w"> </span>-c
+<a id="__codelineno-27-9" name="__codelineno-27-9" href="#__codelineno-27-9"></a>
+<a id="__codelineno-27-10" name="__codelineno-27-10" href="#__codelineno-27-10"></a><span class="c1"># 시스템 종료 (재부팅 하지 마세요!)</span>
+<a id="__codelineno-27-11" name="__codelineno-27-11" href="#__codelineno-27-11"></a>shutdown<span class="w"> </span>-h<span class="w"> </span>now
 </code></pre></div>
 <h3 id="72-glance-openstack-cli">7.2 Glance 이미지 업로드 (OpenStack CLI)</h3>
 <p>VM 이미지 파일(qcow2 등)을 OpenStack Glance에 업로드합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># 1. 이미지 압축 (Shrink)</span>
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="c1"># 원본(base) -&gt; 최종본(golden)</span>
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>qemu-img<span class="w"> </span>convert<span class="w"> </span>-c<span class="w"> </span>-O<span class="w"> </span>qcow2<span class="w"> </span>ubuntu-24.04-base.qcow2<span class="w"> </span>ubuntu-24.04-golden.qcow2
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a><span class="c1"># 2. 용량 확인 (확 줄어들었는지 확인)</span>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a>ls<span class="w"> </span>-lh<span class="w"> </span>ubuntu-24.04-golden.qcow2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="c1"># 1. 이미지 압축 (Shrink)</span>
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="c1"># 원본(base) -&gt; 최종본(golden)</span>
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>qemu-img<span class="w"> </span>convert<span class="w"> </span>-c<span class="w"> </span>-O<span class="w"> </span>qcow2<span class="w"> </span>ubuntu-24.04-base.qcow2<span class="w"> </span>ubuntu-24.04-golden.qcow2
+<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a>
+<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="c1"># 2. 용량 확인 (확 줄어들었는지 확인)</span>
+<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a>ls<span class="w"> </span>-lh<span class="w"> </span>ubuntu-24.04-golden.qcow2
 </code></pre></div>
 <p><strong>CPU 전용 이미지:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>openstack<span class="w"> </span>image<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;Ubuntu-24.04-Golden&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span>--file<span class="w"> </span>ubuntu-24.04-golden.qcow2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span>--disk-format<span class="w"> </span>qcow2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">  </span>--container-format<span class="w"> </span>bare<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-27-5" name="__codelineno-27-5" href="#__codelineno-27-5"></a><span class="w">  </span>--public<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-27-6" name="__codelineno-27-6" href="#__codelineno-27-6"></a><span class="w">  </span>--property<span class="w"> </span><span class="nv">hw_qemu_guest_agent</span><span class="o">=</span>yes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>openstack<span class="w"> </span>image<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;Ubuntu-24.04-Golden&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a><span class="w">  </span>--file<span class="w"> </span>ubuntu-24.04-golden.qcow2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="w">  </span>--disk-format<span class="w"> </span>qcow2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="w">  </span>--container-format<span class="w"> </span>bare<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a><span class="w">  </span>--public<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">  </span>--property<span class="w"> </span><span class="nv">hw_qemu_guest_agent</span><span class="o">=</span>yes
 </code></pre></div>
 <p><strong>GPU 포함 이미지 (메타데이터 중요):</strong>
 OpenStack Nova가 GPU를 적절히 스케줄링하도록 메타데이터를 추가할 수 있습니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>openstack<span class="w"> </span>image<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;Ubuntu-24.04-Golden-GPU&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="w">  </span>--file<span class="w"> </span>ubuntu-24.04-golden.qcow2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a><span class="w">  </span>--disk-format<span class="w"> </span>qcow2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-28-4" name="__codelineno-28-4" href="#__codelineno-28-4"></a><span class="w">  </span>--container-format<span class="w"> </span>bare<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-28-5" name="__codelineno-28-5" href="#__codelineno-28-5"></a><span class="w">  </span>--public<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-28-6" name="__codelineno-28-6" href="#__codelineno-28-6"></a><span class="w">  </span>--property<span class="w"> </span><span class="nv">hw_video_model</span><span class="o">=</span>vga<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-28-7" name="__codelineno-28-7" href="#__codelineno-28-7"></a><span class="w">  </span>--property<span class="w"> </span><span class="nv">hw_qemu_guest_agent</span><span class="o">=</span>yes
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>openstack<span class="w"> </span>image<span class="w"> </span>create<span class="w"> </span><span class="s2">&quot;Ubuntu-24.04-Golden-GPU&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="w">  </span>--file<span class="w"> </span>ubuntu-24.04-golden.qcow2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="w">  </span>--disk-format<span class="w"> </span>qcow2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="w">  </span>--container-format<span class="w"> </span>bare<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="w">  </span>--public<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="w">  </span>--property<span class="w"> </span><span class="nv">hw_video_model</span><span class="o">=</span>vga<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="w">  </span>--property<span class="w"> </span><span class="nv">hw_qemu_guest_agent</span><span class="o">=</span>yes
+</code></pre></div>
+<h2 id="8-gpu">8. 옵션: GPU 드라이버 설치</h2>
+<p>GPU 인스턴스 생성하고, 플로팅 IP를 연결하여 VM 내부에 접속한 뒤, 아래 명령어를 실행시킵니다.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a><span class="c1"># root 계정 사용</span>
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>sudo<span class="w"> </span>su<span class="w"> </span>-
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="c1"># 사전에 받아둔 nvidia 드라이버 설치</span>
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>install-gpu
 </code></pre></div>
 
 
