@@ -54,3 +54,5 @@ nav:
       - 'Admin 토큰 확인': k8s/token-check.md
   - Ubuntu:
       - 'Ubuntu 기본 설정': ubuntu/init-ubuntu-env.md
+  - WSL:
+      - 'WSL 네트워크 설정': wsl/wsl-network-setting.md
