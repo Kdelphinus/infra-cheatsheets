@@ -38,7 +38,7 @@ markdown_extensions:
   - attr_list            # HTML 속성 적용
   - md_in_html           # HTML 태그 안에 마크다운 사용
 
-# 메뉴 구조 (나중에 파일 만들면서 수정하면 됨)
+# 메뉴 구조
 nav:
   - Home: index.md
   - OpenStack:
@@ -51,6 +51,7 @@ nav:
     - Dalmatian(2024.2):
       - '설치': openstack/2024.2-Dalmatian/install.md
       - 'PCI Placement': openstack/2024.2-Dalmatian/pci-placement.md
+    - Cheatsheets: openstack/CheatSheet.md
   - Kubernetes:
       - 'Admin 토큰 확인': k8s/token-check.md
   - Ubuntu:
