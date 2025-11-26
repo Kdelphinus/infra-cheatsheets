@@ -223,7 +223,6 @@ openstack flavor set \
 > ※ 일부 환경에서는 alias + resources를 동시에 쓸 경우 이중 차감됨.
 > 이 경우 resources 항목만 제거하고 alias만 사용 권장.
 
-
 ### 5.2. 인스턴스 시작
 
 ```bash
