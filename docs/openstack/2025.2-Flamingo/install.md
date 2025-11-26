@@ -8,6 +8,8 @@ OS에 따라 초기 설정이 다릅니다. 특히 **Rocky Linux는 SELinux 설�
 
 RedHat 계열은 SELinux가 켜져 있으면 Kolla 배포 시 권한 문제로 실패합니다.
 
+> 보안 정책 상 SELinux 비활성화가 불가능한 환경에서는, Kolla-Ansible SELinux 대응 가이드를 별도로 참고해야 합니다.
+
 ```bash
 # 1. SELinux를 Permissive 모드로 변경 (일시적)
 sudo setenforce 0
@@ -38,14 +40,14 @@ Python 가상환경을 만들기 위한 기초 도구들을 설치합니다.
 
 ```bash
 # 개발 도구 및 파이썬 라이브러리 설치
-sudo dnf install -y git python3-devel libffi-devel gcc openssl-devel python3-libselinux python3-pip
+sudo dnf install -y git python3-devel libffi-devel gcc openssl-devel python3-libselinux python3-pip python3-libselinux-devel
 ```
 
 ### 🟣 [Ubuntu]
 
 ```bash
 # 개발 도구 및 파이썬 라이브러리 설치
-sudo apt install -y git python3-dev libffi-dev gcc libssl-dev python3-venv libdbus-glib-1-dev
+sudo apt install -y git python3-dev libffi-dev gcc libssl-dev python3-venv libdbus-glib-1-dev python3-dbus
 ```
 
 -----
@@ -75,15 +77,18 @@ pip install -U pip
 # 1. Kolla-Ansible Flamingo 버전 설치 (master 브랜치)
 pip install git+https://opendev.org/openstack/kolla-ansible@master
 
+# 버전 지정
+pip install git+https://opendev.org/openstack/kolla-ansible@stable/2025.2
+
 # 2. 설정 디렉터리 생성 및 권한 부여
 sudo mkdir -p /etc/kolla
 sudo chown $USER:$USER /etc/kolla
 
 # 3. 설정 파일 복사 (globals.yml, passwords.yml)
-cp -r ~/kolla-venv/share/kolla-ansible/etc_examples/kolla/* /etc/kolla/
+cp -r ~/venv/share/kolla-ansible/etc_examples/kolla/* /etc/kolla/
 
 # 4. 인벤토리 파일 복사 (멀티노드용)
-cp ~/kolla-venv/share/kolla-ansible/ansible/inventory/multinode .
+cp ~/venv/share/kolla-ansible/ansible/inventory/multinode .
 ```
 
 -----
@@ -103,11 +108,12 @@ kolla_base_distro: "ubuntu"
 # [공통] 오픈스택 버전 (Flamingo 대응)
 # openstack_release: "master"  <-- 주석 그대로 두거나, Docker 태그 명시
 
-# [공통] 네트워크 설정 (사용자 환경에 맞게!)
+# [공통] 네트워크 설정 (사용자 환경에 맞춰서 수정할 것)
+# eno2에는 IP를 설정하지 말고, 스위치에 외부망 VLAN/Untaged 연결 필수
 network_interface: "eno1"           # 관리망 (IP 10.10.10.60)
 neutron_external_interface: "eno2"  # 외부망 (IP 없음)
 
-# [공통] VIP 주소 (관리망 대역 내 미사용 IP)
+# [공통] VIP 주소 (관리망 대역 내 미사용 IP, 같은 IP 사용 시 HAProxy 충돌 발생 가능성 높음)
 kolla_internal_vip_address: "10.10.10.60"  # 기존 설정은 controll ip와 동일하게 설정되어 있음
 
 # [공통] 주요 서비스 활성화
@@ -179,6 +185,19 @@ ansible -i multinode all -m ping
 kolla-ansible install-deps
 ```
 
+### 5.6 그 외
+
+```bash
+# 타임싱크 확인
+timedatectl
+
+# 호스트명 확인
+hostname
+
+# /etc/hosts에 모든 노드 등록 권장
+vi /etc/hosts
+```
+
 -----
 
 ## 🚀 6. 배포 실행 (Deploy) - [공통]
@@ -213,6 +232,10 @@ kolla-ansible post-deploy
 # 3. 인증 로드 및 테스트
 source /etc/kolla/admin-openrc.sh
 openstack service list
+
+# 4. Nova와 Compute 등록 확인
+openstack hypervisor list
+openstack compute service list
 ```
 
 -----

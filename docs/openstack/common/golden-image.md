@@ -235,7 +235,7 @@ OpenStack 대시보드에서 로그를 보려면 커널 파라미터 수정이 �
 
 ```bash
 # /etc/default/grub 파일 수정
-sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=".*"/GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8"/' /etc/default/grub
+sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT.*/GRUB_CMDLINE_LINUX_DEFAULT="console=tty0 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"/' /etc/default/grub
 
 # 수정 내용 적용
 update-grub
@@ -489,6 +489,9 @@ EOF
 sed -i 's/^#*PermitRootLogin.*/PermitRootLogin prohibit-password/' /etc/ssh/sshd_config
 sed -i 's/^#*PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
 systemctl restart sshd
+
+# 2.1 cloud-init 단계에서도 root 로그인 차단
+echo "disable_root: true" >> /etc/cloud/cloud.cfg
 
 # 3. 네트워크 설정 초기화 (기존 IP 정보 삭제)
 # NetworkManager 연결 정보 삭제

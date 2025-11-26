@@ -48,7 +48,6 @@ report_in_placement = true
 available_filters = nova.scheduler.filters.all_filters
 enabled_filters = ComputeFilter,ImagePropertiesFilter,PciPassthroughFilter
 
-# 존재하지 않는 옵션인지 확인 필요
 pci_in_placement = true
 ```
 
@@ -190,6 +189,8 @@ network_mtu: 1450 # (기본값 1500 -> 1450 축소)
 kolla-ansible reconfigure -i multinode
 ```
 
+혹은 스위치가 Jumbo(9000)까지 지원한다면 9000으로 증가시키는 것이 일반적입니다.
+
 > ### MTU 관련 속도 지연이 생기는 이유
 >
 > 1) 기본 패킷 크기 제한이 1500 byte, 오픈스택 내부에서는 패킷에 오버헤드(VXLAN, UDP, IP, Ethernet 헤더 -> 총 50 byte)를 붙여서 포장 후 전송  
@@ -218,9 +219,10 @@ openstack flavor set \
 ```
 
 > 만약 RTX 계열의 개인용 GPU를 사용한다면 `--property hw:kvm_hidden=true` 옵션도 함께 적용합니다.
+>
+> ※ 일부 환경에서는 alias + resources를 동시에 쓸 경우 이중 차감됨.
+> 이 경우 resources 항목만 제거하고 alias만 사용 권장.
 
-> `pci_passthrough` 와 `resources` 를 같이 사용하면 개수가 이중 차감된다는 이슈가 보고된 것이 있습니다.
-> 두 개를 모두 설정하는 것이 안정적이지만 2개가 같이 차감된다면 `resources` 속성을 제거해야 합니다.
 
 ### 5.2. 인스턴스 시작
 
