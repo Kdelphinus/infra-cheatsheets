@@ -41,6 +41,7 @@ markdown_extensions:
 # 메뉴 구조 (나중에 파일 만들면서 수정하면 됨)
 nav:
   - Home: index.md
+  - google122a9626fbe08e3f.html: google122a9626fbe08e3f.html
   - OpenStack:
     - Common:
       - 'Golden Image 생성': openstack/common/golden-image.md
