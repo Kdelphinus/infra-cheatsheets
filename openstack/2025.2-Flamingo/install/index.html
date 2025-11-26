@@ -877,6 +877,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 그 외
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1579,6 +1590,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#56" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.6 그 외
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1642,6 +1664,9 @@
 <p>OS에 따라 초기 설정이 다릅니다. 특히 <strong>Rocky Linux는 SELinux 설정이 필수</strong>입니다.</p>
 <h3 id="rocky-linux-selinux">🟠 [Rocky Linux] 필수 설정 (SELinux 해제)</h3>
 <p>RedHat 계열은 SELinux가 켜져 있으면 Kolla 배포 시 권한 문제로 실패합니다.</p>
+<blockquote>
+<p>보안 정책 상 SELinux 비활성화가 불가능한 환경에서는, Kolla-Ansible SELinux 대응 가이드를 별도로 참고해야 합니다.</p>
+</blockquote>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 1. SELinux를 Permissive 모드로 변경 (일시적)</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>setenforce<span class="w"> </span><span class="m">0</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -1661,11 +1686,11 @@
 <p>Python 가상환경을 만들기 위한 기초 도구들을 설치합니다.</p>
 <h3 id="rocky-linux">🟠 [Rocky Linux]</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 개발 도구 및 파이썬 라이브러리 설치</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>python3-devel<span class="w"> </span>libffi-devel<span class="w"> </span>gcc<span class="w"> </span>openssl-devel<span class="w"> </span>python3-libselinux<span class="w"> </span>python3-pip
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>python3-devel<span class="w"> </span>libffi-devel<span class="w"> </span>gcc<span class="w"> </span>openssl-devel<span class="w"> </span>python3-libselinux<span class="w"> </span>python3-pip<span class="w"> </span>python3-libselinux-devel
 </code></pre></div>
 <h3 id="ubuntu_1">🟣 [Ubuntu]</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 개발 도구 및 파이썬 라이브러리 설치</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>python3-dev<span class="w"> </span>libffi-dev<span class="w"> </span>gcc<span class="w"> </span>libssl-dev<span class="w"> </span>python3-venv<span class="w"> </span>libdbus-glib-1-dev
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>python3-dev<span class="w"> </span>libffi-dev<span class="w"> </span>gcc<span class="w"> </span>libssl-dev<span class="w"> </span>python3-venv<span class="w"> </span>libdbus-glib-1-dev<span class="w"> </span>python3-dbus
 </code></pre></div>
 <hr />
 <h2 id="2-virtual-environment-">🐍 2. 가상환경 구성 (Virtual Environment) - [공통]</h2>
@@ -1686,15 +1711,18 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. Kolla-Ansible Flamingo 버전 설치 (master 브랜치)</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>pip<span class="w"> </span>install<span class="w"> </span>git+https://opendev.org/openstack/kolla-ansible@master
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 2. 설정 디렉터리 생성 및 권한 부여</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/kolla
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/etc/kolla
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1"># 3. 설정 파일 복사 (globals.yml, passwords.yml)</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>cp<span class="w"> </span>-r<span class="w"> </span>~/kolla-venv/share/kolla-ansible/etc_examples/kolla/*<span class="w"> </span>/etc/kolla/
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># 버전 지정</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>pip<span class="w"> </span>install<span class="w"> </span>git+https://opendev.org/openstack/kolla-ansible@stable/2025.2
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># 2. 설정 디렉터리 생성 및 권한 부여</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>sudo<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>/etc/kolla
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>sudo<span class="w"> </span>chown<span class="w"> </span><span class="nv">$USER</span>:<span class="nv">$USER</span><span class="w"> </span>/etc/kolla
 <a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># 4. 인벤토리 파일 복사 (멀티노드용)</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>cp<span class="w"> </span>~/kolla-venv/share/kolla-ansible/ansible/inventory/multinode<span class="w"> </span>.
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># 3. 설정 파일 복사 (globals.yml, passwords.yml)</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>cp<span class="w"> </span>-r<span class="w"> </span>~/venv/share/kolla-ansible/etc_examples/kolla/*<span class="w"> </span>/etc/kolla/
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1"># 4. 인벤토리 파일 복사 (멀티노드용)</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>cp<span class="w"> </span>~/venv/share/kolla-ansible/ansible/inventory/multinode<span class="w"> </span>.
 </code></pre></div>
 <hr />
 <h2 id="4-globalsyml-os">⚙️ 4. 설정 파일 수정 (<code>globals.yml</code>) - [OS별 차이점]</h2>
@@ -1709,18 +1737,19 @@
 <a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1"># [공통] 오픈스택 버전 (Flamingo 대응)</span>
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># openstack_release: &quot;master&quot;  &lt;-- 주석 그대로 두거나, Docker 태그 명시</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># [공통] 네트워크 설정 (사용자 환경에 맞게!)</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nt">network_interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eno1&quot;</span><span class="w">           </span><span class="c1"># 관리망 (IP 10.10.10.60)</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nt">neutron_external_interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eno2&quot;</span><span class="w">  </span><span class="c1"># 외부망 (IP 없음)</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="c1"># [공통] VIP 주소 (관리망 대역 내 미사용 IP)</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="nt">kolla_internal_vip_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10.10.10.60&quot;</span><span class="w">  </span><span class="c1"># 기존 설정은 controll ip와 동일하게 설정되어 있음</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="c1"># [공통] 주요 서비스 활성화</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="nt">enable_cinder</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="nt">enable_heat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="nt">enable_horizon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="c1"># enable_prometheus: &quot;yes&quot; # 모니터링 필요 시</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># [공통] 네트워크 설정 (사용자 환경에 맞춰서 수정할 것)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="c1"># eno2에는 IP를 설정하지 말고, 스위치에 외부망 VLAN/Untaged 연결 필수</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nt">network_interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eno1&quot;</span><span class="w">           </span><span class="c1"># 관리망 (IP 10.10.10.60)</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="nt">neutron_external_interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eno2&quot;</span><span class="w">  </span><span class="c1"># 외부망 (IP 없음)</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="c1"># [공통] VIP 주소 (관리망 대역 내 미사용 IP, 같은 IP 사용 시 HAProxy 충돌 발생 가능성 높음)</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="nt">kolla_internal_vip_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10.10.10.60&quot;</span><span class="w">  </span><span class="c1"># 기존 설정은 controll ip와 동일하게 설정되어 있음</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="c1"># [공통] 주요 서비스 활성화</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="nt">enable_cinder</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="nt">enable_heat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="nt">enable_horizon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="c1"># enable_prometheus: &quot;yes&quot; # 모니터링 필요 시</span>
 </code></pre></div>
 <hr />
 <h2 id="5-">📝 5. 인벤토리 및 비밀번호 설정 - [공통]</h2>
@@ -1761,31 +1790,45 @@
 <h3 id="55-ansible">5.5 Ansible 의존성 설치 (필수)</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>kolla-ansible<span class="w"> </span>install-deps
 </code></pre></div>
+<h3 id="56">5.6 그 외</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 타임싱크 확인</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>timedatectl
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># 호스트명 확인</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>hostname
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="c1"># /etc/hosts에 모든 노드 등록 권장</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>vi<span class="w"> </span>/etc/hosts
+</code></pre></div>
 <hr />
 <h2 id="6-deploy-">🚀 6. 배포 실행 (Deploy) - [공통]</h2>
 <p>이제 실제 설치를 진행합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 1. Bootstrap (기초 공사: Docker 설치 등)</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>kolla-ansible<span class="w"> </span>-i<span class="w"> </span>./multinode<span class="w"> </span>bootstrap-servers
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># 2. Prechecks (사전 검사: 설정 오류 확인)</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>kolla-ansible<span class="w"> </span>-i<span class="w"> </span>./multinode<span class="w"> </span>prechecks
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1"># -&gt; 여기서 &quot;SUCCESS&quot;가 떠야만 다음으로 넘어갑니다.</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1"># 3. Deploy (본 게임: 컨테이너 배포)</span>
-<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>kolla-ansible<span class="w"> </span>-i<span class="w"> </span>./multinode<span class="w"> </span>deploy
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># 1. Bootstrap (기초 공사: Docker 설치 등)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>kolla-ansible<span class="w"> </span>-i<span class="w"> </span>./multinode<span class="w"> </span>bootstrap-servers
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># 2. Prechecks (사전 검사: 설정 오류 확인)</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>kolla-ansible<span class="w"> </span>-i<span class="w"> </span>./multinode<span class="w"> </span>prechecks
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="c1"># -&gt; 여기서 &quot;SUCCESS&quot;가 떠야만 다음으로 넘어갑니다.</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>
+<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="c1"># 3. Deploy (본 게임: 컨테이너 배포)</span>
+<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>kolla-ansible<span class="w"> </span>-i<span class="w"> </span>./multinode<span class="w"> </span>deploy
 </code></pre></div>
 <hr />
 <h2 id="7-post-deploy-">✅ 7. 클라이언트 설정 (Post-Deploy) - [공통]</h2>
 <p>배포가 끝나면 OpenStack 명령어를 쓰기 위한 도구를 세팅합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># 1. OpenStack 클라이언트 설치</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>pip<span class="w"> </span>install<span class="w"> </span>python-openstackclient
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># 2. 관리자 인증 파일 생성 (admin-openrc.sh)</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>kolla-ansible<span class="w"> </span>post-deploy
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="c1"># 3. 인증 로드 및 테스트</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="nb">source</span><span class="w"> </span>/etc/kolla/admin-openrc.sh
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a>openstack<span class="w"> </span>service<span class="w"> </span>list
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># 1. OpenStack 클라이언트 설치</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>pip<span class="w"> </span>install<span class="w"> </span>python-openstackclient
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># 2. 관리자 인증 파일 생성 (admin-openrc.sh)</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>kolla-ansible<span class="w"> </span>post-deploy
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># 3. 인증 로드 및 테스트</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nb">source</span><span class="w"> </span>/etc/kolla/admin-openrc.sh
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>openstack<span class="w"> </span>service<span class="w"> </span>list
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="c1"># 4. Nova와 Compute 등록 확인</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a>openstack<span class="w"> </span>hypervisor<span class="w"> </span>list
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a>openstack<span class="w"> </span>compute<span class="w"> </span>service<span class="w"> </span>list
 </code></pre></div>
 <hr />
 <h2 id="devops-ubuntu-vs-rocky">💡 DevOps 엔지니어의 조언: Ubuntu vs Rocky 선택 가이드</h2>

@@ -1915,8 +1915,7 @@
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="na">available_filters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">nova.scheduler.filters.all_filters</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="na">enabled_filters</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">ComputeFilter,ImagePropertiesFilter,PciPassthroughFilter</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1"># 존재하지 않는 옵션인지 확인 필요</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="na">pci_in_placement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="na">pci_in_placement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">true</span>
 </code></pre></div>
 <p>참고로 <code>device_type</code> 은 아래와 같은 옵션이 있습니다.</p>
 <table>
@@ -2047,6 +2046,7 @@
 <a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># 3-2. 수정 후 재배포</span>
 <a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a>kolla-ansible<span class="w"> </span>reconfigure<span class="w"> </span>-i<span class="w"> </span>multinode
 </code></pre></div>
+<p>혹은 스위치가 Jumbo(9000)까지 지원한다면 9000으로 증가시키는 것이 일반적입니다.</p>
 <blockquote>
 <h3 id="mtu">MTU 관련 속도 지연이 생기는 이유</h3>
 <p>1) 기본 패킷 크기 제한이 1500 byte, 오픈스택 내부에서는 패킷에 오버헤드(VXLAN, UDP, IP, Ethernet 헤더 -&gt; 총 50 byte)를 붙여서 포장 후 전송<br />
@@ -2069,8 +2069,8 @@
 </code></pre></div>
 <blockquote>
 <p>만약 RTX 계열의 개인용 GPU를 사용한다면 <code>--property hw:kvm_hidden=true</code> 옵션도 함께 적용합니다.</p>
-<p><code>pci_passthrough</code> 와 <code>resources</code> 를 같이 사용하면 개수가 이중 차감된다는 이슈가 보고된 것이 있습니다.
-두 개를 모두 설정하는 것이 안정적이지만 2개가 같이 차감된다면 <code>resources</code> 속성을 제거해야 합니다.</p>
+<p>※ 일부 환경에서는 alias + resources를 동시에 쓸 경우 이중 차감됨.
+이 경우 resources 항목만 제거하고 alias만 사용 권장.</p>
 </blockquote>
 <h3 id="52">5.2. 인스턴스 시작</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>openstack<span class="w"> </span>server<span class="w"> </span>create<span class="w"> </span>--flavor<span class="w"> </span>gpu.flavor<span class="w"> </span><span class="se">\</span>
