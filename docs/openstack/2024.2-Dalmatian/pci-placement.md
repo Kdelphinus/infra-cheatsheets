@@ -49,7 +49,24 @@ enabled_filters = ComputeFilter,ImagePropertiesFilter,PciPassthroughFilter
 pci_in_placement = true
 ```
 
-*(저장: `Ctrl+O` -\> 엔터 -\> `Ctrl+X`)*
+참고로 `device_type` 은 아래와 같은 옵션이 있습니다.
+
+|타입|명칭|설명|비유|용도|
+|:---|:---|:---|:---|:---|
+|type-PCI|일반 PCI 장치|"SR-IOV 기능이 없거나, 안 쓰는 일반 장치."|"단독주택 (쪼갤 수 없음, 통째로 써야 함)"|"일반적인 GPU Passthrough (RTX, T4 등을 통으로 쓸 때)"|
+|type-PF|Physical Function|SR-IOV를 지원하는 부모 장치. 자식(VF)을 생성할 능력이 있음.|아파트 주인 (세를 놓을 수 있음)|호스트 OS가 VF를 관리하기 위해 붙들고 있는 용도. (VM에 잘 안 줌)|
+|type-VF|Virtual Function|부모(PF)로부터 파생된 자식 장치.|아파트 세입자 (한 호실만 빌려 씀)|**고성능 네트워크(SR-IOV)**나 vGPU를 VM에 할당할 때 사용.|
+
+SR-IOV를 지원하는지는 아래와 같은 명령으로 확인할 수 있습니다.
+
+```bash
+# 1. 먼저 GPU의 PCI 주소를 찾습니다.
+lspci | grep -i nvidia
+# 예: 41:00.0 3D controller: NVIDIA Corporation ...
+
+# 2. 해당 주소(-s)의 상세 정보(-vvv)에서 SR-IOV 키워드를 검색합니다.
+sudo lspci -s <PCI_ADDRESS> -vvv | grep -i "Single Root I/O Virtualization"
+```
 
 -----
 
