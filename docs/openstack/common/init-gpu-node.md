@@ -170,6 +170,83 @@ echo "<VENDOR_ID> <PRODUCT_ID>" | sudo tee /sys/bus/pci/drivers/vfio-pci/new_id
 
 -----
 
-### 💡 DevOps 엔지니어의 다음 단계
+## RTX 계열의 GPU 사용 시
 
-이제 OS 레벨의 준비는 모두 끝났습니다. 다음 단계는 OpenStack 설정 파일(`nova.conf` 등)을 수정하여 이 GPU를 Compute 서비스에 등록하는 것입니다.
+RTX 계열과 같은 소비자용 GPU는 가상화 환경을 고려하지 않기에 FLR(Function Level Reset) 기능을 지원하지 않습니다.
+따라서 GPU 인스턴스를 종료하거나 재부팅하면, GPU 하드웨어가 초기화되지 않고 Stuck 상태로 남아 데이터 찌꺼기를 가지고 있다가 VM의 다음 동작을 방해하고, 이를 호스트가 응답이 없는 것으로 인식하고 인스턴스를 PAUSED 상태로 강제 정지시켜버립니다.
+
+이를 막기 위해 `vendor-reset` 등의 프로그램을 사용하거나 임시로 쉘 스크립트를 실행하는 방법이 있습니다.
+아래는 쉘 스크립트로 FLR 기능을 임시 조치하는 방법입니다.
+모든 명령은 GPU 호스트 노드에서 실행해야 합니다.
+
+```bash
+cat << 'EOF' > qemu-hook.sh
+#!/bin/bash
+# GPU reset hook for RTX Passthrough VMs
+
+VM_NAME="$1"
+ACTION="$2"
+PHASE="$3"
+
+# 실제 ID는 lspci로 확인 후 수정 필요
+GPU_PCI="0000:01:00.0"
+AUDIO_PCI="0000:01:00.1" # 오디오 장치가 있다면 같이 리셋해야 안전함
+
+# 로그 파일 위치 (Kolla 로그 폴더로 지정하여 호스트에서도 볼 수 있게 함)
+LOGFILE="/var/log/libvirt/gpu-reset.log"
+
+if [[ "$ACTION" == "stopped" && "$PHASE" == "end" ]]; then
+    echo "[$(date)] VM $VM_NAME stopped. Resetting GPU..." >> $LOGFILE
+
+    # 1. Remove (장치 제거)
+    echo 1 > /sys/bus/pci/devices/$GPU_PCI/remove
+    echo 1 > /sys/bus/pci/devices/$AUDIO_PCI/remove 2>/dev/null
+    
+    # 잠시 대기
+    sleep 2
+
+    # 2. Rescan (장치 재인식)
+    echo 1 > /sys/bus/pci/rescan
+    
+    echo "[$(date)] GPU Reset done." >> $LOGFILE
+fi
+EOF
+```
+
+위 쉘 스크립트를 컨테이너 내부에 복사하고, 권한을 부여합니다.
+
+```bash
+# 1. 컨테이너 내부 디렉토리 생성
+sudo docker exec -u root nova_libvirt mkdir -p /etc/libvirt/hooks
+
+# 2. 파일 복사 (docker cp 사용)
+sudo docker cp qemu-hook.sh nova_libvirt:/etc/libvirt/hooks/qemu
+
+# 3. 권한 설정 (실행 권한 필수)
+sudo docker exec -u root nova_libvirt chmod +x /etc/libvirt/hooks/qemu
+sudo docker exec -u root nova_libvirt chown root:root /etc/libvirt/hooks/qemu
+
+# 4. 컨테이너 재시작
+sudo docker restart nova_libvirt
+```
+
+설정이 잘 적용되었다면, gpu 인스턴스가 삭제되었을 때마다 아래 로그가 찍히는 것을 확인할 수 있습니다.
+
+```bash
+sudo docker exec -it nova_libvirt cat /var/log/libvirt/gpu-reset.log
+```
+
+```bash
+[Wed Nov 26 09:44:01 KST 2025] VM instance-0000001a stopped. Resetting GPU...
+[Wed Nov 26 09:44:03 KST 2025] GPU Reset done.
+[Wed Nov 26 09:49:32 KST 2025] VM instance-0000001b stopped. Resetting GPU...
+[Wed Nov 26 09:49:34 KST 2025] GPU Reset done.
+[Wed Nov 26 09:51:46 KST 2025] VM instance-0000001b stopped. Resetting GPU...
+[Wed Nov 26 09:51:49 KST 2025] GPU Reset done.
+[Wed Nov 26 09:56:32 KST 2025] VM instance-0000001c stopped. Resetting GPU...
+[Wed Nov 26 09:56:35 KST 2025] GPU Reset done.
+[Wed Nov 26 10:02:11 KST 2025] VM instance-0000001d stopped. Resetting GPU...
+[Wed Nov 26 10:02:13 KST 2025] GPU Reset done.
+[Wed Nov 26 10:03:10 KST 2025] VM instance-0000001d stopped. Resetting GPU...
+[Wed Nov 26 10:03:12 KST 2025] GPU Reset done.
+```
