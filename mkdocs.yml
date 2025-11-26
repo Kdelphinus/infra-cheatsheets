@@ -45,11 +45,11 @@ nav:
     - Common:
       - 'Golden Image 생성': openstack/common/golden-image.md
       - 'GPU 노드 기본 설정': openstack/common/init-gpu-node.md
+    - Flamingo(2025.2):
+      - 'PCI Placement': openstack/2025.2-Flamingo/pci-placement.md
     - Dalmatian(2024.2):
       - '설치': openstack/2024.2-Dalmatian/install.md
       - 'PCI Placement': openstack/2024.2-Dalmatian/pci-placement.md
-    - Epoxy(2025.1):
-      - '설치': openstack/2025.1-Epoxy/install.md
   - Kubernetes:
       - 'Admin 토큰 확인': k8s/token-check.md
   - Ubuntu:
