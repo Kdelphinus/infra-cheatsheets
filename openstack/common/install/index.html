@@ -733,6 +733,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="⚙️ 4. 설정 파일 수정 (globals.yml) - [OS별 차이점]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mtu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MTU 관련 속도 지연이 생기는 이유
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1579,6 +1596,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="⚙️ 4. 설정 파일 수정 (globals.yml) - [OS별 차이점]">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#mtu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MTU 관련 속도 지연이 생기는 이유
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1956,16 +1990,21 @@
 <a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="nt">network_interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eno1&quot;</span><span class="w">           </span><span class="c1"># 관리망 (IP 10.10.10.60)</span>
 <a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="nt">neutron_external_interface</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;eno2&quot;</span><span class="w">  </span><span class="c1"># 외부망 (IP 없음)</span>
 <a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="c1"># [공통] VIP 주소 (관리망 대역 내 미사용 IP, 같은 IP 사용 시 HAProxy 충돌 발생 가능성 높음)</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="nt">kolla_internal_vip_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10.10.10.60&quot;</span><span class="w">  </span><span class="c1"># HAProxy를 사용할 경우, 빈 IP 할당 필요</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>
-<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="c1"># [공통] 주요 서비스 활성화</span>
-<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="nt">enable_cinder</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
-<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="nt">enable_cinder_backend_lvm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
-<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="nt">cinder_volume_group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cinder-volumes&quot;</span><span class="w"> </span><span class="c1"># Cinder volume group 이름 확인 필요</span>
-<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a><span class="nt">enable_heat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
-<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="nt">enable_horizon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
-<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="c1"># enable_prometheus: &quot;yes&quot; # 모니터링 필요 시</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a><span class="c1"># [공통] MTU 설정 변경</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a><span class="c1"># 스위치를 Jumbo Frame(9000)으로 바꿀 수 있다면 9000으로 설정</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a><span class="c1"># 스위치와 서버 모두 9000으로 맞춰야 정상 동작</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="nt">network_mtu</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1450</span><span class="w"> </span><span class="c1"># VXLAN 헤더 크기인 50 byte 자리 확보</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="c1"># [공통] VIP 주소 (관리망 대역 내 미사용 IP, 같은 IP 사용 시 HAProxy 충돌 발생 가능성 높음)</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="nt">kolla_internal_vip_address</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;10.10.10.60&quot;</span><span class="w">  </span><span class="c1"># HAProxy를 사용할 경우, 빈 IP 할당 필요</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="c1"># [공통] 주요 서비스 활성화</span>
+<a id="__codelineno-11-25" name="__codelineno-11-25" href="#__codelineno-11-25"></a><span class="nt">enable_cinder</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
+<a id="__codelineno-11-26" name="__codelineno-11-26" href="#__codelineno-11-26"></a><span class="nt">enable_cinder_backend_lvm</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
+<a id="__codelineno-11-27" name="__codelineno-11-27" href="#__codelineno-11-27"></a><span class="nt">cinder_volume_group</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;cinder-volumes&quot;</span><span class="w"> </span><span class="c1"># Cinder volume group 이름 확인 필요</span>
+<a id="__codelineno-11-28" name="__codelineno-11-28" href="#__codelineno-11-28"></a><span class="nt">enable_heat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
+<a id="__codelineno-11-29" name="__codelineno-11-29" href="#__codelineno-11-29"></a><span class="nt">enable_horizon</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;yes&quot;</span>
+<a id="__codelineno-11-30" name="__codelineno-11-30" href="#__codelineno-11-30"></a><span class="c1"># enable_prometheus: &quot;yes&quot; # 모니터링 필요 시</span>
 </code></pre></div>
 <p>위 설정은 <code>vip_address</code> 는 기본적으로 현재 ip와 다른 ip를 사용하는 것이 정석이지만, 빈 ip가 없거나 동일한 ip를 사용해야 한다면 <code>haproxy</code> , <code>keepalived</code> 와 <code>tls</code> 설정을 꺼야 합니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>kolla_internal_vip_address: &quot;10.10.10.60&quot;  # Control 노드의 실제 IP
@@ -1975,6 +2014,13 @@
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>kolla_enable_tls_internal: &quot;no&quot; 
 <a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>kolla_enable_tls_external: &quot;no&quot;
 </code></pre></div>
+<blockquote>
+<h3 id="mtu">MTU 관련 속도 지연이 생기는 이유</h3>
+<p>1) 기본 패킷 크기 제한이 1500 byte, 오픈스택 내부에서는 패킷에 오버헤드(VXLAN, UDP, IP, Ethernet 헤더 -&gt; 총 50 byte)를 붙여서 포장 후 전송<br />
+2) 따라서 vm이 1500 byte 데이터를 전송 시, vm에서 50 byte추가되어 1550 byte 전송 요청<br />
+3) 물리 랜카드에서 패킷 크기 초과 인지 -&gt; 패킷 폐기 또는 쪼개기<br />
+4) 패킷 손실 혹은 재전송이 발생하며 네트워크 속도 저하(특히 HTTPS 접속이나 대용량 다운로드 시)  </p>
+</blockquote>
 <hr />
 <h2 id="5-">📝 5. 인벤토리 및 비밀번호 설정 - [공통]</h2>
 <h3 id="51">5.1 비밀번호 생성</h3>
