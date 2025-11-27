@@ -2,46 +2,38 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://Kdelphinus.github.io/infra-cheatsheets/</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-11-27</lastmod>
     </url>
     <url>
          <loc>https://Kdelphinus.github.io/infra-cheatsheets/k8s/token-check/</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-11-27</lastmod>
     </url>
     <url>
          <loc>https://Kdelphinus.github.io/infra-cheatsheets/openstack/CheatSheet/</loc>
-         <lastmod>2025-11-26</lastmod>
-    </url>
-    <url>
-         <loc>https://Kdelphinus.github.io/infra-cheatsheets/openstack/2024.2-Dalmatian/install/</loc>
-         <lastmod>2025-11-26</lastmod>
-    </url>
-    <url>
-         <loc>https://Kdelphinus.github.io/infra-cheatsheets/openstack/2024.2-Dalmatian/pci-placement/</loc>
-         <lastmod>2025-11-26</lastmod>
-    </url>
-    <url>
-         <loc>https://Kdelphinus.github.io/infra-cheatsheets/openstack/2025.2-Flamingo/install/</loc>
-         <lastmod>2025-11-26</lastmod>
-    </url>
-    <url>
-         <loc>https://Kdelphinus.github.io/infra-cheatsheets/openstack/2025.2-Flamingo/pci-placement/</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-11-27</lastmod>
     </url>
     <url>
          <loc>https://Kdelphinus.github.io/infra-cheatsheets/openstack/common/golden-image/</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-11-27</lastmod>
     </url>
     <url>
-         <loc>https://Kdelphinus.github.io/infra-cheatsheets/openstack/common/init-gpu-node/</loc>
-         <lastmod>2025-11-26</lastmod>
+         <loc>https://Kdelphinus.github.io/infra-cheatsheets/openstack/common/install/</loc>
+         <lastmod>2025-11-27</lastmod>
+    </url>
+    <url>
+         <loc>https://Kdelphinus.github.io/infra-cheatsheets/openstack/gpu/init-gpu-node/</loc>
+         <lastmod>2025-11-27</lastmod>
+    </url>
+    <url>
+         <loc>https://Kdelphinus.github.io/infra-cheatsheets/openstack/gpu/pci-placement/</loc>
+         <lastmod>2025-11-27</lastmod>
     </url>
     <url>
          <loc>https://Kdelphinus.github.io/infra-cheatsheets/ubuntu/init-ubuntu-env/</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-11-27</lastmod>
     </url>
     <url>
          <loc>https://Kdelphinus.github.io/infra-cheatsheets/wsl/wsl-network-setting/</loc>
-         <lastmod>2025-11-26</lastmod>
+         <lastmod>2025-11-27</lastmod>
     </url>
 </urlset>
