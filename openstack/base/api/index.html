@@ -8,25 +8,31 @@
       
       
       
+        <link rel="canonical" href="https://Kdelphinus.github.io/infra-cheatsheets/openstack/base/api/">
       
+      
+        <link rel="prev" href="../install/">
+      
+      
+        <link rel="next" href="../../gpu/init-gpu-node/">
       
       
         
       
       
-      <link rel="icon" href="/infra-cheatsheets/assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>Infra Cheatsheets</title>
+        <title>API 명세 - Infra Cheatsheets</title>
       
     
     
-      <link rel="stylesheet" href="/infra-cheatsheets/assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="/infra-cheatsheets/assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -45,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL("/infra-cheatsheets/",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -69,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#openstack-api-basic" class="md-skip">
+          콘텐츠로 이동
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -79,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href="/infra-cheatsheets/." title="Infra Cheatsheets" class="md-header__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
+    <a href="../../.." title="Infra Cheatsheets" class="md-header__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -99,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              API 명세
             
           </span>
         </div>
@@ -210,7 +221,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="/infra-cheatsheets/." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -227,6 +238,8 @@
   
   
   
+    
+  
   
     
     
@@ -234,11 +247,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="/infra-cheatsheets/openstack/base/install/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../install/" class="md-tabs__link">
           
   
   
@@ -261,7 +276,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/infra-cheatsheets/k8s/CheatSheet/" class="md-tabs__link">
+        <a href="../../../k8s/CheatSheet/" class="md-tabs__link">
           
   
   
@@ -281,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/infra-cheatsheets/ubuntu/init-ubuntu-env/" class="md-tabs__link">
+        <a href="../../../ubuntu/init-ubuntu-env/" class="md-tabs__link">
           
   
   
@@ -301,7 +316,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="/infra-cheatsheets/wsl/wsl-network-setting/" class="md-tabs__link">
+        <a href="../../../wsl/wsl-network-setting/" class="md-tabs__link">
           
   
   
@@ -335,7 +350,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/infra-cheatsheets/." title="Infra Cheatsheets" class="md-nav__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
+    <a href="../../.." title="Infra Cheatsheets" class="md-nav__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -365,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/infra-cheatsheets/." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -389,26 +404,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -426,7 +446,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -441,26 +461,31 @@
                 
   
   
+    
   
   
+  
     
     
     
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
         
           
-          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
             
   
   
@@ -478,7 +503,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -496,7 +521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/infra-cheatsheets/openstack/base/install/" class="md-nav__link">
+      <a href="../install/" class="md-nav__link">
         
   
   
@@ -521,10 +546,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="/infra-cheatsheets/openstack/base/api/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API 명세
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -540,6 +592,109 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 베이스 URL 확인 (전제 조건)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 핵심 서비스 조회 API 목록
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 핵심 서비스 조회 API 목록">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neutron-vpc-subnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 네트워크 (Neutron) - VPC, Subnet 관련
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nova-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 컴퓨트 (Nova) - 인스턴스, 하이퍼바이저
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💿 이미지 (Glance)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#placement-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 자원 관리 (Placement) - GPU 디버깅용
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 curl로 조회하기 (예시)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -566,17 +721,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
             
   
   
@@ -612,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/infra-cheatsheets/openstack/gpu/init-gpu-node/" class="md-nav__link">
+      <a href="../../gpu/init-gpu-node/" class="md-nav__link">
         
   
   
@@ -640,7 +798,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/infra-cheatsheets/openstack/gpu/pci-placement/" class="md-nav__link">
+      <a href="../../gpu/pci-placement/" class="md-nav__link">
         
   
   
@@ -682,17 +840,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
             
   
   
@@ -728,7 +889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/infra-cheatsheets/openstack/base/golden-image.md" class="md-nav__link">
+      <a href="../golden-image.md" class="md-nav__link">
         
   
   
@@ -764,7 +925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/infra-cheatsheets/openstack/CheatSheet/" class="md-nav__link">
+      <a href="../../CheatSheet/" class="md-nav__link">
         
   
   
@@ -851,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/infra-cheatsheets/k8s/CheatSheet/" class="md-nav__link">
+      <a href="../../../k8s/CheatSheet/" class="md-nav__link">
         
   
   
@@ -938,7 +1099,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/infra-cheatsheets/ubuntu/init-ubuntu-env/" class="md-nav__link">
+      <a href="../../../ubuntu/init-ubuntu-env/" class="md-nav__link">
         
   
   
@@ -1025,7 +1186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/infra-cheatsheets/wsl/wsl-network-setting/" class="md-nav__link">
+      <a href="../../../wsl/wsl-network-setting/" class="md-nav__link">
         
   
   
@@ -1070,6 +1231,99 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 베이스 URL 확인 (전제 조건)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 핵심 서비스 조회 API 목록
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 핵심 서비스 조회 API 목록">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#neutron-vpc-subnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 네트워크 (Neutron) - VPC, Subnet 관련
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nova-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💻 컴퓨트 (Nova) - 인스턴스, 하이퍼바이저
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        💿 이미지 (Glance)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#placement-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔑 자원 관리 (Placement) - GPU 디버깅용
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curl" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🚀 curl로 조회하기 (예시)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1082,8 +1336,181 @@
               
               <article class="md-content__inner md-typeset">
                 
-  <h1>404 - Not found</h1>
+                  
 
+
+  
+  
+
+
+<h1 id="openstack-api-basic">Openstack API Basic</h1>
+<h2 id="1-url">1. 베이스 URL 확인 (전제 조건)</h2>
+<p>먼저 각 서비스의 포트와 주소를 알아야 합니다. (보통 <code>cstation</code> 노드 IP)</p>
+<ul>
+<li><strong>Keystone (Identity):</strong> <code>http://&lt;IP&gt;:5000/v3</code></li>
+<li><strong>Neutron (Network):</strong> <code>http://&lt;IP&gt;:9696</code></li>
+<li><strong>Nova (Compute):</strong> <code>http://&lt;IP&gt;:8774/v2.1</code></li>
+<li><strong>Glance (Image):</strong> <code>http://&lt;IP&gt;:9292</code></li>
+<li><strong>Placement:</strong> <code>http://&lt;IP&gt;:8778</code></li>
+</ul>
+<hr />
+<h2 id="2-api">2. 핵심 서비스 조회 API 목록</h2>
+<h3 id="neutron-vpc-subnet">🌐 네트워크 (Neutron) - VPC, Subnet 관련</h3>
+<p>가장 궁금해하시는 부분입니다. 베이스 URL(<code>:9696</code>) 뒤에 붙습니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">리소스</th>
+<th style="text-align: left;">API 경로 (URI)</th>
+<th style="text-align: left;">설명 (AWS 대응)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Network</strong></td>
+<td style="text-align: left;"><strong><code>GET /v2.0/networks</code></strong></td>
+<td style="text-align: left;">VPC 전체 목록 조회</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Subnet</strong></td>
+<td style="text-align: left;"><strong><code>GET /v2.0/subnets</code></strong></td>
+<td style="text-align: left;">서브넷 전체 목록 조회</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Router</strong></td>
+<td style="text-align: left;"><strong><code>GET /v2.0/routers</code></strong></td>
+<td style="text-align: left;">라우터(Gateway) 목록 조회</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Port</strong></td>
+<td style="text-align: left;"><strong><code>GET /v2.0/ports</code></strong></td>
+<td style="text-align: left;">인터페이스(ENI) 목록 조회</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Sec Group</strong></td>
+<td style="text-align: left;"><strong><code>GET /v2.0/security-groups</code></strong></td>
+<td style="text-align: left;">보안 그룹 목록 조회</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Floating IP</strong></td>
+<td style="text-align: left;"><strong><code>GET /v2.0/floatingips</code></strong></td>
+<td style="text-align: left;">공인 IP 목록 조회</td>
+</tr>
+</tbody>
+</table>
+<h3 id="nova-">💻 컴퓨트 (Nova) - 인스턴스, 하이퍼바이저</h3>
+<p>베이스 URL(<code>:8774/v2.1</code>) 뒤에 붙습니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">리소스</th>
+<th style="text-align: left;">API 경로 (URI)</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Server</strong></td>
+<td style="text-align: left;"><strong><code>GET /servers/detail</code></strong></td>
+<td style="text-align: left;">인스턴스(VM) 전체 상세 조회</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Flavor</strong></td>
+<td style="text-align: left;"><strong><code>GET /flavors/detail</code></strong></td>
+<td style="text-align: left;">인스턴스 타입(스펙) 조회</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Hypervisor</strong></td>
+<td style="text-align: left;"><strong><code>GET /os-hypervisors/detail</code></strong></td>
+<td style="text-align: left;">물리 노드(Compute Node) 상태 조회</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Usage</strong></td>
+<td style="text-align: left;"><strong><code>GET /os-simple-tenant-usage</code></strong></td>
+<td style="text-align: left;">프로젝트별 자원 사용량 조회</td>
+</tr>
+</tbody>
+</table>
+<h3 id="glance">💿 이미지 (Glance)</h3>
+<p>베이스 URL(<code>:9292</code>) 뒤에 붙습니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">리소스</th>
+<th style="text-align: left;">API 경로 (URI)</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Image</strong></td>
+<td style="text-align: left;"><strong><code>GET /v2/images</code></strong></td>
+<td style="text-align: left;">이미지(AMI) 목록 조회</td>
+</tr>
+</tbody>
+</table>
+<h3 id="placement-gpu">🔑 자원 관리 (Placement) - GPU 디버깅용</h3>
+<p>베이스 URL(<code>:8778</code>) 뒤에 붙습니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">리소스</th>
+<th style="text-align: left;">API 경로 (URI)</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Res Provider</strong></td>
+<td style="text-align: left;"><strong><code>GET /resource_providers</code></strong></td>
+<td style="text-align: left;">자원 제공자(Compute Node) 목록</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Inventory</strong></td>
+<td style="text-align: left;"><strong><code>GET /resource_providers/{uuid}/inventories</code></strong></td>
+<td style="text-align: left;">특정 노드의 자원(GPU, vCPU) 재고</td>
+</tr>
+<tr>
+<td style="text-align: left;"><strong>Usage</strong></td>
+<td style="text-align: left;"><strong><code>GET /resource_providers/{uuid}/usages</code></strong></td>
+<td style="text-align: left;">특정 노드의 자원 사용량</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="curl">🚀 <code>curl</code>로 조회하기 (예시)</h2>
+<p>CLI에서 토큰을 뽑아서 바로 <code>curl</code>로 날리는 스크립트입니다.</p>
+<p><strong>1. 환경변수 세팅 (Controller Node에서):</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 관리자 토큰 추출</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">OS_TOKEN</span><span class="o">=</span><span class="k">$(</span>openstack<span class="w"> </span>token<span class="w"> </span>issue<span class="w"> </span>-f<span class="w"> </span>value<span class="w"> </span>-c<span class="w"> </span>id<span class="k">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># Neutron(네트워크) URL 추출</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">NET_URL</span><span class="o">=</span><span class="k">$(</span>openstack<span class="w"> </span>endpoint<span class="w"> </span>list<span class="w"> </span>--service<span class="w"> </span>network<span class="w"> </span>--interface<span class="w"> </span>public<span class="w"> </span>-f<span class="w"> </span>value<span class="w"> </span>-c<span class="w"> </span>URL<span class="k">)</span>
+</code></pre></div>
+<p><strong>2. API 호출 테스트:</strong></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. VPC (Network) 전체 조회</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NET_URL</span><span class="s2">/v2.0/networks&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-Auth-Token: </span><span class="nv">$OS_TOKEN</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># 2. Subnet 전체 조회</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NET_URL</span><span class="s2">/v2.0/subnets&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-Auth-Token: </span><span class="nv">$OS_TOKEN</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># 3. Router 전체 조회</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>GET<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NET_URL</span><span class="s2">/v2.0/routers&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-Auth-Token: </span><span class="nv">$OS_TOKEN</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
+</code></pre></div>
+<p>이 주소들로 호출했을 때 응답이 잘 오면 백엔드는 건강한 것입니다. Horizon 에러는 아까 조치(Memoized Patch)로 해결되었을 테니, API도 정상적으로 나올 겁니다.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
               </article>
             </div>
           
@@ -1120,10 +1547,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "/infra-cheatsheets/", "features": ["navigation.tabs", "navigation.sections", "search.highlight", "content.code.copy"], "search": "/infra-cheatsheets/assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="/infra-cheatsheets/assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>

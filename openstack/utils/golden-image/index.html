@@ -8,13 +8,9 @@
       
       
       
-        <link rel="canonical" href="https://Kdelphinus.github.io/infra-cheatsheets/openstack/common/golden-image/">
+        <link rel="canonical" href="https://Kdelphinus.github.io/infra-cheatsheets/openstack/utils/golden-image/">
       
       
-        <link rel="prev" href="../install/">
-      
-      
-        <link rel="next" href="../../gpu/init-gpu-node/">
       
       
         
@@ -25,7 +21,7 @@
     
     
       
-        <title>Golden Image 생성 - Infra Cheatsheets</title>
+        <title>OpenStack 골든 이미지(Golden Image) 생성 가이드 - Infra Cheatsheets</title>
       
     
     
@@ -110,7 +106,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Golden Image 생성
+              OpenStack 골든 이미지(Golden Image) 생성 가이드
             
           </span>
         </div>
@@ -238,8 +234,6 @@
   
   
   
-    
-  
   
     
     
@@ -247,13 +241,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../install/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../base/install/" class="md-tabs__link">
           
   
   
@@ -404,31 +396,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
             
   
   
@@ -446,7 +433,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -461,38 +448,33 @@
                 
   
   
-    
   
   
-  
     
     
     
     
       
       
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
         
           
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
             
   
   
   <span class="md-ellipsis">
     
   
-    Common
+    Base
   
 
     
@@ -503,12 +485,12 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_1">
             <span class="md-nav__icon md-icon"></span>
             
   
-    Common
+    Base
   
 
           </label>
@@ -521,7 +503,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../install/" class="md-nav__link">
+      <a href="../../base/install/" class="md-nav__link">
         
   
   
@@ -546,44 +528,17 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Golden Image 생성
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../base/api/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Golden Image 생성
+    API 명세
   
 
     
@@ -592,282 +547,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 베이스 이미지 다운로드
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 이미지 접근 권한 설정
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-kvm-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. KVM으로 VM 부팅 및 접속
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. KVM으로 VM 부팅 및 접속">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#31-ubuntudebian" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.1 Ubuntu/Debian
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#32-rockyrhel" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3.2 Rocky/RHEL
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#kvm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        KVM 관련 오류
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="KVM 관련 오류">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-lock" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1 ) Lock 오류
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-kvm-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2) KVM 용량을 늘려도 VM 용량이 동일한 경우
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. VM 내부 설정 변경
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. VM 내부 설정 변경">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#41-serial-console-openstack" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.1 Serial Console 활성화 (OpenStack 필수)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#42" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4.2 기본 패키지 설치
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 옵션 소프트웨어 설치
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="5. 옵션 소프트웨어 설치">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#51-docker" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.1 옵션: Docker 설치
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#52-nvidia-gpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5.2 옵션: NVIDIA GPU 드라이버 설치
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-vm" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. VM 정리 작업
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. 최종 정리 및 이미지 변환
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. 최종 정리 및 이미지 변환">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#71" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.1 최종 명령어
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#72-glance-openstack-cli" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7.2 Glance 이미지 업로드 (OpenStack CLI)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#8-gpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        8. 옵션: GPU 드라이버 설치
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="8. 옵션: GPU 드라이버 설치">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#rtx-gpu-reset-bug" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        RTX 계열 GPU 사용 시 문제점(Reset Bug)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -894,20 +573,17 @@
       
       
         
-          
-          
-        
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
             
   
   
@@ -979,6 +655,94 @@
     
   
     PCI Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Utils
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Utils
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../base/golden-image.md" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Golden Image 생성
   
 
     
