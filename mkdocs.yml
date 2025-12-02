@@ -41,7 +41,19 @@ markdown_extensions:
 # 메뉴 구조
 nav:
   - Home: index.md
+  - Network:
+    - Tip:
+      - '도메인 실제 IP 체크': network/tip/check-domain-ip.md
+  - Kubernetes:
+    - 'Cheat Sheets': k8s/cheatsheet.md
+  - Ubuntu:
+    - 'Ubuntu 기본 설정': ubuntu/init-ubuntu-env.md
+    - WSL:
+      - 'WSL 네트워크 설정': ubuntu/wsl/wsl-network-setting.md
+  - Git:
+    - 'Cheat Sheets': git/cheatsheet.md
   - OpenStack:
+    - 'Cheat Sheets': openstack/cheatsheet.md
     - Base:
       - '설치': openstack/base/install.md
       - 'API 명세': openstack/base/api.md
@@ -52,10 +64,3 @@ nav:
       - 'Golden Image 생성': openstack/utils/golden-image.md
     - Troubleshooting:
       - 'OpenStack K8s 네트워크 통신 장애 및 Harbor 배포 실패': openstack/troubleshooting/k8s-network-error.md
-    - "Cheat Sheets": openstack/CheatSheet.md
-  - Kubernetes:
-    - 'Cheat Sheets': k8s/CheatSheet.md
-  - Ubuntu:
-    - 'Ubuntu 기본 설정': ubuntu/init-ubuntu-env.md
-  - WSL:
-    - 'WSL 네트워크 설정': wsl/wsl-network-setting.md
