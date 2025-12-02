@@ -8,29 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://Kdelphinus.github.io/infra-cheatsheets/wsl/wsl-network-setting/">
+        <link rel="canonical" href="https://Kdelphinus.github.io/infra-cheatsheets/openstack/troubleshooting/k8s-network-error/">
       
       
-        <link rel="prev" href="../../ubuntu/init-ubuntu-env/">
+        <link rel="prev" href="../../utils/golden-image/">
       
+      
+        <link rel="next" href="../../CheatSheet/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>WSL 네트워크 설정 - Infra Cheatsheets</title>
+        <title>OpenStack K8s 네트워크 통신 장애 및 Harbor 배포 실패 - Infra Cheatsheets</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -49,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -74,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#wsl" class="md-skip">
+        <a href="#openstack-k8s-harbor" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -88,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href="../.." title="Infra Cheatsheets" class="md-header__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
+    <a href="../../.." title="Infra Cheatsheets" class="md-header__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -108,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              WSL 네트워크 설정
+              OpenStack K8s 네트워크 통신 장애 및 Harbor 배포 실패
             
           </span>
         </div>
@@ -219,7 +221,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -236,6 +238,8 @@
   
   
   
+    
+  
   
     
     
@@ -243,11 +247,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../openstack/base/install/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../base/install/" class="md-tabs__link">
           
   
   
@@ -270,7 +276,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../k8s/CheatSheet/" class="md-tabs__link">
+        <a href="../../../k8s/CheatSheet/" class="md-tabs__link">
           
   
   
@@ -290,7 +296,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../ubuntu/init-ubuntu-env/" class="md-tabs__link">
+        <a href="../../../ubuntu/init-ubuntu-env/" class="md-tabs__link">
           
   
   
@@ -306,13 +312,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../wsl/wsl-network-setting/" class="md-tabs__link">
           
   
   
@@ -346,7 +350,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Infra Cheatsheets" class="md-nav__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
+    <a href="../../.." title="Infra Cheatsheets" class="md-nav__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -376,7 +380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -400,26 +404,31 @@
       
   
   
+    
   
   
+  
     
     
     
     
+      
+        
+        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
             
   
   
@@ -437,7 +446,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -461,17 +470,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
         
           
-          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="">
             
   
   
@@ -507,7 +519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../openstack/base/install/" class="md-nav__link">
+      <a href="../../base/install/" class="md-nav__link">
         
   
   
@@ -535,7 +547,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../openstack/base/api/" class="md-nav__link">
+      <a href="../../base/api/" class="md-nav__link">
         
   
   
@@ -577,17 +589,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="">
             
   
   
@@ -623,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../openstack/gpu/init-gpu-node/" class="md-nav__link">
+      <a href="../../gpu/init-gpu-node/" class="md-nav__link">
         
   
   
@@ -651,7 +666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../openstack/gpu/pci-placement/" class="md-nav__link">
+      <a href="../../gpu/pci-placement/" class="md-nav__link">
         
   
   
@@ -693,17 +708,20 @@
       
       
         
+          
+          
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="">
             
   
   
@@ -739,7 +757,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../openstack/utils/golden-image/" class="md-nav__link">
+      <a href="../../utils/golden-image/" class="md-nav__link">
         
   
   
@@ -772,26 +790,31 @@
                 
   
   
+    
   
   
+  
     
     
     
     
       
       
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="">
             
   
   
@@ -809,7 +832,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -824,10 +847,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../openstack/troubleshooting/k8s-network-error/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenStack K8s 네트워크 통신 장애 및 Harbor 배포 실패
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -843,6 +893,187 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-issue-summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 개요 (Issue Summary)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 환경 정보 (Environment)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-root-cause-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 원인 분석 (Root Cause Analysis)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 원인 분석 (Root Cause Analysis)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-openstack-port-security" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1. 핵심 원인: OpenStack Port Security
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-clusterip" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2. 부차적 혼란: ClusterIP의 특성
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-harbor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3. Harbor 설치 실패 원인
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-troubleshooting-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 해결 과정 (Troubleshooting Steps)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 해결 과정 (Troubleshooting Steps)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1. 네트워크 진단
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-harbor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2. Harbor 복구
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 최종 해결책 (Solution)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 최종 해결책 (Solution)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-openstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. OpenStack 네트워크 설정 변경
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52-harbor" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2. 애플리케이션(Harbor) 재배포
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 교훈 및 참고 (Lessons Learned)
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -863,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../openstack/CheatSheet/" class="md-nav__link">
+      <a href="../../CheatSheet/" class="md-nav__link">
         
   
   
@@ -950,7 +1181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s/CheatSheet/" class="md-nav__link">
+      <a href="../../../k8s/CheatSheet/" class="md-nav__link">
         
   
   
@@ -1037,7 +1268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ubuntu/init-ubuntu-env/" class="md-nav__link">
+      <a href="../../../ubuntu/init-ubuntu-env/" class="md-nav__link">
         
   
   
@@ -1069,31 +1300,26 @@
       
   
   
-    
   
   
-  
     
     
     
     
-      
-        
-        
       
       
         
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   
@@ -1111,7 +1337,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1126,37 +1352,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    WSL 네트워크 설정
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../wsl/wsl-network-setting/" class="md-nav__link">
         
   
   
@@ -1172,137 +1371,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#1-dns" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 해결 방법 1: DNS 서버 수동 고정 (가장 효과적 ⭐)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 해결 방법 1: DNS 서버 수동 고정 (가장 효과적 ⭐)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-etcwslconf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 자동 생성 설정 끄기 (/etc/wsl.conf)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-dns-etcresolvconf" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. DNS 파일 직접 수정 (/etc/resolv.conf)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-wsl-powershell" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. WSL 재시작 (PowerShell에서)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-mirrored-windows-11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 해결 방법 2: "Mirrored" 모드 사용 (Windows 11 필수 ⭐⭐)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="🚀 해결 방법 2: &#34;Mirrored&#34; 모드 사용 (Windows 11 필수 ⭐⭐)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 윈도우 사용자 폴더에 설정 파일 생성
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 적용
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-ipv6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🚀 해결 방법 3: IPv6 비활성화 (특정 통신사/환경용)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        추가 정보
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1342,22 +1410,44 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-dns" class="md-nav__link">
+  <a href="#1-issue-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 해결 방법 1: DNS 서버 수동 고정 (가장 효과적 ⭐)
+        1. 개요 (Issue Summary)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🚀 해결 방법 1: DNS 서버 수동 고정 (가장 효과적 ⭐)">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 환경 정보 (Environment)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-root-cause-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 원인 분석 (Root Cause Analysis)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. 원인 분석 (Root Cause Analysis)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-etcwslconf" class="md-nav__link">
+  <a href="#31-openstack-port-security" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 자동 생성 설정 끄기 (/etc/wsl.conf)
+        3.1. 핵심 원인: OpenStack Port Security
       
     </span>
   </a>
@@ -1365,10 +1455,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-dns-etcresolvconf" class="md-nav__link">
+  <a href="#32-clusterip" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. DNS 파일 직접 수정 (/etc/resolv.conf)
+        3.2. 부차적 혼란: ClusterIP의 특성
       
     </span>
   </a>
@@ -1376,10 +1466,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#3-wsl-powershell" class="md-nav__link">
+  <a href="#33-harbor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. WSL 재시작 (PowerShell에서)
+        3.3. Harbor 설치 실패 원인
       
     </span>
   </a>
@@ -1392,22 +1482,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-mirrored-windows-11" class="md-nav__link">
+  <a href="#4-troubleshooting-steps" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 해결 방법 2: "Mirrored" 모드 사용 (Windows 11 필수 ⭐⭐)
+        4. 해결 과정 (Troubleshooting Steps)
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="🚀 해결 방법 2: &#34;Mirrored&#34; 모드 사용 (Windows 11 필수 ⭐⭐)">
+    <nav class="md-nav" aria-label="4. 해결 과정 (Troubleshooting Steps)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1" class="md-nav__link">
+  <a href="#41" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. 윈도우 사용자 폴더에 설정 파일 생성
+        4.1. 네트워크 진단
       
     </span>
   </a>
@@ -1415,10 +1505,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#2" class="md-nav__link">
+  <a href="#42-harbor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. 적용
+        4.2. Harbor 복구
       
     </span>
   </a>
@@ -1431,21 +1521,49 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-ipv6" class="md-nav__link">
+  <a href="#5-solution" class="md-nav__link">
     <span class="md-ellipsis">
       
-        🚀 해결 방법 3: IPv6 비활성화 (특정 통신사/환경용)
+        5. 최종 해결책 (Solution)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 최종 해결책 (Solution)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51-openstack" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1. OpenStack 네트워크 설정 변경
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#52-harbor" class="md-nav__link">
     <span class="md-ellipsis">
       
-        추가 정보
+        5.2. 애플리케이션(Harbor) 재배포
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-lessons-learned" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 교훈 및 참고 (Lessons Learned)
       
     </span>
   </a>
@@ -1472,63 +1590,99 @@
   
 
 
-<h1 id="wsl">WSL 속도 향상 설정</h1>
-<h2 id="1-dns">🚀 해결 방법 1: DNS 서버 수동 고정 (가장 효과적 ⭐)</h2>
-<p>WSL2가 윈도우 호스트를 거쳐서 DNS를 조회하는 과정이 느리기 때문에, 구글(8.8.8.8)이나 클라우드플레어(1.1.1.1) DNS를 직접 바라보게 설정하면 속도가 비약적으로 빨라집니다.</p>
-<h3 id="1-etcwslconf">1. 자동 생성 설정 끄기 (<code>/etc/wsl.conf</code>)</h3>
-<p>WSL 내부 터미널에서 아래 명령어를 입력해 설정 파일을 만듭니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># wsl.conf 파일 생성/수정</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>nano<span class="w"> </span>/etc/wsl.conf
-</code></pre></div>
-<p>아래 내용을 복사해서 붙여넣으세요. (이미 내용이 있다면 <code>[network]</code> 부분에 추가)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k">[network]</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="na">generateResolvConf</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">false</span>
-</code></pre></div>
-<p>(<code>Ctrl + O</code> 저장, <code>Enter</code>, <code>Ctrl + X</code> 종료)</p>
-<h3 id="2-dns-etcresolvconf">2. DNS 파일 직접 수정 (<code>/etc/resolv.conf</code>)</h3>
-<p>기존의 심볼릭 링크를 끊고 직접 DNS를 입력합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 기존 파일 삭제 (심볼릭 링크임)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sudo<span class="w"> </span>rm<span class="w"> </span>/etc/resolv.conf
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 새 파일 생성 및 DNS 입력</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>sudo<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;nameserver 8.8.8.8&quot; &gt; /etc/resolv.conf&#39;</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>sudo<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;echo &quot;nameserver 1.1.1.1&quot; &gt;&gt; /etc/resolv.conf&#39;</span>
-</code></pre></div>
-<h3 id="3-wsl-powershell">3. WSL 재시작 (PowerShell에서)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">wsl</span> <span class="p">-</span><span class="n">-shutdown</span>
-</code></pre></div>
-<p>다시 WSL을 켜서 <code>apt update</code> 등을 해보면 훨씬 빨라진 것을 느낄 수 있습니다.</p>
-<hr />
-<h2 id="2-mirrored-windows-11">🚀 해결 방법 2: "Mirrored" 모드 사용 (Windows 11 필수 ⭐⭐)</h2>
-<p>최신 Windows 11(22H2 이상)과 최신 WSL 버전을 쓰고 계시다면, **"미러링 모드"**를 켜는 것이 <strong>게임 체인저</strong>입니다. NAT를 거치지 않고 호스트(Windows)의 네트워크 인터페이스를 그대로 공유하므로 속도가 네이티브 급으로 빨라집니다.</p>
-<h3 id="1">1. 윈도우 사용자 폴더에 설정 파일 생성</h3>
-<p>윈도우 탐색기 주소창에 <code>%UserProfile%</code>을 입력하고 엔터를 칩니다.
-여기에 <strong><code>.wslconfig</code></strong> 라는 파일을 만들고(메모장 이용) 아래 내용을 넣으세요.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">[wsl2]</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">networkingMode</span><span class="o">=</span><span class="s">mirrored</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="na">dnsTunneling</span><span class="o">=</span><span class="s">true</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="na">firewall</span><span class="o">=</span><span class="s">true</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="na">autoProxy</span><span class="o">=</span><span class="s">true</span>
-</code></pre></div>
+<h1 id="openstack-k8s-harbor">OpenStack K8s 네트워크 통신 장애 및 Harbor 배포 실패</h1>
+<h2 id="1-issue-summary">1. 개요 (Issue Summary)</h2>
 <ul>
-<li><strong><code>networkingMode=mirrored</code></strong>: NAT를 없애고 윈도우 IP를 그대로 씁니다. (속도 대폭 향상)</li>
-<li><strong><code>dnsTunneling=true</code></strong>: DNS 요청을 가상화 계층 대신 터널링으로 처리해 딜레이를 줄입니다.</li>
+<li>
+<p><strong>증상:</strong></p>
+</li>
+<li>
+<p>OpenStack 기반 Kubernetes 클러스터 구축 후, Pod 간 통신 및 Service IP(<code>ClusterIP</code>) 통신 불가.</p>
+</li>
+<li><code>nslookup</code> 타임아웃 및 Pod 내부에서 외부 인터넷 통신 불가.</li>
+<li>
+<p>네트워크 장애로 인해 Harbor 설치가 중단되었으며, <code>harbor-jobservice</code>가 <code>harbor-core</code>에 연결하지 못하는 오류(<code>connection refused</code>) 발생</p>
+</li>
+<li>
+<p><strong>영향도:</strong> 클러스터 내 모든 애플리케이션 통신 두절, 신규 솔루션(Harbor) 배포 불가.</p>
+</li>
 </ul>
-<h3 id="2">2. 적용</h3>
-<p>PowerShell에서 <code>wsl --shutdown</code> 후 다시 시작.</p>
-<hr />
-<h2 id="3-ipv6">🚀 해결 방법 3: IPv6 비활성화 (특정 통신사/환경용)</h2>
-<p><code>apt-get</code>이나 <code>curl</code>이 처음에 멈칫하다가 진행되는 경우, IPv6 연결을 시도하다가 타임아웃이 나서 IPv4로 넘어가는 딜레이일 수 있습니다.</p>
-<p><strong>WSL 내부에서 실행:</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>net.ipv6.conf.all.disable_ipv6<span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>sudo<span class="w"> </span>sysctl<span class="w"> </span>-w<span class="w"> </span>net.ipv6.conf.default.disable_ipv6<span class="o">=</span><span class="m">1</span>
-</code></pre></div>
-<p>(이게 효과가 있다면 <code>/etc/sysctl.conf</code>에 영구 등록하세요.)</p>
-<hr />
-<h2 id="_1">추가 정보</h2>
+<h2 id="2-environment">2. 환경 정보 (Environment)</h2>
+<ul>
+<li><strong>Infra:</strong> OpenStack Flamingo (2025.2)</li>
+<li><strong>OS:</strong> Ubuntu 22.04 LTS</li>
+<li><strong>Kubernetes:</strong> v1.33 (Master 1, Worker 3)</li>
+<li><strong>CNI:</strong> Calico (Overlay Network)</li>
+<li><strong>Application:</strong> Harbor Registry</li>
+</ul>
+<h2 id="3-root-cause-analysis">3. 원인 분석 (Root Cause Analysis)</h2>
+<h3 id="31-openstack-port-security">3.1. 핵심 원인: OpenStack Port Security</h3>
+<ul>
+<li><strong>현상:</strong> Kubernetes CNI(Calico)는 Pod마다 고유 IP 대역(예: <code>10.244.x.x</code>)을 할당함.</li>
+<li><strong>원인:</strong> OpenStack Neutron의 <strong>Port Security(포트 보안)</strong> 기능은 VM의 네트워크 인터페이스(Port)에 할당된 고정 IP(<code>Fixed IP</code>) 이외의 트래픽이 감지되면 이를 **IP 스푸핑(IP Spoofing) 공격으로 간주하여 차단(Drop)**함.</li>
+<li><strong>결과:</strong> Pod에서 나가는 모든 오버레이 트래픽이 OpenStack 네트워크 레벨에서 차단됨.</li>
+</ul>
+<h3 id="32-clusterip">3.2. 부차적 혼란: ClusterIP의 특성</h3>
+<ul>
+<li><strong>현상:</strong> 네트워크 조치 후에도 Service IP(<code>10.96.0.1</code>)로 Ping이 되지 않아 해결되지 않은 것으로 오인.</li>
+<li><strong>원인:</strong> K8s의 ClusterIP는 가상 IP(iptables/IPVS 규칙)이며, 기본적으로 <strong>ICMP(Ping) 프로토콜을 처리하지 않음.</strong></li>
+<li><strong>결과:</strong> Ping 실패는 정상이지만, 이를 네트워크 장애로 오판할 뻔함. (TCP/UDP 연결 테스트로 검증 필요)</li>
+</ul>
+<h3 id="33-harbor">3.3. Harbor 설치 실패 원인</h3>
+<ul>
+<li>초기 네트워크 단절 상태에서 설치를 시도하여 초기화 Job이 실패함.</li>
+<li>Helm 차트 설치 시 네임스페이스 미지정으로 인해 PVC가 <code>default</code> 네임스페이스에 생성되어, 재설치 시에도 기존 오염된 볼륨을 참조하는 문제 발생.</li>
+</ul>
+<h2 id="4-troubleshooting-steps">4. 해결 과정 (Troubleshooting Steps)</h2>
+<h3 id="41">4.1. 네트워크 진단</h3>
 <ol>
-<li><strong>Windows 11</strong> 사용자라면 **[방법 2 (Mirrored Mode)]**가 가장 깔끔하고 성능이 좋습니다. (<code>apt</code> 속도뿐만 아니라 로컬호스트 접속 문제도 해결됨)</li>
-<li><strong>Windows 10</strong> 사용자거나 Mirrored 모드가 불안정하다면 **[방법 1 (DNS 고정)]**만 적용해도 충분히 빨라집니다.</li>
+<li><strong>테스트 Pod 배포:</strong> <code>dns-test</code> 및 <code>netshoot</code> Pod 배포.</li>
+<li><strong>증상 확인:</strong><ul>
+<li><code>ping 10.96.0.1</code> (API Server) -&gt; <strong>실패</strong> (정상 동작임)</li>
+<li><code>nslookup kubernetes.default</code> -&gt; <strong>실패</strong> (Timeout, 비정상)</li>
+<li><code>wget https://10.96.0.1:443</code> -&gt; <strong>실패</strong> (Timeout, 비정상)</li>
+</ul>
+</li>
+<li><strong>조치 수행 (OpenStack):</strong> 마스터 및 워커 노드의 OpenStack Port에 설정된 <strong>Port Security 비활성화</strong> 및 <strong>Security Group 제거</strong>.</li>
+<li><strong>검증:</strong><ul>
+<li><code>nslookup kubernetes.default</code> -&gt; <strong>성공</strong> (DNS 응답 수신)</li>
+<li><code>wget https://10.96.0.1:443</code> -&gt; <strong>TLS Handshake Error</strong> 발생 (네트워크 연결 성공 의미)</li>
+<li><code>nc -zv 10.96.0.1 443</code> -&gt; <strong>Open</strong> 확인.</li>
+</ul>
+</li>
+</ol>
+<h3 id="42-harbor">4.2. Harbor 복구</h3>
+<ol>
+<li><strong>기존 설치 제거:</strong> <code>helm uninstall harbor -n harbor</code></li>
+<li><strong>잔존 데이터 삭제 (중요):</strong> <code>default</code> 네임스페이스에 잘못 생성된 PVC 일괄 삭제.</li>
+<li><code>kubectl delete pvc --all -n default</code> (Harbor 관련)</li>
+<li><strong>재설치:</strong> 네트워크 정상화 확인 후 Helm 재배포.</li>
+</ol>
+<h2 id="5-solution">5. 최종 해결책 (Solution)</h2>
+<h3 id="51-openstack">5.1. OpenStack 네트워크 설정 변경</h3>
+<p>K8s 노드(VM)가 사용하는 Port에 대해 아래 두 가지 방법 중 하나 적용.</p>
+<p><strong>방법 A: Port Security 비활성화 (빠른 해결)</strong>
+보안 그룹을 제거하고 포트 보안을 끔으로써 모든 트래픽 허용.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>openstack<span class="w"> </span>port<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--no-security-group<span class="w"> </span>--disable-port-security<span class="w"> </span>&lt;PORT_ID&gt;
+</code></pre></div>
+<p><strong>방법 B: Allowed Address Pairs 설정 (권장, 보안 강화)</strong>
+Port Security를 켜두되, Pod/Service 대역을 예외로 허용.</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 1. Pod 및 Service CIDR 허용</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>openstack<span class="w"> </span>port<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--allowed-address<span class="w"> </span><span class="nv">ip_address</span><span class="o">=</span><span class="m">10</span>.244.0.0/16<span class="w"> </span>&lt;PORT_ID&gt;
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>openstack<span class="w"> </span>port<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--allowed-address<span class="w"> </span><span class="nv">ip_address</span><span class="o">=</span><span class="m">10</span>.96.0.0/12<span class="w"> </span>&lt;PORT_ID&gt;
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 2. 보안 그룹에 IPIP/VXLAN/BGP 등 필수 프로토콜 허용 규칙 추가</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># 3. Port Security 활성화</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>openstack<span class="w"> </span>port<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--enable-port-security<span class="w"> </span>&lt;PORT_ID&gt;
+</code></pre></div>
+<h3 id="52-harbor">5.2. 애플리케이션(Harbor) 재배포</h3>
+<p>네트워크가 복구된 후, 기존의 실패한 리소스(특히 PVC)를 완전히 정리하고 재설치하여 DB 초기화 프로세스가 정상적으로 수행되도록 함.</p>
+<hr />
+<h2 id="6-lessons-learned">6. 교훈 및 참고 (Lessons Learned)</h2>
+<ol>
+<li><strong>OpenStack + K8s:</strong> OpenStack 위에 K8s를 올릴 때는 반드시 <strong>Port Security</strong> 설정과 <strong>Allowed Address Pairs</strong>를 사전에 계획해야 한다.</li>
+<li><strong>ClusterIP Ping:</strong> Kubernetes Service IP(<code>ClusterIP</code>)는 Ping이 안 되는 것이 정상이다. 네트워크 테스트는 반드시 <code>curl</code>, <code>wget</code>, <code>nc</code>, <code>nslookup</code>을 사용해야 한다.</li>
+<li><strong>Clean Re-install:</strong> Stateful한 애플리케이션(DB 포함) 설치 실패 시, 단순히 Pod만 재시작하지 말고 <strong>PVC를 포함한 모든 데이터를 삭제</strong> 후 재설치하는 것이 가장 빠르고 확실한 해결책이다.</li>
 </ol>
 
 
@@ -1579,10 +1733,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
