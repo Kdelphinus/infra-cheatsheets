@@ -937,6 +937,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="🚀 1. 쉘 자동완성 설정 (Shell Autocomplete)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bash
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zsh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1513,6 +1541,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="🚀 1. 쉘 자동완성 설정 (Shell Autocomplete)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        bash
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#zsh" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        zsh
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1887,21 +1943,28 @@
 <h1 id="kubernetes-cheat-sheet">☸️ Kubernetes Cheat Sheet</h1>
 <h2 id="1-shell-autocomplete">🚀 1. 쉘 자동완성 설정 (Shell Autocomplete)</h2>
 <p>가장 먼저 설정해야 할 필수 기능입니다.</p>
+<h3 id="bash">bash</h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>kubectl<span class="w"> </span>completion<span class="w"> </span>bash<span class="o">)</span><span class="w"> </span><span class="c1"># 현재 세션에 적용</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;source &lt;(kubectl completion bash)&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc<span class="w"> </span><span class="c1"># 영구 적용</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">k</span><span class="o">=</span>kubectl<span class="w"> </span><span class="c1"># &#39;k&#39; 단축키 설정</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">complete</span><span class="w"> </span>-o<span class="w"> </span>default<span class="w"> </span>-F<span class="w"> </span>__start_kubectl<span class="w"> </span>k<span class="w"> </span><span class="c1"># &#39;k&#39; 단축키에도 자동완성 적용</span>
 </code></pre></div>
+<h3 id="zsh">zsh</h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>kubectl<span class="w"> </span>completion<span class="w"> </span>zsh<span class="o">)</span><span class="w">  </span><span class="c1"># set up autocomplete in zsh into the current shell</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;[[ $commands[kubectl] ]] &amp;&amp; source &lt;(kubectl completion zsh)&#39;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.zshrc<span class="w"> </span><span class="c1"># add autocomplete permanently to your zsh shell</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">k</span><span class="o">=</span>kubectl
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">complete</span><span class="w"> </span>-o<span class="w"> </span>default<span class="w"> </span>-F<span class="w"> </span>__start_kubectl<span class="w"> </span>k
+</code></pre></div>
 <hr />
 <h2 id="2-config-context">📂 2. 클러스터 및 컨텍스트 관리 (Config &amp; Context)</h2>
 <p>여러 클러스터와 네임스페이스를 관리할 때 사용합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>config<span class="w"> </span>view<span class="w">                        </span><span class="c1"># 전체 kubeconfig 설정 확인</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>kubectl<span class="w"> </span>config<span class="w"> </span>get-contexts<span class="w">                </span><span class="c1"># 컨텍스트 목록 확인</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>kubectl<span class="w"> </span>config<span class="w"> </span>current-context<span class="w">             </span><span class="c1"># 현재 컨텍스트 확인</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>&lt;name&gt;<span class="w">          </span><span class="c1"># 컨텍스트 변경</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>kubectl<span class="w"> </span>config<span class="w"> </span>set-context<span class="w"> </span>--current<span class="w"> </span>--namespace<span class="o">=</span>&lt;ns&gt;<span class="w">  </span><span class="c1"># 기본 네임스페이스 변경 (매번 -n 입력 생략)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>kubectl<span class="w"> </span>api-resources<span class="w">                      </span><span class="c1"># 사용 가능한 리소스 종류 및 단축어(Shortnames) 확인</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>kubectl<span class="w"> </span>api-versions<span class="w">                       </span><span class="c1"># 사용 가능한 API 그룹 버전 확인</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>config<span class="w"> </span>view<span class="w">                        </span><span class="c1"># 전체 kubeconfig 설정 확인</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>kubectl<span class="w"> </span>config<span class="w"> </span>get-contexts<span class="w">                </span><span class="c1"># 컨텍스트 목록 확인</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>kubectl<span class="w"> </span>config<span class="w"> </span>current-context<span class="w">             </span><span class="c1"># 현재 컨텍스트 확인</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>kubectl<span class="w"> </span>config<span class="w"> </span>use-context<span class="w"> </span>&lt;name&gt;<span class="w">          </span><span class="c1"># 컨텍스트 변경</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>kubectl<span class="w"> </span>config<span class="w"> </span>set-context<span class="w"> </span>--current<span class="w"> </span>--namespace<span class="o">=</span>&lt;ns&gt;<span class="w">  </span><span class="c1"># 기본 네임스페이스 변경 (매번 -n 입력 생략)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>kubectl<span class="w"> </span>api-resources<span class="w">                      </span><span class="c1"># 사용 가능한 리소스 종류 및 단축어(Shortnames) 확인</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>kubectl<span class="w"> </span>api-versions<span class="w">                       </span><span class="c1"># 사용 가능한 API 그룹 버전 확인</span>
 </code></pre></div>
 <hr />
 <h2 id="3-create-dry-run">🛠 3. 리소스 생성 (Create &amp; Dry Run)</h2>
@@ -1947,133 +2010,133 @@
 <hr />
 <h2 id="4-get-inspect">🔍 4. 조회 및 필터링 (Get &amp; Inspect)</h2>
 <h3 id="_1">기본 조회</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;<span class="w">   </span><span class="c1"># 특정 네임스페이스 전체 리소스 조회</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po,svc,deploy<span class="w">        </span><span class="c1"># 주요 리소스만 골라서 조회</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-A<span class="w">                </span><span class="c1"># 모든 네임스페이스의 Pod 조회</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-o<span class="w"> </span>wide<span class="w">        </span><span class="c1"># 노드 OS, 커널 버전, 내부 IP 확인</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>--sort-by<span class="o">=</span>.metadata.creationTimestamp<span class="w"> </span><span class="c1"># 시간순 이벤트 조회 (디버깅용)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;<span class="w">   </span><span class="c1"># 특정 네임스페이스 전체 리소스 조회</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po,svc,deploy<span class="w">        </span><span class="c1"># 주요 리소스만 골라서 조회</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-A<span class="w">                </span><span class="c1"># 모든 네임스페이스의 Pod 조회</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-o<span class="w"> </span>wide<span class="w">        </span><span class="c1"># 노드 OS, 커널 버전, 내부 IP 확인</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>events<span class="w"> </span>--sort-by<span class="o">=</span>.metadata.creationTimestamp<span class="w"> </span><span class="c1"># 시간순 이벤트 조회 (디버깅용)</span>
 </code></pre></div>
 <h3 id="formatting">출력 형식 (Formatting) &amp; 정렬</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-o<span class="w"> </span>wide<span class="w">                       </span><span class="c1"># IP, Node 정보 포함</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>--show-labels<span class="w">                 </span><span class="c1"># 라벨 정보 포함</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx<span class="w">                  </span><span class="c1"># 특정 라벨 필터링</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>--sort-by<span class="o">=</span>.status.startTime<span class="w">   </span><span class="c1"># 실행 시간순 정렬</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>backup.yaml<span class="w">         </span><span class="c1"># YAML로 전체 스펙 추출</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-o<span class="w"> </span>wide<span class="w">                       </span><span class="c1"># IP, Node 정보 포함</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>--show-labels<span class="w">                 </span><span class="c1"># 라벨 정보 포함</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx<span class="w">                  </span><span class="c1"># 특정 라벨 필터링</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>--sort-by<span class="o">=</span>.status.startTime<span class="w">   </span><span class="c1"># 실행 시간순 정렬</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-o<span class="w"> </span>yaml<span class="w"> </span>&gt;<span class="w"> </span>backup.yaml<span class="w">         </span><span class="c1"># YAML로 전체 스펙 추출</span>
 </code></pre></div>
 <h3 id="jsonpath">JSONPath (데이터 추출)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># 모든 노드의 이름만 추출</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[*].metadata.name}&#39;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># 특정 Pod의 환경변수 확인</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.containers[0].env}&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 모든 노드의 이름만 추출</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.items[*].metadata.name}&#39;</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># 특정 Pod의 환경변수 확인</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.containers[0].env}&#39;</span>
 </code></pre></div>
 <hr />
 <h2 id="5-troubleshoot-logs">🩺 5. 디버깅 및 로그 (Troubleshoot &amp; Logs)</h2>
 <h3 id="_2">로그 분석</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod&gt;<span class="w">                           </span><span class="c1"># 로그 확인</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>&lt;pod&gt;<span class="w">                        </span><span class="c1"># 실시간 로그 (tail -f)</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;container&gt;<span class="w">            </span><span class="c1"># 특정 컨테이너 로그 (Multi-container)</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>--previous<span class="w">                </span><span class="c1"># 이전 컨테이너(Crash난 직후) 로그 확인</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>backend<span class="w"> </span>--all-containers<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="c1"># 해당 라벨을 가진 모든 Pod 로그</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod&gt;<span class="w">                           </span><span class="c1"># 로그 확인</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>&lt;pod&gt;<span class="w">                        </span><span class="c1"># 실시간 로그 (tail -f)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>-c<span class="w"> </span>&lt;container&gt;<span class="w">            </span><span class="c1"># 특정 컨테이너 로그 (Multi-container)</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>--previous<span class="w">                </span><span class="c1"># 이전 컨테이너(Crash난 직후) 로그 확인</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>kubectl<span class="w"> </span>logs<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>backend<span class="w"> </span>--all-containers<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="c1"># 해당 라벨을 가진 모든 Pod 로그</span>
 </code></pre></div>
 <h3 id="_3">상태 진단</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>&lt;pod&gt;<span class="w">                   </span><span class="c1"># Pod 상세 상태 및 이벤트(Events) 확인 (★필수)</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>&lt;node&gt;<span class="w">                 </span><span class="c1"># 노드 리소스 부족/상태 확인</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>kubectl<span class="w"> </span>top<span class="w"> </span>pods<span class="w">                             </span><span class="c1"># Pod별 CPU/Memory 사용량 (Metrics Server 필요)</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>kubectl<span class="w"> </span>top<span class="w"> </span>nodes<span class="w">                            </span><span class="c1"># 노드별 리소스 사용량</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>pod<span class="w"> </span>&lt;pod&gt;<span class="w">                   </span><span class="c1"># Pod 상세 상태 및 이벤트(Events) 확인 (★필수)</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>kubectl<span class="w"> </span>describe<span class="w"> </span>node<span class="w"> </span>&lt;node&gt;<span class="w">                 </span><span class="c1"># 노드 리소스 부족/상태 확인</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>kubectl<span class="w"> </span>top<span class="w"> </span>pods<span class="w">                             </span><span class="c1"># Pod별 CPU/Memory 사용량 (Metrics Server 필요)</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>kubectl<span class="w"> </span>top<span class="w"> </span>nodes<span class="w">                            </span><span class="c1"># 노드별 리소스 사용량</span>
 </code></pre></div>
 <h3 id="_4">접속 및 실행</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>--<span class="w"> </span>/bin/bash<span class="w">          </span><span class="c1"># 컨테이너 쉘 접속</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>-F<span class="w"> </span>/app<span class="w">         </span><span class="c1"># 접속 없이 명령어만 실행</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>kubectl<span class="w"> </span>cp<span class="w"> </span>&lt;pod&gt;:/path/file<span class="w"> </span>./local_file<span class="w">     </span><span class="c1"># 파일 복사 (Pod -&gt; Local)</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>kubectl<span class="w"> </span>cp<span class="w"> </span>./local_file<span class="w"> </span>&lt;pod&gt;:/path/file<span class="w">     </span><span class="c1"># 파일 복사 (Local -&gt; Pod)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>--<span class="w"> </span>/bin/bash<span class="w">          </span><span class="c1"># 컨테이너 쉘 접속</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>--<span class="w"> </span>ls<span class="w"> </span>-F<span class="w"> </span>/app<span class="w">         </span><span class="c1"># 접속 없이 명령어만 실행</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>kubectl<span class="w"> </span>cp<span class="w"> </span>&lt;pod&gt;:/path/file<span class="w"> </span>./local_file<span class="w">     </span><span class="c1"># 파일 복사 (Pod -&gt; Local)</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>kubectl<span class="w"> </span>cp<span class="w"> </span>./local_file<span class="w"> </span>&lt;pod&gt;:/path/file<span class="w">     </span><span class="c1"># 파일 복사 (Local -&gt; Pod)</span>
 </code></pre></div>
 <h3 id="pod">임시 디버깅 Pod 실행</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 네트워크 테스트용(curl, nslookup 등) 임시 Pod 실행 후 삭제</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>kubectl<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>debug<span class="w"> </span>--image<span class="o">=</span>busybox<span class="w"> </span>--restart<span class="o">=</span>Never<span class="w"> </span>--<span class="w"> </span>sh
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 네트워크 테스트용(curl, nslookup 등) 임시 Pod 실행 후 삭제</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>kubectl<span class="w"> </span>run<span class="w"> </span>-it<span class="w"> </span>--rm<span class="w"> </span>debug<span class="w"> </span>--image<span class="o">=</span>busybox<span class="w"> </span>--restart<span class="o">=</span>Never<span class="w"> </span>--<span class="w"> </span>sh
 </code></pre></div>
 <hr />
 <h2 id="6-deploy-scale">🔄 6. 앱 관리 및 스케일링 (Deploy &amp; Scale)</h2>
 <h3 id="_5">업데이트 및 롤백</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>kubectl<span class="w"> </span><span class="nb">set</span><span class="w"> </span>image<span class="w"> </span>deploy/&lt;name&gt;<span class="w"> </span><span class="nv">nginx</span><span class="o">=</span>nginx:1.19<span class="w"> </span><span class="c1"># 이미지 버전 업데이트 (롤링 업데이트)</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>status<span class="w"> </span>deploy/&lt;name&gt;<span class="w">         </span><span class="c1"># 배포 진행 상태 확인</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span><span class="nb">history</span><span class="w"> </span>deploy/&lt;name&gt;<span class="w">        </span><span class="c1"># 배포 이력(Revision) 확인</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deploy/&lt;name&gt;<span class="w">           </span><span class="c1"># 바로 이전 버전으로 롤백</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deploy/&lt;name&gt;<span class="w"> </span>--to-revision<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="c1"># 특정 버전으로 롤백</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>pause<span class="w"> </span>deploy/&lt;name&gt;<span class="w">          </span><span class="c1"># 배포 일시 정지</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>resume<span class="w"> </span>deploy/&lt;name&gt;<span class="w">         </span><span class="c1"># 배포 재개</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>kubectl<span class="w"> </span><span class="nb">set</span><span class="w"> </span>image<span class="w"> </span>deploy/&lt;name&gt;<span class="w"> </span><span class="nv">nginx</span><span class="o">=</span>nginx:1.19<span class="w"> </span><span class="c1"># 이미지 버전 업데이트 (롤링 업데이트)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>status<span class="w"> </span>deploy/&lt;name&gt;<span class="w">         </span><span class="c1"># 배포 진행 상태 확인</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span><span class="nb">history</span><span class="w"> </span>deploy/&lt;name&gt;<span class="w">        </span><span class="c1"># 배포 이력(Revision) 확인</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deploy/&lt;name&gt;<span class="w">           </span><span class="c1"># 바로 이전 버전으로 롤백</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>undo<span class="w"> </span>deploy/&lt;name&gt;<span class="w"> </span>--to-revision<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="c1"># 특정 버전으로 롤백</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>pause<span class="w"> </span>deploy/&lt;name&gt;<span class="w">          </span><span class="c1"># 배포 일시 정지</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>resume<span class="w"> </span>deploy/&lt;name&gt;<span class="w">         </span><span class="c1"># 배포 재개</span>
 </code></pre></div>
 <h3 id="scaling">스케일링 (Scaling)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>kubectl<span class="w"> </span>scale<span class="w"> </span>deploy/&lt;name&gt;<span class="w"> </span>--replicas<span class="o">=</span><span class="m">5</span><span class="w">     </span><span class="c1"># 수동 스케일링</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>kubectl<span class="w"> </span>autoscale<span class="w"> </span>deploy/&lt;name&gt;<span class="w"> </span>--min<span class="o">=</span><span class="m">2</span><span class="w"> </span>--max<span class="o">=</span><span class="m">10</span><span class="w"> </span>--cpu-percent<span class="o">=</span><span class="m">80</span><span class="w"> </span><span class="c1"># HPA(Auto Scaling) 설정</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>kubectl<span class="w"> </span>scale<span class="w"> </span>deploy/&lt;name&gt;<span class="w"> </span>--replicas<span class="o">=</span><span class="m">5</span><span class="w">     </span><span class="c1"># 수동 스케일링</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>kubectl<span class="w"> </span>autoscale<span class="w"> </span>deploy/&lt;name&gt;<span class="w"> </span>--min<span class="o">=</span><span class="m">2</span><span class="w"> </span>--max<span class="o">=</span><span class="m">10</span><span class="w"> </span>--cpu-percent<span class="o">=</span><span class="m">80</span><span class="w"> </span><span class="c1"># HPA(Auto Scaling) 설정</span>
 </code></pre></div>
 <hr />
 <h2 id="7-networking">🌐 7. 네트워크 (Networking)</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>-o<span class="w"> </span>wide<span class="w">                      </span><span class="c1"># 서비스 ClusterIP, Selector 확인</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>ing<span class="w">                              </span><span class="c1"># 인그레스(Ingress) 주소 확인</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>endpoints<span class="w"> </span>&lt;svc-name&gt;<span class="w">             </span><span class="c1"># 서비스와 연결된 실제 Pod IP(Endpoint) 확인</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>&lt;pod&gt;<span class="w"> </span><span class="m">8080</span>:80<span class="w">           </span><span class="c1"># 로컬 포트 포워딩 (Pod)</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;name&gt;<span class="w"> </span><span class="m">8080</span>:80<span class="w">      </span><span class="c1"># 로컬 포트 포워딩 (Service)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>svc<span class="w"> </span>-o<span class="w"> </span>wide<span class="w">                      </span><span class="c1"># 서비스 ClusterIP, Selector 확인</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>ing<span class="w">                              </span><span class="c1"># 인그레스(Ingress) 주소 확인</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>endpoints<span class="w"> </span>&lt;svc-name&gt;<span class="w">             </span><span class="c1"># 서비스와 연결된 실제 Pod IP(Endpoint) 확인</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>&lt;pod&gt;<span class="w"> </span><span class="m">8080</span>:80<span class="w">           </span><span class="c1"># 로컬 포트 포워딩 (Pod)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>kubectl<span class="w"> </span>port-forward<span class="w"> </span>svc/&lt;name&gt;<span class="w"> </span><span class="m">8080</span>:80<span class="w">      </span><span class="c1"># 로컬 포트 포워딩 (Service)</span>
 </code></pre></div>
 <hr />
 <h2 id="8-delete-clean-up">🗑 8. 삭제 및 정리 (Delete &amp; Clean up)</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>filename.yaml<span class="w">              </span><span class="c1"># 파일 기준 삭제</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>po<span class="w"> </span>&lt;pod&gt;<span class="w">                      </span><span class="c1"># Pod 삭제</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>po<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx<span class="w">               </span><span class="c1"># 라벨 기준 일괄 삭제</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>ns<span class="w"> </span>&lt;name&gt;<span class="w">                     </span><span class="c1"># 네임스페이스 삭제 (내부 리소스 전체 삭제됨)</span>
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="c1"># [강제 삭제] 종료(Terminating) 상태에서 멈춘 Pod 삭제</span>
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>--grace-period<span class="o">=</span><span class="m">0</span><span class="w"> </span>--force
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>-f<span class="w"> </span>filename.yaml<span class="w">              </span><span class="c1"># 파일 기준 삭제</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>po<span class="w"> </span>&lt;pod&gt;<span class="w">                      </span><span class="c1"># Pod 삭제</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>po<span class="w"> </span>-l<span class="w"> </span><span class="nv">app</span><span class="o">=</span>nginx<span class="w">               </span><span class="c1"># 라벨 기준 일괄 삭제</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>ns<span class="w"> </span>&lt;name&gt;<span class="w">                     </span><span class="c1"># 네임스페이스 삭제 (내부 리소스 전체 삭제됨)</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># [강제 삭제] 종료(Terminating) 상태에서 멈춘 Pod 삭제</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>pod<span class="w"> </span>&lt;pod&gt;<span class="w"> </span>--grace-period<span class="o">=</span><span class="m">0</span><span class="w"> </span>--force
 </code></pre></div>
 <hr />
 <h2 id="9-node-maintenance-">🏗 9. 노드 유지보수 (Node Maintenance) - 관리자용</h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>kubectl<span class="w"> </span>cordon<span class="w"> </span>&lt;node&gt;<span class="w">                        </span><span class="c1"># 스케줄링 중단 (신규 Pod 배치 금지)</span>
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>kubectl<span class="w"> </span>uncordon<span class="w"> </span>&lt;node&gt;<span class="w">                      </span><span class="c1"># 스케줄링 재개</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>kubectl<span class="w"> </span>drain<span class="w"> </span>&lt;node&gt;<span class="w"> </span>--ignore-daemonsets<span class="w">     </span><span class="c1"># 노드 비우기 (기존 Pod를 다른 노드로 이동)</span>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>kubectl<span class="w"> </span>taint<span class="w"> </span>nodes<span class="w"> </span>&lt;node&gt;<span class="w"> </span><span class="nv">key</span><span class="o">=</span>value:NoSchedule<span class="w"> </span><span class="c1"># 테인트 설정 (특정 Pod만 오게 함)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>kubectl<span class="w"> </span>cordon<span class="w"> </span>&lt;node&gt;<span class="w">                        </span><span class="c1"># 스케줄링 중단 (신규 Pod 배치 금지)</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>kubectl<span class="w"> </span>uncordon<span class="w"> </span>&lt;node&gt;<span class="w">                      </span><span class="c1"># 스케줄링 재개</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>kubectl<span class="w"> </span>drain<span class="w"> </span>&lt;node&gt;<span class="w"> </span>--ignore-daemonsets<span class="w">     </span><span class="c1"># 노드 비우기 (기존 Pod를 다른 노드로 이동)</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>kubectl<span class="w"> </span>taint<span class="w"> </span>nodes<span class="w"> </span>&lt;node&gt;<span class="w"> </span><span class="nv">key</span><span class="o">=</span>value:NoSchedule<span class="w"> </span><span class="c1"># 테인트 설정 (특정 Pod만 오게 함)</span>
 </code></pre></div>
 <hr />
 <h2 id="10-security-auth-tokens">🔐 10. 보안, 권한 및 토큰 관리 (Security, Auth &amp; Tokens)</h2>
 <p>내부 권한 확인(RBAC)과 만료된 클라우드(CSP) 인증 토큰을 갱신하는 필수 명령어입니다.</p>
 <h3 id="_6">👨‍👩‍👧‍👦 역할 확인</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>serviceaccounts<span class="w">                  </span><span class="c1"># 서비스 어카운트 목록</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>clusterroles<span class="w">                     </span><span class="c1"># 클러스터 권한 목록</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>serviceaccounts<span class="w">                  </span><span class="c1"># 서비스 어카운트 목록</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>clusterroles<span class="w">                     </span><span class="c1"># 클러스터 권한 목록</span>
 </code></pre></div>
 <h3 id="csp-token-expired">☁️ 클라우드(CSP) 인증 토큰 갱신 (Token Expired 해결)</h3>
 <p><em>"You must be logged in to the server"</em> 에러가 뜰 때, 각 클라우드 CLI로 <code>kubeconfig</code>를 갱신합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># AWS EKS (Amazon)</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># GCP GKE (Google)</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>get-credentials<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># Azure AKS (Microsoft)</span>
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class="w"> </span>--resource-group<span class="w"> </span>&lt;rg-name&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;cluster-name&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># AWS EKS (Amazon)</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>aws<span class="w"> </span>eks<span class="w"> </span>update-kubeconfig<span class="w"> </span>--name<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># GCP GKE (Google)</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>gcloud<span class="w"> </span>container<span class="w"> </span>clusters<span class="w"> </span>get-credentials<span class="w"> </span>&lt;cluster-name&gt;<span class="w"> </span>--region<span class="w"> </span>&lt;region&gt;
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="c1"># Azure AKS (Microsoft)</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a>az<span class="w"> </span>aks<span class="w"> </span>get-credentials<span class="w"> </span>--resource-group<span class="w"> </span>&lt;rg-name&gt;<span class="w"> </span>--name<span class="w"> </span>&lt;cluster-name&gt;
 </code></pre></div>
 <h3 id="service-account">🔑 서비스 어카운트 토큰 관리 (Service Account)</h3>
 <p>CI/CD 연동이나 대시보드 로그인용 토큰을 발급합니다. (K8s v1.24+ 필수)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># [Modern] 토큰 즉시 발급 (유효기간 설정 가능)</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>kubectl<span class="w"> </span>create<span class="w"> </span>token<span class="w"> </span>&lt;service-account-name&gt;<span class="w"> </span>--duration<span class="o">=</span>24h
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="c1"># [Legacy] 기존 Secret 기반 토큰 추출 (Base64 디코딩)</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>&lt;secret-name&gt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.data.token}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># [Modern] 토큰 즉시 발급 (유효기간 설정 가능)</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>kubectl<span class="w"> </span>create<span class="w"> </span>token<span class="w"> </span>&lt;service-account-name&gt;<span class="w"> </span>--duration<span class="o">=</span>24h
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># [Legacy] 기존 Secret 기반 토큰 추출 (Base64 디코딩)</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>&lt;secret-name&gt;<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.data.token}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode
 </code></pre></div>
 <h3 id="rbac-check">🛡️ 권한 확인 (RBAC Check)</h3>
 <p>현재 사용자나 특정 계정이 작업을 수행할 권한이 있는지 확인합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># &quot;내가 배포(Deployment)를 만들 수 있나?&quot; (Yes/No 반환)</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>deployments
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>
-<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="c1"># 특정 네임스페이스에서 권한 확인</span>
-<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;
-<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>
-<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="c1"># [관리자용] 특정 서비스 어카운트(sa)가 권한이 있는지 확인 (impersonate)</span>
-<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>--as<span class="o">=</span>system:serviceaccount:&lt;ns&gt;:&lt;sa-name&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># &quot;내가 배포(Deployment)를 만들 수 있나?&quot; (Yes/No 반환)</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>create<span class="w"> </span>deployments
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># 특정 네임스페이스에서 권한 확인</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>delete<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>&lt;namespace&gt;
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="c1"># [관리자용] 특정 서비스 어카운트(sa)가 권한이 있는지 확인 (impersonate)</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a>kubectl<span class="w"> </span>auth<span class="w"> </span>can-i<span class="w"> </span>get<span class="w"> </span>nodes<span class="w"> </span>--as<span class="o">=</span>system:serviceaccount:&lt;ns&gt;:&lt;sa-name&gt;
 </code></pre></div>
 <h3 id="kubeadm">🎫 클러스터 조인 토큰 (Kubeadm 전용)</h3>
 <p>온프레미스(On-premise) 환경에서 노드를 추가할 때 사용합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># 유효한 조인 토큰 목록 확인</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>kubeadm<span class="w"> </span>token<span class="w"> </span>list
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="c1"># 토큰이 만료되었을 때 재생성 (조인 명령어 전체 출력)</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>kubeadm<span class="w"> </span>token<span class="w"> </span>create<span class="w"> </span>--print-join-command
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># 유효한 조인 토큰 목록 확인</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>kubeadm<span class="w"> </span>token<span class="w"> </span>list
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="c1"># 토큰이 만료되었을 때 재생성 (조인 명령어 전체 출력)</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a>kubeadm<span class="w"> </span>token<span class="w"> </span>create<span class="w"> </span>--print-join-command
 </code></pre></div>
 <hr />
 <h3 id="tips">💡 팁 (Tips)</h3>
@@ -2087,49 +2150,49 @@
 <p>Kubernetes의 <code>apt</code>나 <code>yum</code> 같은 패키지 매니저, Helm의 필수 명령어입니다.</p>
 <h3 id="1-repo">1. 저장소(Repo) 관리</h3>
 <p>차트(패키지)를 다운로드할 저장소를 관리합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;name&gt;<span class="w"> </span>&lt;url&gt;<span class="w">       </span><span class="c1"># 저장소 추가 (예: bitnami https://charts.bitnami.com/bitnami)</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>update<span class="w">                 </span><span class="c1"># 저장소 최신 정보 갱신 (apt update와 동일)</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>list<span class="w">                   </span><span class="c1"># 등록된 저장소 목록 확인</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a>helm<span class="w"> </span>search<span class="w"> </span>repo<span class="w"> </span>&lt;keyword&gt;<span class="w">       </span><span class="c1"># 차트 검색 (예: helm search repo nginx)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>&lt;name&gt;<span class="w"> </span>&lt;url&gt;<span class="w">       </span><span class="c1"># 저장소 추가 (예: bitnami https://charts.bitnami.com/bitnami)</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>update<span class="w">                 </span><span class="c1"># 저장소 최신 정보 갱신 (apt update와 동일)</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>list<span class="w">                   </span><span class="c1"># 등록된 저장소 목록 확인</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>helm<span class="w"> </span>search<span class="w"> </span>repo<span class="w"> </span>&lt;keyword&gt;<span class="w">       </span><span class="c1"># 차트 검색 (예: helm search repo nginx)</span>
 </code></pre></div>
 <h3 id="2-install-manage">2. 설치 및 관리 (Install &amp; Manage)</h3>
 <p>애플리케이션(Release)을 설치하고 업그레이드합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="c1"># 차트 설치 (기본)</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>helm<span class="w"> </span>install<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="c1"># 예: helm install my-nginx bitnami/nginx</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="c1"># 특정 네임스페이스에 설치하며 네임스페이스 자동 생성</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>helm<span class="w"> </span>install<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;ns&gt;<span class="w"> </span>--create-namespace
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="c1"># 설정 값(values.yaml)을 변경하며 설치</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a>helm<span class="w"> </span>install<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;<span class="w"> </span>--set<span class="w"> </span><span class="nv">replicaCount</span><span class="o">=</span><span class="m">3</span>
-<a id="__codelineno-20-10" name="__codelineno-20-10" href="#__codelineno-20-10"></a>
-<a id="__codelineno-20-11" name="__codelineno-20-11" href="#__codelineno-20-11"></a><span class="c1"># 사용자 정의 values 파일로 설치</span>
-<a id="__codelineno-20-12" name="__codelineno-20-12" href="#__codelineno-20-12"></a>helm<span class="w"> </span>install<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;<span class="w"> </span>-f<span class="w"> </span>values.yaml
-<a id="__codelineno-20-13" name="__codelineno-20-13" href="#__codelineno-20-13"></a>
-<a id="__codelineno-20-14" name="__codelineno-20-14" href="#__codelineno-20-14"></a><span class="c1"># 배포된 앱 목록 확인</span>
-<a id="__codelineno-20-15" name="__codelineno-20-15" href="#__codelineno-20-15"></a>helm<span class="w"> </span>list<span class="w"> </span>-A<span class="w">  </span><span class="c1"># 모든 네임스페이스 조회</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># 차트 설치 (기본)</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>helm<span class="w"> </span>install<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="c1"># 예: helm install my-nginx bitnami/nginx</span>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="c1"># 특정 네임스페이스에 설치하며 네임스페이스 자동 생성</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>helm<span class="w"> </span>install<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;<span class="w"> </span>-n<span class="w"> </span>&lt;ns&gt;<span class="w"> </span>--create-namespace
+<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>
+<a id="__codelineno-21-8" name="__codelineno-21-8" href="#__codelineno-21-8"></a><span class="c1"># 설정 값(values.yaml)을 변경하며 설치</span>
+<a id="__codelineno-21-9" name="__codelineno-21-9" href="#__codelineno-21-9"></a>helm<span class="w"> </span>install<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;<span class="w"> </span>--set<span class="w"> </span><span class="nv">replicaCount</span><span class="o">=</span><span class="m">3</span>
+<a id="__codelineno-21-10" name="__codelineno-21-10" href="#__codelineno-21-10"></a>
+<a id="__codelineno-21-11" name="__codelineno-21-11" href="#__codelineno-21-11"></a><span class="c1"># 사용자 정의 values 파일로 설치</span>
+<a id="__codelineno-21-12" name="__codelineno-21-12" href="#__codelineno-21-12"></a>helm<span class="w"> </span>install<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;<span class="w"> </span>-f<span class="w"> </span>values.yaml
+<a id="__codelineno-21-13" name="__codelineno-21-13" href="#__codelineno-21-13"></a>
+<a id="__codelineno-21-14" name="__codelineno-21-14" href="#__codelineno-21-14"></a><span class="c1"># 배포된 앱 목록 확인</span>
+<a id="__codelineno-21-15" name="__codelineno-21-15" href="#__codelineno-21-15"></a>helm<span class="w"> </span>list<span class="w"> </span>-A<span class="w">  </span><span class="c1"># 모든 네임스페이스 조회</span>
 </code></pre></div>
 <h3 id="3-upgrade-uninstall">3. 업그레이드 및 삭제 (Upgrade &amp; Uninstall)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="c1"># 차트 버전 업그레이드 또는 설정 변경</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;<span class="w"> </span>-f<span class="w"> </span>new-values.yaml
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a><span class="c1"># 배포된 앱 삭제</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>&lt;release-name&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># 차트 버전 업그레이드 또는 설정 변경</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;<span class="w"> </span>-f<span class="w"> </span>new-values.yaml
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># 배포된 앱 삭제</span>
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>helm<span class="w"> </span>uninstall<span class="w"> </span>&lt;release-name&gt;
 </code></pre></div>
 <h3 id="4-debug-verify">4. 디버깅 및 검증 (Debug &amp; Verify)</h3>
 <p><strong>Pro Tip:</strong> <code>helm template</code>은 실제로 클러스터에 설치하지 않고, 생성될 YAML 파일만 미리 보여줍니다. (<code>--dry-run</code>과 유사)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># 렌더링될 YAML 미리보기 (설치 전 검증 필수 단계)</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>helm<span class="w"> </span>template<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;<span class="w"> </span>-f<span class="w"> </span>values.yaml<span class="w"> </span>&gt;<span class="w"> </span>result.yaml
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="c1"># 현재 실행 중인 릴리즈의 적용된 values 값 확인</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>helm<span class="w"> </span>get<span class="w"> </span>values<span class="w"> </span>&lt;release-name&gt;
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>
-<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a><span class="c1"># 현재 실행 중인 릴리즈의 전체 Manifest 확인</span>
-<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>helm<span class="w"> </span>get<span class="w"> </span>manifest<span class="w"> </span>&lt;release-name&gt;
-<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>
-<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a><span class="c1"># 릴리즈의 배포 이력 및 상태 확인</span>
-<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>helm<span class="w"> </span>status<span class="w"> </span>&lt;release-name&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="c1"># 렌더링될 YAML 미리보기 (설치 전 검증 필수 단계)</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>helm<span class="w"> </span>template<span class="w"> </span>&lt;release-name&gt;<span class="w"> </span>&lt;repo/chart&gt;<span class="w"> </span>-f<span class="w"> </span>values.yaml<span class="w"> </span>&gt;<span class="w"> </span>result.yaml
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="c1"># 현재 실행 중인 릴리즈의 적용된 values 값 확인</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>helm<span class="w"> </span>get<span class="w"> </span>values<span class="w"> </span>&lt;release-name&gt;
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="c1"># 현재 실행 중인 릴리즈의 전체 Manifest 확인</span>
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>helm<span class="w"> </span>get<span class="w"> </span>manifest<span class="w"> </span>&lt;release-name&gt;
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="c1"># 릴리즈의 배포 이력 및 상태 확인</span>
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>helm<span class="w"> </span>status<span class="w"> </span>&lt;release-name&gt;
 </code></pre></div>
 
 
