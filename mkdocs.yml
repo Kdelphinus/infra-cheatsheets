@@ -50,6 +50,8 @@ nav:
       - 'PCI Placement': openstack/gpu/pci-placement.md
     - Utils:
       - 'Golden Image 생성': openstack/utils/golden-image.md
+    - Troubleshooting:
+      - 'OpenStack K8s 네트워크 통신 장애 및 Harbor 배포 실패': openstack/troubleshooting/k8s-network-error.md
     - "Cheat Sheets": openstack/CheatSheet.md
   - Kubernetes:
     - 'Cheat Sheets': k8s/CheatSheet.md
