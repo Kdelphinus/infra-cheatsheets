@@ -1,5 +1,5 @@
 site_name: Infra Cheatsheets
-site_url: https://Kdelphinus.github.io/infra-cheatsheets/
+site_url: https://kdelphinus.github.io/infra-cheatsheets/
 repo_url: https://github.com/Kdelphinus/infra-cheatsheets/
 edit_uri: edit/main/docs/
 
@@ -37,6 +37,11 @@ markdown_extensions:
   - tables                   # 마크다운 테이블 지원
   - attr_list            # HTML 속성 적용
   - md_in_html           # HTML 태그 안에 마크다운 사용
+
+plugins:
+  - search    # 검색 기능 (기본값이지만 명시하는 것이 좋음)
+  - sitemap:  # sitemap 플러그인 명시
+      file: sitemap.xml
 
 # 메뉴 구조
 nav:
