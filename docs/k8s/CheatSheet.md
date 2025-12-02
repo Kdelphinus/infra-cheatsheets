@@ -4,11 +4,22 @@
 
 가장 먼저 설정해야 할 필수 기능입니다.
 
+### bash
+
 ```bash
 source <(kubectl completion bash) # 현재 세션에 적용
 echo "source <(kubectl completion bash)" >> ~/.bashrc # 영구 적용
 alias k=kubectl # 'k' 단축키 설정
 complete -o default -F __start_kubectl k # 'k' 단축키에도 자동완성 적용
+```
+
+### zsh
+
+```zsh
+source <(kubectl completion zsh)  # set up autocomplete in zsh into the current shell
+echo '[[ $commands[kubectl] ]] && source <(kubectl completion zsh)' >> ~/.zshrc # add autocomplete permanently to your zsh shell
+alias k=kubectl
+complete -o default -F __start_kubectl k
 ```
 
 -----
