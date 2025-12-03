@@ -55,6 +55,8 @@ nav:
       - 'WSL 네트워크 설정': ubuntu/wsl/wsl-network-setting.md
   - Git:
     - 'Cheat Sheets': git/cheatsheet.md
+  - IDE:
+    - 'VSCode 단축키': ide/vscode_shortcut.md
   - OpenStack:
     - 'Cheat Sheets': openstack/cheatsheet.md
     - Base:
