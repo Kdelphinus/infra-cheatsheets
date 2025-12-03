@@ -60,6 +60,7 @@ nav:
   - OpenStack:
     - 'Cheat Sheets': openstack/cheatsheet.md
     - Base:
+      - 'Openstack 서비스 목록': openstack/base/reference.md
       - '설치': openstack/base/install.md
       - 'API 명세': openstack/base/api.md
     - About GPU:
