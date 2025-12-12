@@ -44,19 +44,28 @@ plugins:
 # 메뉴 구조
 nav:
   - Home: index.md
-  - Network:
-    - Tip:
-      - '도메인 실제 IP 체크': network/tip/check-domain-ip.md
   - Kubernetes:
+    - 폐쇄망:
+      - '1. 폐쇄망용 설치 파일 준비': k8s/install/ready-k8s-air-gapped-install.md
+      - '2. 폐쇄망에서 K8s 설치': k8s/install/k8s-air-gapped-install.md
+      - '3. 폐쇄망에서 Helm, Harbor, Ingress Controller 설치': k8s/install/necessary_infra_install.md
     - 'Cheat Sheets': k8s/cheatsheet.md
   - Ubuntu:
     - 'Ubuntu 기본 설정': ubuntu/init-ubuntu-env.md
     - WSL:
       - 'WSL 네트워크 설정': ubuntu/wsl/wsl-network-setting.md
+  - DB:
+    - HA:
+      - 'Galera Cluster 설치': db/ha/galera-cluster.md
+    - Install:
+      - '폐쇄망용 설치 파일 준비': db/install/ready-mariadb-air-gapped-install.md
   - Git:
     - 'Cheat Sheets': git/cheatsheet.md
   - IDE:
     - 'VSCode 단축키': ide/vscode_shortcut.md
+  - Network:
+    - Tip:
+      - '도메인 실제 IP 체크': network/tip/check-domain-ip.md
   - OpenStack:
     - 'Cheat Sheets': openstack/cheatsheet.md
     - Base:
