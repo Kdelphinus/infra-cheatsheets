@@ -76,6 +76,7 @@ nav:
       - 'GPU 노드 초기화': openstack/gpu/init-gpu-node.md
       - 'PCI Placement': openstack/gpu/pci-placement.md
     - Utils:
+      - 'Cloud Init 비정상 동작 시': openstack/utils/cloud-init.md
       - 'Golden Image 생성': openstack/utils/golden-image.md
     - Troubleshooting:
       - 'OpenStack K8s 네트워크 통신 장애 및 Harbor 배포 실패': openstack/troubleshooting/k8s-network-error.md
