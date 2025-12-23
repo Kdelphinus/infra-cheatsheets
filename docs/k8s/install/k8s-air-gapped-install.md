@@ -5,9 +5,12 @@
   - kubelet: 1.30.14
 - 폐쇄망용 K8s 설치 파일이 준비되어 있어야 합니다.
 
+> 만약 폐쇄망용 환경을 만든다면, 각 노드들간의 통신과 `169.254.169.254/32` 80포트의 아웃바운드 규칙은 허용되어 있어야 합니다.
+> `169.254.169.254/32` 는 cloud-init이 메타데이터를 받아오는 ip입니다.
+
 ## 📦 Phase 0: 파일 배포 (Master -> Workers)
 
-현재 마스터 노드(`Master`)에 `dist-for-k8s-nodes.tar.gz` 파일이 있다고 가정합니다.
+현재 마스터 노드(`Master`)에 `k8s-1.30-for-air-gapped.tar.gz` 파일이 있다고 가정합니다.
 설치를 위해 **워커 노드 3대에도 이 파일이 똑같이 있어야 합니다.**
 
 **[실행 위치: K8s-Master-Node]**
@@ -19,14 +22,14 @@ WORKER_IPS=("10.10.10.73" "10.10.10.74" "10.10.10.75")
 # 반복문으로 파일 전송
 for IP in "${WORKER_IPS[@]}"; do
     echo "Sending file to $IP..."
-    scp ~/dist-for-k8s-nodes.tar.gz rocky@$IP:~/
+    scp ~/k8s-1.30-for-air-gapped.tar.gz rocky@$IP:~/
 done
 ```
 
 > **Note:** 전송이 끝나면, \*\*모든 노드(Master 1대, Worker 3대)\*\*에서 압축을 풀어주세요.
 >
 > ```bash
-> tar -zxvf ~/dist-for-k8s-nodes.tar.gz
+> tar -zxvf ~/k8s-1.30-for-air-gapped.tar.gz
 > ```
 
 -----
@@ -39,11 +42,9 @@ Repo 설정(`yum.repos.d`)을 건드리지 않고, `dnf` 명령어로 다운받�
 
 ### 1. RPM 파일 설치 (Local Install)
 
-파일에 9.7 버전을 포함하고 있어서 이를 9.6으로 강제 설치하는 방법을 사용합니다.
-
 ```bash
 # 압축 푼 디렉토리로 이동
-cd ~/offline-dist-split
+cd ~/k8s-1.30-for-air-gapped
 
 # 1. 기존 Repo 비활성화 후 로컬 RPM 일괄 설치
 # -Uvh: Upgrade (설치 또는 업그레이드) + Verbose (상세표시) + Hash (진행바)
@@ -97,9 +98,46 @@ sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/conf
 # 3. pause 버전 변경(이전 설치 파일에서 3.9 버전으로 준비)
 sudo sed -i 's/pause:3.10.1/pause:3.9/g' /etc/containerd/config.toml
 
-# 3. 서비스 시작
+# 4. harbor 설정을 위한 옵션값 수정
+sudo sed -i "s|config_path = '/etc/containerd/certs.d:/etc/docker/certs.d'|config_path = '/etc/containerd/certs.d'|g" /etc/containerd/config.toml 
+
+# 5. 서비스 시작
 sudo systemctl enable --now containerd
 sudo systemctl enable --now kubelet
+```
+
+만약 컨테이너 이미지도 `/app` 폴더 안으로 이동해야 한다면 파일 링크를 걸어줍니다.
+
+```bash
+# 만약 실행 중이라면
+# 실행 중인 컨테이너 런타임 중지
+sudo systemctl stop containerd
+sudo systemctl stop kubelet
+```
+
+```bash
+# 1. 실제 데이터를 저장할 폴더 생성
+sudo mkdir -p /app/containerd_data
+
+# 2. (만약 이미 데이터가 있었다면) 기존 데이터 이동
+# 처음 설치라면 생략 가능하지만, 안전을 위해 확인
+if [ -d "/var/lib/containerd" ]; then
+    sudo mv /var/lib/containerd/* /app/containerd_data/
+    sudo rmdir /var/lib/containerd
+fi
+
+# 3. 링크 생성: /var/lib/containerd -> /app/containerd_data
+sudo ln -s /app/containerd_data /var/lib/containerd
+
+# 4. 확인 (화살표가 보여야 함)
+ls -ld /var/lib/containerd
+# 결과 예시: lrwxrwxrwx ... /var/lib/containerd -> /app/containerd_data
+```
+
+```bash
+# 서비스 재시작
+sudo systemctl start containerd
+sudo systemctl start kubelet
 ```
 
 ### 4. hosts 파일 설정
@@ -123,7 +161,7 @@ Repo가 없으니 `docker pull`은 불가능합니다. 가져온 `.tar` 파일�
 
 ```bash
 # 이미지 폴더로 이동
-cd ~/offline-dist-split/k8s/images
+cd ~/k8s-1.30-for-air-gapped/k8s/images
 
 # 반복문으로 로드 (시간 소요됨)
 # k8s.io 네임스페이스에 이미지를 등록합니다.
@@ -139,6 +177,8 @@ sudo ctr -n k8s.io images list | grep kube-apiserver
 -----
 
 ## 🚀 Phase 3: 로드밸런서(LB) 구성 (Master가 1대라면 Phase 4로 넘어갑니다)
+
+> Master 1대면 Phasre 4로 넘어가시면 됩니다.
 
 Master 노드 3대(`10.10.10.70`, `71`, `72`)와 **가상 IP(VIP, `10.10.10.200`)** 를 환경을 가정했습니다.
 
@@ -324,10 +364,12 @@ ip addr show eth0  # (또는 설정한 인터페이스)
 ```bash
 # 1. 초기화 실행 (HA 모드)
 # --upload-certs: 인증서를 K8s Secret에 올려서 다른 마스터가 쉽게 조인하게 함
+# service-cidr, pod-network-cidr, host network가 겹치지 않도록 조정 필요
 sudo kubeadm init \
   --control-plane-endpoint "10.10.10.200:6443" \
   --upload-certs \
   --pod-network-cidr=192.168.0.0/16 \
+  --service-cidr=10.96.0.0/12 \
   --kubernetes-version v1.30.0
 ```
 
@@ -341,11 +383,93 @@ sudo kubeadm init \
 ```bash
 # 1. 초기화 실행 (단일 모드)
 # 엔드포인트에 본인 IP(10.10.10.70)를 넣거나 아예 생략 가능
+# service-cidr, pod-network-cidr, host network가 겹치지 않도록 조정 필요
 sudo kubeadm init \
   --control-plane-endpoint "10.10.10.70:6443" \
+  --service-cidr=10.200.0.0/16 \ 
   --pod-network-cidr=192.168.0.0/16 \
+  --service-cidr=10.96.0.0/12 \
   --kubernetes-version v1.30.0
 ```
+
+### CIDR가 잘 설정되었는지 확인 방법
+
+`kube-controller-manager` 을 확인합니다.
+
+```bash
+kubectl get pod -n kube-system po <kube-controller-manager pod name> -o yaml | grep cluster
+```
+
+이때 `--cluster-cidr` 값이 설정한 pod 대역으로, `--service-cluster-ip-range` 가 설정한 service 대역으로 나와야 합니다.
+
+calico의 IP Pool도 확인하여 pod의 ip와 동일한 대역으로 설정되어 있는지 확인합니다.
+
+```bash
+kubectl get ippools -o yaml
+```
+
+### 오류 발생으로 재설치 시
+
+#### 🧹 1단계: Kubeadm Reset 실행 (가장 중요)
+
+먼저 `kubeadm`이 생성한 리소스들을 공식 명령어로 되돌려야 합니다.
+
+```bash
+# -f 옵션은 확인 질문 없이 강제로 진행합니다.
+sudo kubeadm reset -f
+```
+
+#### 🧽 2단계: 네트워크 설정 및 잔여 파일 제거 (필수)
+
+`reset` 명령어가 지우지 않는 CNI 설정과 사용자 설정 파일을 수동으로 지워야 꼬이지 않습니다. 특히 `--pod-network-cidr` 옵션을 바꾸거나 다시 설정할 때 이 과정이 없으면 문제가 생깁니다.
+
+```bash
+# CNI 네트워크 설정 파일 삭제 (이전 설정이 남아 충돌 방지)
+sudo rm -rf /etc/cni/net.d
+
+# root 또는 현재 사용자의 kube 설정 폴더 삭제
+rm -rf $HOME/.kube
+sudo rm -rf /root/.kube
+
+# (선택) 이전 데이터가 남아있을 수 있는 etcd 등 폴더 삭제
+# kubeadm reset이 대부분 처리하지만 확실하게 하기 위함
+sudo rm -rf /var/lib/etcd
+sudo rm -rf /var/lib/kubelet
+```
+
+#### 🔄 3단계: IPtables 규칙 초기화 및 런타임 재시작
+
+네트워크 라우팅 규칙(iptables)이 메모리에 남아 있으면, 재설치 후 파드(Pod) 통신이 안 될 수 있습니다. **이 과정은 매우 중요합니다.**
+
+```bash
+# iptables 규칙 초기화
+sudo iptables -F && sudo iptables -t nat -F && sudo iptables -t mangle -F && sudo iptables -X
+
+# 컨테이너 런타임 재시작 (보통 containerd를 사용하실 겁니다)
+sudo systemctl restart containerd
+# 만약 docker를 쓴다면: sudo systemctl restart docker
+```
+
+-----
+
+#### ▶️ 4단계: 다시 실행
+
+이제 시스템이 깨끗해졌습니다. 다시 명령어를 실행하기 전에 **Swap 메모리가 꺼져 있는지** 한 번 더 확인하세요. (재부팅했다면 다시 켜졌을 수 있습니다.)
+
+```bash
+# Swap 비활성화 확인
+sudo swapoff -a
+
+# 초기화 명령어 다시 실행
+sudo kubeadm init \
+  --control-plane-endpoint "10.10.10.200:6443" \
+  --upload-certs \
+  --pod-network-cidr=192.168.0.0/16 \
+  --service-cidr=10.96.0.0/12 \
+  --kubernetes-version v1.30.0
+```
+
+**Tip:** 만약 `10.10.10.200` IP가 현재 서버의 IP가 아니라 로드밸런서 VIP라면, 해당 IP로 통신이 가능한 상태인지 먼저 확인하시기 바랍니다. 단일 마스터 노드라면 현재 서버 IP를 입력해야 합니다.
 
 -----
 
@@ -367,11 +491,13 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 CNI 설치는 단일/다중 마스터 여부와 상관없이 **동일합니다.**
 마스터 노드가 `NotReady` 상태에서 `Ready` 상태로 바뀌게 해줍니다.
 
+이때 `calico.yaml` 파일 내부에 있는 `CALICO_IPV4POOL_CIDR` 값과 k8s의 `pod-network-cidr` 값이 동일해야 합니다.
+
 **[실행 위치: K8s-Master-Node-1]**
 
 ```bash
 # 1. Calico 매니페스트 위치로 이동
-cd ~/offline-dist-split/k8s/utils
+cd ~/k8s-1.30-for-air-gapped/k8s/utils
 
 # 2. Calico 설치
 kubectl apply -f calico.yaml

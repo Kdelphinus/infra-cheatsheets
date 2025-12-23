@@ -103,6 +103,21 @@ sudo dnf install -y ./*.rpm --disablerepo=* --skip-broken
 sudo systemctl enable mariadb
 ```
 
+저장 경로를 변경하려면 미리 경로에 디렉토리를 생성해야 합니다.
+
+```bash
+# 1. 데이터 저장소 폴더 생성 (예: /app/mariadb_data)
+sudo mkdir -p /app/mariadb_data
+
+# 2. 소유권 변경 (mysql 계정은 RPM 설치 시 자동 생성됨)
+sudo chown -R mysql:mysql /app/mariadb_data
+sudo chmod 750 /app/mariadb_data
+
+# 3. (중요) DB 초기화
+# 경로를 바꿨기 때문에 기본 생성된 데이터가 없습니다. 수동으로 시스템 테이블을 깔아줘야 합니다.
+sudo mysql_install_db --user=mysql --datadir=/app/mariadb_data
+```
+
 -----
 
 ## 4\. Galera 설정 파일 작성 (3대 공통)
@@ -120,6 +135,10 @@ sudo vi /etc/my.cnf.d/01-galera.cnf
 # ----------------------------------------------
 # 1. 기본 및 호환성 설정 (Basic & Compatibility)
 # ----------------------------------------------
+datadir=/app/mariadb_data
+# 소켓 파일은 가급적 기본 위치 유지 권장 (클라이언트 접속 편의성)
+# 만약 소켓도 옮기고 싶다면 socket=/app/mariadb_data/mysql.sock 추가
+
 bind-address=0.0.0.0
 default_storage_engine=InnoDB
 binlog_format=ROW
