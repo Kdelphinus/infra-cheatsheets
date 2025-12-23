@@ -2,82 +2,86 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/db/ha/galera-cluster/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/db/install/ready-mariadb-air-gapped-install/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/git/cheatsheet/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/ide/vscode_shortcut/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/k8s/cheatsheet/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/k8s/install/k8s-air-gapped-install/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/k8s/install/necessary_infra_install/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/k8s/install/ready-k8s-air-gapped-install/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/network/tip/check-domain-ip/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/openstack/cheatsheet/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/openstack/base/api/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/openstack/base/install/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/openstack/base/reference/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/openstack/gpu/init-gpu-node/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/openstack/gpu/pci-placement/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/openstack/troubleshooting/k8s-network-error/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
+    </url>
+    <url>
+         <loc>https://kdelphinus.github.io/infra-cheatsheets/openstack/utils/cloud-init/</loc>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/openstack/utils/golden-image/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/ubuntu/init-ubuntu-env/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
     <url>
          <loc>https://kdelphinus.github.io/infra-cheatsheets/ubuntu/wsl/wsl-network-setting/</loc>
-         <lastmod>2025-12-12</lastmod>
+         <lastmod>2025-12-23</lastmod>
     </url>
 </urlset>

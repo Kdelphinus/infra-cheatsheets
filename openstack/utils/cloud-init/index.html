@@ -8,31 +8,31 @@
       
       
       
-        <link rel="canonical" href="https://kdelphinus.github.io/infra-cheatsheets/openstack/cheatsheet/">
+        <link rel="canonical" href="https://kdelphinus.github.io/infra-cheatsheets/openstack/utils/cloud-init/">
       
       
-        <link rel="prev" href="../../network/tip/check-domain-ip/">
+        <link rel="prev" href="../../gpu/pci-placement/">
       
       
-        <link rel="next" href="../base/reference/">
+        <link rel="next" href="../golden-image/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
     
     
       
-        <title>Cheat Sheets - Infra Cheatsheets</title>
+        <title>Cloud Init 비정상 동작 시 - Infra Cheatsheets</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -51,7 +51,7 @@
       
     
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#openstack-cli-cheat-sheet" class="md-skip">
+        <a href="#cloud-init" class="md-skip">
           콘텐츠로 이동
         </a>
       
@@ -90,7 +90,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="상단/헤더">
-    <a href="../.." title="Infra Cheatsheets" class="md-header__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
+    <a href="../../.." title="Infra Cheatsheets" class="md-header__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -110,7 +110,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Cheat Sheets
+              Cloud Init 비정상 동작 시
             
           </span>
         </div>
@@ -221,7 +221,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -249,7 +249,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../k8s/install/ready-k8s-air-gapped-install/" class="md-tabs__link">
+        <a href="../../../k8s/install/ready-k8s-air-gapped-install/" class="md-tabs__link">
           
   
   
@@ -272,7 +272,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../ubuntu/init-ubuntu-env/" class="md-tabs__link">
+        <a href="../../../ubuntu/init-ubuntu-env/" class="md-tabs__link">
           
   
   
@@ -299,7 +299,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../db/ha/galera-cluster/" class="md-tabs__link">
+        <a href="../../../db/ha/galera-cluster/" class="md-tabs__link">
           
   
   
@@ -322,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../git/cheatsheet/" class="md-tabs__link">
+        <a href="../../../git/cheatsheet/" class="md-tabs__link">
           
   
   
@@ -342,7 +342,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../ide/vscode_shortcut/" class="md-tabs__link">
+        <a href="../../../ide/vscode_shortcut/" class="md-tabs__link">
           
   
   
@@ -369,7 +369,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../network/tip/check-domain-ip/" class="md-tabs__link">
+        <a href="../../../network/tip/check-domain-ip/" class="md-tabs__link">
           
   
   
@@ -394,7 +394,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../../cheatsheet/" class="md-tabs__link">
           
   
   
@@ -428,7 +428,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="네비게이션" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Infra Cheatsheets" class="md-nav__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
+    <a href="../../.." title="Infra Cheatsheets" class="md-nav__button md-logo" aria-label="Infra Cheatsheets" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
@@ -458,7 +458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -589,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s/install/ready-k8s-air-gapped-install/" class="md-nav__link">
+      <a href="../../../k8s/install/ready-k8s-air-gapped-install/" class="md-nav__link">
         
   
   
@@ -617,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s/install/k8s-air-gapped-install/" class="md-nav__link">
+      <a href="../../../k8s/install/k8s-air-gapped-install/" class="md-nav__link">
         
   
   
@@ -645,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s/install/necessary_infra_install/" class="md-nav__link">
+      <a href="../../../k8s/install/necessary_infra_install/" class="md-nav__link">
         
   
   
@@ -681,7 +681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../k8s/cheatsheet/" class="md-nav__link">
+      <a href="../../../k8s/cheatsheet/" class="md-nav__link">
         
   
   
@@ -768,7 +768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ubuntu/init-ubuntu-env/" class="md-nav__link">
+      <a href="../../../ubuntu/init-ubuntu-env/" class="md-nav__link">
         
   
   
@@ -848,7 +848,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ubuntu/wsl/wsl-network-setting/" class="md-nav__link">
+      <a href="../../../ubuntu/wsl/wsl-network-setting/" class="md-nav__link">
         
   
   
@@ -995,7 +995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../db/ha/galera-cluster/" class="md-nav__link">
+      <a href="../../../db/ha/galera-cluster/" class="md-nav__link">
         
   
   
@@ -1083,7 +1083,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../db/install/ready-mariadb-air-gapped-install/" class="md-nav__link">
+      <a href="../../../db/install/ready-mariadb-air-gapped-install/" class="md-nav__link">
         
   
   
@@ -1178,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../git/cheatsheet/" class="md-nav__link">
+      <a href="../../../git/cheatsheet/" class="md-nav__link">
         
   
   
@@ -1265,7 +1265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ide/vscode_shortcut/" class="md-nav__link">
+      <a href="../../../ide/vscode_shortcut/" class="md-nav__link">
         
   
   
@@ -1404,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network/tip/check-domain-ip/" class="md-nav__link">
+      <a href="../../../network/tip/check-domain-ip/" class="md-nav__link">
         
   
   
@@ -1501,37 +1501,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Cheat Sheets
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../cheatsheet/" class="md-nav__link">
         
   
   
@@ -1547,221 +1520,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="목차">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      목차
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#0" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        0. 환경 설정 (필수)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 인스턴스 (Server) 관리
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 인스턴스 (Server) 관리">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ⚡ 전원 관리 (중요)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-image" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 이미지 (Image) 관리
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 이미지 (Image) 관리">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔧 GPU/가상화 관련 속성 설정 (필수)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-flavor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 플레이버 (Flavor) 관리
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. 플레이버 (Flavor) 관리">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#extra-specs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔧 플레이버 속성 (Extra Specs)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-network" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 네트워크 (Network) 관리
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 네트워크 (Network) 관리">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#floating-ip-ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🌐 Floating IP (공인 IP)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-admin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 시스템 및 하이퍼바이저 관리 (Admin 전용)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-volume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 볼륨 (Volume) 관리
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-placement-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Placement (Resource) 관리
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Placement (Resource) 관리">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#allocation-candidates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔍 자원 스케줄링 디버깅 (Allocation Candidates)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💡 Resource Class (자원 클래스) 참고
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💡 팁: 출력 포맷 예쁘게 보기
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1829,7 +1587,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../base/reference/" class="md-nav__link">
+      <a href="../../base/reference/" class="md-nav__link">
         
   
   
@@ -1857,7 +1615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../base/install/" class="md-nav__link">
+      <a href="../../base/install/" class="md-nav__link">
         
   
   
@@ -1885,7 +1643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../base/api/" class="md-nav__link">
+      <a href="../../base/api/" class="md-nav__link">
         
   
   
@@ -1976,7 +1734,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpu/init-gpu-node/" class="md-nav__link">
+      <a href="../../gpu/init-gpu-node/" class="md-nav__link">
         
   
   
@@ -2004,7 +1762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../gpu/pci-placement/" class="md-nav__link">
+      <a href="../../gpu/pci-placement/" class="md-nav__link">
         
   
   
@@ -2037,6 +1795,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2052,11 +1812,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_4" checked>
         
           
           <label class="md-nav__link" for="__nav_8_4" id="__nav_8_4_label" tabindex="">
@@ -2077,7 +1837,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_8_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_8_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2092,10 +1852,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../utils/cloud-init/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cloud Init 비정상 동작 시
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2111,6 +1898,93 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="목차">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      목차
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        오류
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-cloud-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 🎯 Cloud-init 필수 규칙 (메타데이터)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 🎯 Cloud-init 필수 규칙 (메타데이터)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 🧩 Kubernetes 및 기본 동작을 위한 필수 규칙
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 🧩 Kubernetes 및 기본 동작을 위한 필수 규칙">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 내부 네트워크 통신 (노드끼리 통신)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. DNS (도메인 해석)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2123,7 +1997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../utils/golden-image/" class="md-nav__link">
+      <a href="../golden-image/" class="md-nav__link">
         
   
   
@@ -2214,7 +2088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/k8s-network-error/" class="md-nav__link">
+      <a href="../../troubleshooting/k8s-network-error/" class="md-nav__link">
         
   
   
@@ -2277,33 +2151,56 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#0" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        0. 환경 설정 (필수)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-server" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. 인스턴스 (Server) 관리
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. 인스턴스 (Server) 관리">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ⚡ 전원 관리 (중요)
+        오류
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-cloud-init" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 🎯 Cloud-init 필수 규칙 (메타데이터)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. 🎯 Cloud-init 필수 규칙 (메타데이터)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-kubernetes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 🧩 Kubernetes 및 기본 동작을 위한 필수 규칙
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 🧩 Kubernetes 및 기본 동작을 위한 필수 규칙">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#a" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        A. 내부 네트워크 통신 (노드끼리 통신)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#b-dns" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        B. DNS (도메인 해석)
       
     </span>
   </a>
@@ -2312,157 +2209,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-image" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. 이미지 (Image) 관리
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. 이미지 (Image) 관리">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#gpu" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔧 GPU/가상화 관련 속성 설정 (필수)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-flavor" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. 플레이버 (Flavor) 관리
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. 플레이버 (Flavor) 관리">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#extra-specs" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔧 플레이버 속성 (Extra Specs)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-network" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. 네트워크 (Network) 관리
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="4. 네트워크 (Network) 관리">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#floating-ip-ip" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🌐 Floating IP (공인 IP)
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#5-admin" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        5. 시스템 및 하이퍼바이저 관리 (Admin 전용)
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-volume" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        6. 볼륨 (Volume) 관리
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-placement-resource" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7. Placement (Resource) 관리
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="7. Placement (Resource) 관리">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#allocation-candidates" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        🔍 자원 스케줄링 디버깅 (Allocation Candidates)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-class" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💡 Resource Class (자원 클래스) 참고
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        💡 팁: 출력 포맷 예쁘게 보기
-      
-    </span>
-  </a>
   
 </li>
         
@@ -2491,342 +2237,89 @@
   
 
 
-<h1 id="openstack-cli-cheat-sheet">📘 OpenStack CLI 치트시트 (Cheat Sheet)</h1>
-<p>OpenStack 운영 및 관리를 위한 필수 명령어 모음입니다.</p>
-<blockquote>
-<p><strong>범례</strong>:</p>
+<h1 id="cloud-init">Cloud-Init이 제대로 동작하지 않을 때</h1>
+<h2 id="_1">오류</h2>
 <ul>
-<li><code>&lt;값&gt;</code> : 필수 입력 값 (예: ID, 이름)</li>
-<li><code>[옵션]</code> : 선택 입력 값</li>
+<li>hostname이 제대로 변경되지 않음</li>
+<li>키파일이 등록되지 않음</li>
 </ul>
-</blockquote>
-<h2 id="0">0. 환경 설정 (필수)</h2>
-<p>명령어를 실행하기 전, 반드시 인증 정보를 로드해야 합니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 인증 파일 로드</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">source</span><span class="w"> </span>admin-openrc.sh
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># 토큰 잘 받아졌는지 확인</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>openstack<span class="w"> </span>token<span class="w"> </span>issue
-</code></pre></div>
-<hr />
-<h2 id="1-server">1. 인스턴스 (Server) 관리</h2>
-<p>가상머신(VM)의 생명주기를 관리합니다.</p>
+<h2 id="1-cloud-init">1. 🎯 Cloud-init 필수 규칙 (메타데이터)</h2>
+<p><code>cloud-init</code>이 작동하려면 VM이 이 IP 주소로 요청을 보낼 수 있어야 합니다.
+보안 그룹의 <strong>Outbound(Egress, 송신)</strong> 규칙에 추가해야 합니다.</p>
 <table>
 <thead>
 <tr>
-<th style="text-align: left;">작업</th>
-<th style="text-align: left;">명령어</th>
+<th style="text-align: left;">방향 (Direction)</th>
+<th style="text-align: left;">프로토콜 (Protocol)</th>
+<th style="text-align: left;">포트 (Port)</th>
+<th style="text-align: left;">목적지 (Destination / CIDR)</th>
 <th style="text-align: left;">설명</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><strong>목록 조회</strong></td>
-<td style="text-align: left;"><code>openstack server list --all-projects</code></td>
-<td style="text-align: left;">모든 프로젝트의 VM 목록 조회</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>상세 조회</strong></td>
-<td style="text-align: left;"><code>openstack server show &lt;인스턴스_ID&gt;</code></td>
-<td style="text-align: left;">특정 VM의 상세 정보(IP, 호스트, 상태) 조회</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>로그 확인</strong></td>
-<td style="text-align: left;"><code>openstack console log show &lt;인스턴스_ID&gt;</code></td>
-<td style="text-align: left;">부팅 로그(Console Log) 확인 (디버깅용)</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>콘솔 URL</strong></td>
-<td style="text-align: left;"><code>openstack console url show &lt;인스턴스_ID&gt;</code></td>
-<td style="text-align: left;">웹 VNC 접속 주소 확인</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>생성</strong></td>
-<td style="text-align: left;"><code>openstack server create --image &lt;이미지&gt; --flavor &lt;플레이버&gt; --network &lt;네트워크&gt; &lt;VM이름&gt;</code></td>
-<td style="text-align: left;">인스턴스 생성</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>삭제</strong></td>
-<td style="text-align: left;"><code>openstack server delete &lt;인스턴스_ID&gt;</code></td>
-<td style="text-align: left;">인스턴스 삭제</td>
+<td style="text-align: left;"><strong>Egress (송신)</strong></td>
+<td style="text-align: left;">TCP</td>
+<td style="text-align: left;"><strong>80</strong></td>
+<td style="text-align: left;"><strong>169.254.169.254/32</strong></td>
+<td style="text-align: left;">OpenStack 메타데이터 서비스 전용 IP</td>
 </tr>
 </tbody>
 </table>
-<h3 id="_1">⚡ 전원 관리 (중요)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># 부드러운 재부팅 (OS 레벨 재부팅)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>openstack<span class="w"> </span>server<span class="w"> </span>reboot<span class="w"> </span>&lt;인스턴스_ID&gt;
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># 강제 재부팅 (전원 껐다 켜기 - GPU 오류 시 필수)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>openstack<span class="w"> </span>server<span class="w"> </span>reboot<span class="w"> </span>--hard<span class="w"> </span>&lt;인스턴스_ID&gt;
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># 인스턴스 일시 정지 해제 (Paused 상태 풀기)</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>openstack<span class="w"> </span>server<span class="w"> </span>unpause<span class="w"> </span>&lt;인스턴스_ID&gt;
-</code></pre></div>
-<hr />
-<h2 id="2-image">2. 이미지 (Image) 관리</h2>
-<p>Glance 서비스 관련 명령어입니다.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">작업</th>
-<th style="text-align: left;">명령어</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>목록 조회</strong></td>
-<td style="text-align: left;"><code>openstack image list</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>상세 조회</strong></td>
-<td style="text-align: left;"><code>openstack image show &lt;이미지_ID&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>이미지 등록</strong></td>
-<td style="text-align: left;"><code>openstack image create "&lt;이름&gt;" --file &lt;파일경로&gt; --disk-format qcow2 --container-format bare --public</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>속성 수정</strong></td>
-<td style="text-align: left;"><code>openstack image set --property &lt;키&gt;=&lt;값&gt; &lt;이미지_ID&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>삭제</strong></td>
-<td style="text-align: left;"><code>openstack image delete &lt;이미지_ID&gt;</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="gpu">🔧 GPU/가상화 관련 속성 설정 (필수)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 머신 타입 Q35 설정 (PCIe Passthrough 필수)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>openstack<span class="w"> </span>image<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--property<span class="w"> </span><span class="nv">hw_machine_type</span><span class="o">=</span>q35<span class="w"> </span>&lt;이미지_ID&gt;
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 하이퍼바이저 숨기기 (RTX 계열 필수)</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>openstack<span class="w"> </span>image<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--property<span class="w"> </span>hw:kvm_hidden<span class="o">=</span><span class="nb">true</span><span class="w"> </span>&lt;이미지_ID&gt;
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># Guest Agent 활성화 (IP 확인용)</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>openstack<span class="w"> </span>image<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--property<span class="w"> </span><span class="nv">hw_qemu_guest_agent</span><span class="o">=</span>yes<span class="w"> </span>&lt;이미지_ID&gt;
-</code></pre></div>
-<hr />
-<h2 id="3-flavor">3. 플레이버 (Flavor) 관리</h2>
-<p>인스턴스의 사양(CPU, RAM, Disk)을 정의합니다.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">작업</th>
-<th style="text-align: left;">명령어</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>목록 조회</strong></td>
-<td style="text-align: left;"><code>openstack flavor list</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>생성</strong></td>
-<td style="text-align: left;"><code>openstack flavor create --ram &lt;MB&gt; --disk &lt;GB&gt; --vcpus &lt;개수&gt; &lt;플레이버_이름&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>삭제</strong></td>
-<td style="text-align: left;"><code>openstack flavor delete &lt;플레이버_ID&gt;</code></td>
-</tr>
-</tbody>
-</table>
-<h3 id="extra-specs">🔧 플레이버 속성 (Extra Specs)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 속성 설정 (GPU용)</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>openstack<span class="w"> </span>flavor<span class="w"> </span><span class="nb">set</span><span class="w"> </span>--property<span class="w"> </span>hw:pci_numa_affinity_policy<span class="o">=</span>required<span class="w"> </span>&lt;플레이버_ID&gt;
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 속성 확인</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>openstack<span class="w"> </span>flavor<span class="w"> </span>show<span class="w"> </span>&lt;플레이버_ID&gt;
-</code></pre></div>
-<hr />
-<h2 id="4-network">4. 네트워크 (Network) 관리</h2>
-<p>Neutron 서비스 관련 명령어입니다.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">작업</th>
-<th style="text-align: left;">명령어</th>
-<th style="text-align: left;">설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>네트워크 목록</strong></td>
-<td style="text-align: left;"><code>openstack network list</code></td>
-<td style="text-align: left;">내부/외부 네트워크 목록</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>서브넷 목록</strong></td>
-<td style="text-align: left;"><code>openstack subnet list</code></td>
-<td style="text-align: left;">IP 대역 확인</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>보안그룹 목록</strong></td>
-<td style="text-align: left;"><code>openstack security group list</code></td>
-<td style="text-align: left;">방화벽 그룹 확인</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>규칙 추가</strong></td>
-<td style="text-align: left;"><code>openstack security group rule create --proto tcp --dst-port &lt;포트&gt; &lt;그룹ID&gt;</code></td>
-<td style="text-align: left;">포트 개방 (예: 22, 80)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="floating-ip-ip">🌐 Floating IP (공인 IP)</h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Floating IP 목록 조회</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>openstack<span class="w"> </span>floating<span class="w"> </span>ip<span class="w"> </span>list
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># 새 IP 생성 (할당)</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>openstack<span class="w"> </span>floating<span class="w"> </span>ip<span class="w"> </span>create<span class="w"> </span>&lt;외부_네트워크_이름&gt;
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># 인스턴스에 연결</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>openstack<span class="w"> </span>server<span class="w"> </span>add<span class="w"> </span>floating<span class="w"> </span>ip<span class="w"> </span>&lt;인스턴스_ID&gt;<span class="w"> </span>&lt;IP주소&gt;
-</code></pre></div>
-<hr />
-<h2 id="5-admin">5. 시스템 및 하이퍼바이저 관리 (Admin 전용)</h2>
-<p>운영자(Operator)가 클러스터 상태를 점검할 때 씁니다.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">작업</th>
-<th style="text-align: left;">명령어</th>
-<th style="text-align: left;">설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>하이퍼바이저 상태</strong></td>
-<td style="text-align: left;"><code>openstack hypervisor list</code></td>
-<td style="text-align: left;">각 노드의 UP/DOWN 상태 확인</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>컴퓨트 서비스</strong></td>
-<td style="text-align: left;"><code>openstack compute service list</code></td>
-<td style="text-align: left;">nova-compute 서비스 상태 확인</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>자원 사용량</strong></td>
-<td style="text-align: left;"><code>openstack hypervisor stats show</code></td>
-<td style="text-align: left;">전체 클러스터 자원 통계</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>노드 상세 정보</strong></td>
-<td style="text-align: left;"><code>openstack hypervisor show &lt;호스트명&gt;</code></td>
-<td style="text-align: left;">특정 노드의 CPU/RAM 상세 스펙</td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="6-volume">6. 볼륨 (Volume) 관리</h2>
-<p>Cinder 서비스 관련 명령어입니다.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">작업</th>
-<th style="text-align: left;">명령어</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>목록 조회</strong></td>
-<td style="text-align: left;"><code>openstack volume list</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>생성</strong></td>
-<td style="text-align: left;"><code>openstack volume create --size &lt;GB&gt; &lt;볼륨이름&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>연결</strong></td>
-<td style="text-align: left;"><code>openstack server add volume &lt;인스턴스_ID&gt; &lt;볼륨_ID&gt;</code></td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>해제</strong></td>
-<td style="text-align: left;"><code>openstack server remove volume &lt;인스턴스_ID&gt; &lt;볼륨_ID&gt;</code></td>
-</tr>
-</tbody>
-</table>
-<hr />
-<h2 id="7-placement-resource">7. Placement (Resource) 관리</h2>
-<p>Placement 서비스 관련 명령어로, 물리 노드 및 GPU 같은 특수 자원의 재고(Inventory)와 할당(Allocation) 상태를 확인합니다.</p>
-<table>
-<thead>
-<tr>
-<th style="text-align: left;">작업</th>
-<th style="text-align: left;">명령어</th>
-<th style="text-align: left;">설명</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align: left;"><strong>RP 목록 조회</strong></td>
-<td style="text-align: left;"><code>openstack resource provider list</code></td>
-<td style="text-align: left;">등록된 모든 자원 제공자(Compute Node, GPU 등) 목록</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>재고(Inventory) 확인</strong></td>
-<td style="text-align: left;"><code>openstack resource provider inventory list &lt;RP_UUID&gt;</code></td>
-<td style="text-align: left;">특정 노드의 CPU, RAM, GPU <strong>총량 및 여유분</strong> 조회</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>사용량(Usage) 확인</strong></td>
-<td style="text-align: left;"><code>openstack resource provider usage show &lt;RP_UUID&gt;</code></td>
-<td style="text-align: left;">특정 노드의 자원별 <strong>실제 사용량</strong> 조회</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>할당(Allocation) 확인</strong></td>
-<td style="text-align: left;"><code>openstack resource provider allocation show &lt;RP_UUID&gt;</code></td>
-<td style="text-align: left;">어떤 인스턴스가 이 노드의 자원을 점유 중인지 확인</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>트레이트(Trait) 조회</strong></td>
-<td style="text-align: left;"><code>openstack resource provider trait list &lt;RP_UUID&gt;</code></td>
-<td style="text-align: left;">노드의 특성 태그(예: <code>HW_CPU_X86_AVX512</code>) 조회</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>이름 변경</strong></td>
-<td style="text-align: left;"><code>openstack resource provider set --name &lt;새이름&gt; &lt;RP_UUID&gt;</code></td>
-<td style="text-align: left;">리소스 프로바이더 이름 변경</td>
-</tr>
-<tr>
-<td style="text-align: left;"><strong>RP 삭제</strong></td>
-<td style="text-align: left;"><code>openstack resource provider delete &lt;RP_UUID&gt;</code></td>
-<td style="text-align: left;">(주의) 자원 제공자 삭제 (좀비 레코드 정리 시 사용)</td>
-</tr>
-</tbody>
-</table>
-<h3 id="allocation-candidates">🔍 자원 스케줄링 디버깅 (Allocation Candidates)</h3>
-<p>"내 VM이 왜 생성이 안 되지? (No Valid Host)" 에러가 날 때, 스케줄러 입장에서 **"배포 가능한 후보지"**가 있는지 미리 조회해보는 명령어입니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 스펙에 맞는 후보 호스트 조회 (예: CPU 1개, 메모리 512MB)</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>openstack<span class="w"> </span>allocation<span class="w"> </span>candidate<span class="w"> </span>list<span class="w"> </span>--resource<span class="w"> </span><span class="nv">VCPU</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>--resource<span class="w"> </span><span class="nv">MEMORY_MB</span><span class="o">=</span><span class="m">512</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># GPU가 포함된 후보 호스트 조회 (예: GPU 1개 필요)</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># (사용자 환경에 따라 클래스 이름이 VGPU 또는 PCI_DEVICE 등으로 다를 수 있음)</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>openstack<span class="w"> </span>allocation<span class="w"> </span>candidate<span class="w"> </span>list<span class="w"> </span>--resource<span class="w"> </span><span class="nv">VCPU</span><span class="o">=</span><span class="m">4</span><span class="w"> </span>--resource<span class="w"> </span><span class="nv">CUSTOM_GPU_RTX3060</span><span class="o">=</span><span class="m">1</span>
-</code></pre></div>
-<hr />
-<h3 id="resource-class">💡 Resource Class (자원 클래스) 참고</h3>
-<p>명령어 사용 시 자주 보이는 자원 이름(Class)들입니다.</p>
 <ul>
-<li><strong><code>VCPU</code></strong>: 가상 CPU 코어 수</li>
-<li><strong><code>MEMORY_MB</code></strong>: 메모리 용량 (MB)</li>
-<li><strong><code>DISK_GB</code></strong>: 로컬 디스크 용량 (GB)</li>
-<li><strong><code>PCI_DEVICE</code></strong> 또는 <strong><code>CUSTOM_...</code></strong>: GPU 같은 특수 장치</li>
+<li><strong>169.254.169.254/32:</strong> 클라우드 표준(OpenStack, AWS 등) 메타데이터 IP입니다.
+이 IP 하나만 딱 열어주면 됩니다.</li>
+<li><strong>주의:</strong> 보안 그룹은 기본적으로 Outbound가 모두 허용(Allow All)인 경우가 많습니다.
+만약 Outbound를 다 막아두셨다면 이 규칙을 <strong>반드시</strong> 추가해야 합니다.</li>
 </ul>
-<p><strong>예시: 특정 컴퓨트 노드(<code>openstack22</code>)의 GPU 재고 확인하기</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># 1. 목록에서 openstack22의 UUID 찾기</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>openstack<span class="w"> </span>resource<span class="w"> </span>provider<span class="w"> </span>list<span class="w"> </span>--name<span class="w"> </span>openstack22
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># 2. 해당 UUID로 재고 확인 (GPU 개수 확인용)</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>openstack<span class="w"> </span>resource<span class="w"> </span>provider<span class="w"> </span>inventory<span class="w"> </span>list<span class="w"> </span>&lt;openstack22_UUID&gt;
-</code></pre></div>
 <hr />
-<h3 id="_2">💡 팁: 출력 포맷 예쁘게 보기</h3>
-<p>명령어 뒤에 <code>-c</code> (컬럼 선택)와 <code>-f</code> (포맷) 옵션을 쓰면 필요한 정보만 깔끔하게 볼 수 있습니다.</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># ID와 이름, 상태만 보고 싶을 때 (테이블 형식)</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>openstack<span class="w"> </span>server<span class="w"> </span>list<span class="w"> </span>-c<span class="w"> </span>ID<span class="w"> </span>-c<span class="w"> </span>Name<span class="w"> </span>-c<span class="w"> </span>Status
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># 값만 뽑아서 스크립트에 쓰고 싶을 때 (Value 형식)</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>openstack<span class="w"> </span>server<span class="w"> </span>show<span class="w"> </span>&lt;ID&gt;<span class="w"> </span>-c<span class="w"> </span>status<span class="w"> </span>-f<span class="w"> </span>value
-</code></pre></div>
+<h3 id="2-kubernetes">2. 🧩 Kubernetes 및 기본 동작을 위한 필수 규칙</h3>
+<p>메타데이터 외에도, 현재 K8s 클러스터를 구축 중이시므로 <strong>노드 간 통신</strong>과 <strong>DNS</strong>가 막히면 아무것도 안 됩니다. 
+"Any"를 쓰지 않고 정확히 열어야 할 IP 대역은 다음과 같습니다.</p>
+<h4 id="a">A. 내부 네트워크 통신 (노드끼리 통신)</h4>
+<p>마스터와 워커 노드가 서로 통신하려면 <strong>VPC(서브넷) 내부 대역</strong>은 서로 열려 있어야 합니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">방향</th>
+<th style="text-align: left;">프로토콜</th>
+<th style="text-align: left;">포트</th>
+<th style="text-align: left;">소스/목적지</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Ingress (수신)</strong></td>
+<td style="text-align: left;">Any (또는 TCP/UDP)</td>
+<td style="text-align: left;">All</td>
+<td style="text-align: left;"><strong>10.0.0.0/24</strong> (예시)</td>
+<td style="text-align: left;"><strong>사용 중인 내부 서브넷 CIDR</strong>를 넣으세요. 노드끼리는 서로 믿어야 합니다.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="b-dns">B. DNS (도메인 해석)</h4>
+<p>이게 막히면 <code>yum install</code>, <code>docker pull</code> 등이 다 실패합니다.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">방향</th>
+<th style="text-align: left;">프로토콜</th>
+<th style="text-align: left;">포트</th>
+<th style="text-align: left;">목적지</th>
+<th style="text-align: left;">설명</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><strong>Egress (송신)</strong></td>
+<td style="text-align: left;">UDP / TCP</td>
+<td style="text-align: left;"><strong>53</strong></td>
+<td style="text-align: left;"><strong>DNS 서버 IP</strong></td>
+<td style="text-align: left;">보통 내부 DNS IP 또는 8.8.8.8 등</td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -2876,10 +2369,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "search.highlight", "content.code.copy"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.sections", "search.highlight", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "\ud074\ub9bd\ubcf4\ub4dc\uc5d0 \ubcf5\uc0ac\ub428", "clipboard.copy": "\ud074\ub9bd\ubcf4\ub4dc\ub85c \ubcf5\uc0ac", "search.result.more.one": "\uc774 \ubb38\uc11c\uc5d0\uc11c 1\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.more.other": "\uc774 \ubb38\uc11c\uc5d0\uc11c #\uac1c\uc758 \uac80\uc0c9 \uacb0\uacfc \ub354 \ubcf4\uae30", "search.result.none": "\uac80\uc0c9\uc5b4\uc640 \uc77c\uce58\ud558\ub294 \ubb38\uc11c\uac00 \uc5c6\uc2b5\ub2c8\ub2e4", "search.result.one": "1\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.other": "#\uac1c\uc758 \uc77c\uce58\ud558\ub294 \ubb38\uc11c", "search.result.placeholder": "\uac80\uc0c9\uc5b4\ub97c \uc785\ub825\ud558\uc138\uc694", "search.result.term.missing": "\ud3ec\ud568\ub418\uc9c0 \uc54a\uc740 \uac80\uc0c9\uc5b4", "select.version": "\ubc84\uc804 \uc120\ud0dd"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
       
     
   </body>
