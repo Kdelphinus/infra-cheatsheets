@@ -1,15 +1,15 @@
 # 1. 폐쇄망에서 GitLab 및 Jenkins 설치 및 연동
 
 1. **가이드 환경**
-   * OS: Rocky Linux 9.6
-   * K8s Version: 1.30.14
-   * Container Runtime: containerd (`ctr`)
+   - OS: Rocky Linux 9.6
+   - K8s Version: 1.30.14
+   - Container Runtime: containerd (`ctr`)
 
 2. **전제 조건**
-   * Kubernetes 클러스터가 정상 동작 중이어야 합니다 (`kubectl get nodes` -> Ready).
-   * 스토리지 클래스(`local-path`)가 구성되어 있어야 합니다.
-   * 이 가이드는 마스터 노드의 `~/gitlab` , `~/jenkins` 경로에 준비되어 있다고 가정하고 시작합니다.
-   * [설치 파일 위치](https://drive.google.com/drive/folders/1joMQRpZPWzKgU9BBsdxy3b0qzJMWpBC8?usp=sharing)
+   - Kubernetes 클러스터가 정상 동작 중이어야 합니다 (`kubectl get nodes` -> Ready).
+   - 스토리지 클래스(`local-path`)가 구성되어 있어야 합니다.
+   - 이 가이드는 마스터 노드의 `~/gitlab` , `~/jenkins` 경로에 준비되어 있다고 가정하고 시작합니다.
+   - [설치 파일 위치](https://drive.google.com/drive/folders/1joMQRpZPWzKgU9BBsdxy3b0qzJMWpBC8?usp=sharing)
 
 ---
 
