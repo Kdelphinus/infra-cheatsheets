@@ -49,6 +49,9 @@ nav:
       - '1. 폐쇄망용 설치 파일 준비': k8s/offline-install/001-ready-k8s-air-gapped-install.md
       - '2. 폐쇄망에서 K8s 설치': k8s/offline-install/002-k8s-air-gapped-install.md
       - '3. 폐쇄망에서 Helm, Harbor, Ingress Controller 설치': k8s/offline-install/003-necessary_infra_install.md
+    - 'Gateway API':
+      - '1. Gateway API 설치': k8s/gateway-api/001-envoy-install.md
+      - '2. Ingress를 HTTPRoute로 전환': k8s/gateway-api/002-convert_ingress_to_httproute.md
     - 'Cheat Sheets': k8s/cheatsheet.md
   - CI/CD:
     - 폐쇄망:
