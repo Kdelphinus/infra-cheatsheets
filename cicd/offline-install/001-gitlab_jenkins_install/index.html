@@ -3273,10 +3273,8 @@ K8s 서비스의 포트를 임시로 포워딩하거나 NodePort를 확인합니
 <h3 id="4-jenkins-kubernetes-cloud">4. Jenkins Kubernetes Cloud 설정</h3>
 <p>Webhook을 통해 들어온 요청을 처리할 <strong>K8s 에이전트(Pod) 연결 정보</strong>를 설정합니다.
 이 설정이 선행되어야 Jenkins가 K8s 클러스터 내부에 에이전트를 생성할 수 있습니다.</p>
-<ul>
-<li>
 <p><strong>경로:</strong> Manage Jenkins &gt; Clouds &gt; New cloud</p>
-</li>
+<ol>
 <li>
 <p>Kubernetes 기본 설정</p>
 </li>
@@ -3302,7 +3300,7 @@ K8s 서비스의 포트를 임시로 포워딩하거나 NodePort를 확인합니
 <li><strong>Namespace:</strong> <code>jenkins</code></li>
 <li><strong>Labels:</strong> <code>kubernetes</code> (파이프라인이 호출할 라벨)</li>
 <li><strong>Usage:</strong> <code>Use this node as much as possible</code> 선택</li>
-</ul>
+</ol>
 <hr />
 <h3 id="5-git-push-trigger">5. Git 설치 및 소스 코드 Push (Trigger)</h3>
 <p>모든 설정이 완료되었으므로, 실제 코드를 GitLab에 푸시하여 Jenkins 빌드를 트리거합니다.</p>
