@@ -90,42 +90,10 @@ kubectl create namespace jenkins
 
 ### 2. Jenkins Helm 배포
 
-`values.yaml`을 따로 만들지 않고 `--set` 명령어로 핵심 설정만 주입하여 설치합니다.
+`deploy-jenkins.sh` 파일 위에 있는 `REGISTRY_URL` 등의 변수를 환경에 맞춰 수정 후 실행합니다.
 
 ```bash
-cd ~/jenkins
-
-# 주의: image.tag는 우리가 빌드했던 '2026-lts'를 사용해야 합니다.
-helm install jenkins ./jenkins \
-  --namespace jenkins \
-  \
-  --set controller.image.registry=1.1.1.213:30002 \
-  --set controller.image.repository=library/jenkins \
-  --set controller.image.tag=2026-lts \
-  --set controller.imagePullPolicy=IfNotPresent \
-  --set controller.imagePullSecrets[0].name=regcred \
-  \
-  --set controller.serviceType=NodePort \
-  --set controller.nodePort=30000 \
-  \
-  --set agent.image.registry=1.1.1.213:30002 \
-  --set agent.image.repository=library/inbound-agent \
-  --set agent.image.tag=latest \
-  --set agent.imagePullPolicy=IfNotPresent \
-  --set agent.imagePullSecrets[0].name=regcred \
-  \
-  --set persistence.storageClass=manual \
-  --set persistence.size=20Gi \
-  \
-  --set controller.sidecars.configAutoReload.image.registry=1.1.1.213:30002 \
-  --set controller.sidecars.configAutoReload.image.repository=library/k8s-sidecar \
-  --set controller.sidecars.configAutoReload.image.tag=1.30.7 \
-  --set controller.sidecars.configAutoReload.imagePullPolicy=IfNotPresent \
-  \
-  --set controller.runAsUser=1000 \
-  --set controller.fsGroup=1000 \
-  \
-  --set controller.installPlugins=false
+sudo bash deploy-jenkins.sh
 ```
 
 ### 3. Jenkins 접속 정보 확인
