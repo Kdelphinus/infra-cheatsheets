@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://kdelphinus.github.io/infra-cheatsheets/sitemap.xml

@@ -40,6 +40,8 @@ markdown_extensions:
 
 plugins:
   - search    # 검색 기능 (기본값이지만 명시하는 것이 좋음)
+  - sitemap:
+      filename: sitemap.xml
 
 # 메뉴 구조
 nav:
