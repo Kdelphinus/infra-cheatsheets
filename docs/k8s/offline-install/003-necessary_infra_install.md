@@ -375,6 +375,18 @@ EOF
 sudo systemctl restart containerd
 ```
 
+### 3. HTTPS 설정 시, 키 파일 적용
+
+#### Ubuntu / Debian 계열
+
+1. .crt 파일을 `/usr/local/share/ca-certificates/` 경로로 복사합니다.
+2. `sudo update-ca-certificates 명령어를 실행합니다.
+
+#### CentOS / RHEL 계열
+
+1. .crt 파일을 /etc/pki/ca-trust/source/anchors/ 경로로 복사합니다.
+2. sudo update-ca-trust 명령어를 실행합니다.
+
 -----
 
 ## 🚀 Phase 4: 접속 테스트 (PC 설정)
