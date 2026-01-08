@@ -2929,33 +2929,28 @@
 <p><strong>전제 조건</strong></p>
 </li>
 <li>Kubernetes 클러스터가 정상 동작 중이어야 합니다 (<code>kubectl get nodes</code> -&gt; Ready).</li>
+<li>Harbor가 설치되어 있어야 합니다.</li>
 <li>스토리지 클래스(<code>local-path</code>)가 구성되어 있어야 합니다.</li>
 <li>이 가이드는 마스터 노드의 <code>~/gitlab</code> , <code>~/jenkins</code> 경로에 준비되어 있다고 가정하고 시작합니다.</li>
 <li><a href="https://drive.google.com/drive/folders/1joMQRpZPWzKgU9BBsdxy3b0qzJMWpBC8?usp=sharing">설치 파일 위치</a></li>
 </ol>
 <hr />
 <h2 id="phase-1">🚀 Phase 1: 이미지 로드 (전체 노드)</h2>
-<p>K8s가 이미지를 가져올 수 있도록 <code>containerd</code>의 <code>k8s.io</code> 네임스페이스에 이미지를 등록합니다.</p>
-<p><strong>[실행 위치: Master 1, Worker 1~3 전체]</strong></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># gitlab 이미지 업로드</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>~/gitlab/images
+<p>Harbor에 이미지를 업로드합니다.</p>
+<p><strong>[실행 위치: Master 1]</strong></p>
+<p>먼저 <code>upload_images_to_harbor_v2.sh</code> 설정 부분을 현재 환경에 맞게 변경합니다.</p>
+<ul>
+<li><code>HARBOR_REGISTRY</code> : Harbor domain</li>
+<li><code>HARBOR_PROJECT</code> : Harbor Project</li>
+<li><code>HARBOR_USER</code> : ID</li>
+<li><code>HARBOR_PASSWORD</code> : Password</li>
+<li><code>USE_PLAIN_HTTP</code> : HTTP 접속 여부</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">cd</span><span class="w"> </span>~/gitlab-18.7/images
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>bash<span class="w"> </span>upload_images_to_harbor_v2.sh
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">for</span><span class="w"> </span>img<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.tar<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Loading </span><span class="nv">$img</span><span class="s2">...&quot;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>sudo<span class="w"> </span>ctr<span class="w"> </span>-n<span class="w"> </span>k8s.io<span class="w"> </span>images<span class="w"> </span>import<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$img</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">done</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># jenkins 이미지 업로드</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">cd</span><span class="w"> </span>~/jenkins/images
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">for</span><span class="w"> </span>img<span class="w"> </span><span class="k">in</span><span class="w"> </span>*.tar<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Loading </span><span class="nv">$img</span><span class="s2">...&quot;</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span>sudo<span class="w"> </span>ctr<span class="w"> </span>-n<span class="w"> </span>k8s.io<span class="w"> </span>images<span class="w"> </span>import<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$img</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">done</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="c1"># 로드 확인 (GitLab 및 Jenkins 이미지가 보여야 함)</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>sudo<span class="w"> </span>ctr<span class="w"> </span>-n<span class="w"> </span>k8s.io<span class="w"> </span>images<span class="w"> </span>list<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-E<span class="w"> </span><span class="s2">&quot;gitlab|jenkins&quot;</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">cd</span><span class="w"> </span>~/jenkins-2.528.3/images
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>bash<span class="w"> </span>upload_images_to_harbor_v2.sh
 </code></pre></div>
 <hr />
 <h2 id="phase-2-pv">🚀 Phase 2: 데이터 영속성 구성 (PV 설정)</h2>
