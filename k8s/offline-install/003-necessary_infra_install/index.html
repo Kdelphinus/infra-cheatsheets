@@ -969,6 +969,45 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. HTTPS 설정 시, 키 파일 적용
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. HTTPS 설정 시, 키 파일 적용">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-debian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubuntu / Debian 계열
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-rhel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CentOS / RHEL 계열
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -2834,6 +2873,45 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#3-https" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. HTTPS 설정 시, 키 파일 적용
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. HTTPS 설정 시, 키 파일 적용">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-debian" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ubuntu / Debian 계열
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-rhel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        CentOS / RHEL 계열
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -3149,6 +3227,17 @@
 <p>서비스를 재시작합니다.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>containerd
 </code></pre></div>
+<h3 id="3-https">3. HTTPS 설정 시, 키 파일 적용</h3>
+<h4 id="ubuntu-debian">Ubuntu / Debian 계열</h4>
+<ol>
+<li>.crt 파일을 <code>/usr/local/share/ca-certificates/</code> 경로로 복사합니다.</li>
+<li>`sudo update-ca-certificates 명령어를 실행합니다.</li>
+</ol>
+<h4 id="centos-rhel">CentOS / RHEL 계열</h4>
+<ol>
+<li>.crt 파일을 /etc/pki/ca-trust/source/anchors/ 경로로 복사합니다.</li>
+<li>sudo update-ca-trust 명령어를 실행합니다.</li>
+</ol>
 <hr />
 <h2 id="phase-4-pc">🚀 Phase 4: 접속 테스트 (PC 설정)</h2>
 <p>Harbor는 도메인 기반으로 동작하므로, 접속하려는 **내 PC(또는 Bastion)**의 <code>hosts</code> 파일을 수정해야 들어갈 수 있습니다.</p>
