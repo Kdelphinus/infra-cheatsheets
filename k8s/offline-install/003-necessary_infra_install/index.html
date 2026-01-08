@@ -3230,13 +3230,15 @@
 <h3 id="3-https">3. HTTPS 설정 시, 키 파일 적용</h3>
 <h4 id="ubuntu-debian">Ubuntu / Debian 계열</h4>
 <ol>
-<li>.crt 파일을 <code>/usr/local/share/ca-certificates/</code> 경로로 복사합니다.</li>
-<li>`sudo update-ca-certificates 명령어를 실행합니다.</li>
+<li>.crt 파일들을 <code>/usr/local/share/ca-certificates/</code> 경로로 복사합니다.</li>
+<li><code>sudo update-ca-certificates</code> 명령어를 실행합니다.</li>
+<li><code>sudo systemctl restart containerd</code> 명령어를 실행합니다.</li>
 </ol>
 <h4 id="centos-rhel">CentOS / RHEL 계열</h4>
 <ol>
-<li>.crt 파일을 /etc/pki/ca-trust/source/anchors/ 경로로 복사합니다.</li>
-<li>sudo update-ca-trust 명령어를 실행합니다.</li>
+<li>.crt 파일들을 <code>/etc/pki/ca-trust/source/anchors/</code> 경로로 복사합니다.</li>
+<li><code>sudo update-ca-trust</code> 명령어를 실행합니다.</li>
+<li><code>sudo systemctl restart containerd</code> 명령어를 실행합니다.</li>
 </ol>
 <hr />
 <h2 id="phase-4-pc">🚀 Phase 4: 접속 테스트 (PC 설정)</h2>
